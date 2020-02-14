@@ -1,0 +1,58 @@
+{
+  "name": "gm-react-app",
+  "description": "参考资料",
+  "version": "1.0.0",
+  "main": "webpack.config.backup.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmfe/gm-react-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gmfe/gm-react-app/issues"
+  },
+  "homepage": "https://github.com/gmfe/gm-react-app#readme",
+  "scripts": {
+    "start": "gm-react-app-scripts start",
+    "build": "gm-react-app-scripts build",
+    "publish-latest": "lerna publish --force-publish",
+    "publish-beta": "lerna publish --force-publish --dist-tag beta",
+    "autolink": "cd packages;cd babel-preset-gm-react-app; yarn link; cd ../eslint-plugin-gm-react-app; yarn link; cd ../scripts; yarn link; cd ..; yarn link @gm-react-app/scripts eslint-plugin-gm-react-app babel-preset-gm-react-app"
+  },
+  "lint-staged": {
+    "./src/**/*.{js,jsx,ts,tsx,json}": [
+      "eslint --cache --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "typescript": "~3.7.2",
+    "@gm-react-app/scripts": "0.0.0",
+    "babel-preset-gm-react-app": "0.0.0",
+    "eslint-plugin-gm-react-app": "0.0.0",
+    "styled-jsx": "^3.2.4",
+    "husky": "^4.2.3",
+    "lerna": "^3.19.0",
+    "lint-staged": "^10.0.7"
+  },
+  "browserslist": {
+    "production": [
+      "iOS >= 8",
+      "Android >= 5.0"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
