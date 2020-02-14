@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import SVGCopy from '../svg/copy.svg'
 import A from './a'
-import B from './b'
+import B from './b/index.tsx'
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
         icon <SVGCopy />
       </div>
       <A />
-      <B/>
+      <B />
     </div>
   )
 }

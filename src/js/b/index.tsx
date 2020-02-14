@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { FC } from 'react'
+import C from './c'
 
 interface BProps {
   name: string
 }
 
-const B: BProps = () => {
-  return <div>page b</div>
+const B: FC<BProps> = () => {
+  return (
+    <div>
+      page b
+      <C name='af' />
+    </div>
+  )
 }
 
 export default B

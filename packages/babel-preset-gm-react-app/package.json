@@ -32,9 +32,7 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
-    "styled-jsx": "^3.2.4"
-  },
-  "peerDependencies": {
+    "styled-jsx": "^3.2.4",
     "react-hot-loader": "^4.12.19"
   }
 }
