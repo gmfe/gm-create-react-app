@@ -5,7 +5,7 @@ interface CProps {
 }
 
 const C: FC<CProps> = () => {
-  return <div>page b2</div>
+  return <div>page c</div>
 }
 
 export default C
