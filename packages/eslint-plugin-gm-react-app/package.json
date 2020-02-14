@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-gm-react-app",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-react-app/tree/master/packages/eslint-plugin-gm-react-app#readme",
@@ -20,12 +20,8 @@
     "url": "https://github.com/gmfe/gm-react-app/issues"
   },
   "dependencies": {
-    "create-eslint-index": "^1.0.0",
-    "import-modules": "^2.0.0",
-    "jsx-ast-utils": "^2.2.3",
-    "lodash": "^4.17.14",
-    "mocha": "^6.2.2",
     "babel-eslint": "^10.0.2",
+    "create-eslint-index": "^1.0.0",
     "eslint": "^6.7.0",
     "eslint-config-prettier": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
@@ -38,6 +34,10 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-plugin-standard": "^4.0.0",
+    "import-modules": "^2.0.0",
+    "jsx-ast-utils": "^2.2.3",
+    "lodash": "^4.17.14",
+    "mocha": "^6.2.2",
     "prettier": "^1.19.1"
   }
 }
