@@ -19,7 +19,7 @@ module.exports = api => {
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-transform-runtime',
       'react-hot-loader/babel',
-      'styled-jsx/babel',
+      'styled-jsx/babel'
     ],
     // 从后往前
     presets: [
@@ -28,8 +28,7 @@ module.exports = api => {
         '@babel/preset-env',
         {
           // for tree shaking
-          module: false,
-          useBuiltIns: 'usage'
+          modules: false
         }
       ]
     ]

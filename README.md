@@ -54,6 +54,10 @@ process.env.GIT_COMMIT
 
 # 详细配置
 
+## 入口
+
+/src/index.js
+
 ## react-hot-loader
 
 see https://github.com/gaearon/react-hot-loader

@@ -21,9 +21,12 @@
     "autolink": "cd packages;cd babel-preset-gm-react-app; yarn link; cd ../eslint-plugin-gm-react-app; yarn link; cd ../scripts; yarn link; cd ..; yarn link @gm-react-app/scripts eslint-plugin-gm-react-app babel-preset-gm-react-app"
   },
   "lint-staged": {
-    "./src/**/*.{js,jsx,ts,tsx,json}": [
+    "./src/**/*.{js,json}": [
       "eslint --cache --fix",
-      "prettier --write",
+      "git add"
+    ],
+    "./src/**/*.{less,css}": [
+      "stylelint --cache --fix",
       "git add"
     ]
   },
@@ -32,18 +35,23 @@
       "pre-commit": "lint-staged"
     }
   },
-  "devDependencies": {
-    "@gm-react-app/scripts": "0.0.2",
-    "babel-preset-gm-react-app": "0.0.2",
-    "eslint-plugin-gm-react-app": "0.0.2",
-    "husky": "^4.2.3",
-    "lerna": "^3.19.0",
-    "lint-staged": "^10.0.7",
+  "dependencies": {
+    "@gm-react-app/scripts": "0.0.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "styled-jsx": "^3.2.4",
-    "typescript": "~3.7.2",
-    "webpack-cli": "^3.3.11"
+    "styled-jsx": "^3.2.4"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "file-loader": "^5.0.2",
+    "lerna": "^3.19.0",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.1.3",
+    "url-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0"
   },
   "browserslist": {
     "production": [

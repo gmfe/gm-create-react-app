@@ -1,7 +1,8 @@
 import './index.less'
-import './js/index'
 import ReactDOM from 'react-dom'
 import React from 'react'
-import App from './js'
+import App from './js/app'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+console.log('index')
+
+ReactDOM.render(<App />, document.getElementById('appContainer'))

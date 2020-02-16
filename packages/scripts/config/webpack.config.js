@@ -21,7 +21,7 @@ const appConfig = getConfig()
 
 const config = {
   mode: isEnvDevelopment ? 'development' : 'production',
-  entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].join(
+  entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].filter(
     Boolean
   ),
   // 暂时不启动 source-map
@@ -34,8 +34,7 @@ const config = {
     chunkFilename: isEnvDevelopment
       ? 'js/[name].chunk.js'
       : 'js/[name].[contenthash:8].chunk.js',
-    publicPath: appConfig.publicPath,
-    futureEmitAssets: true
+    publicPath: appConfig.publicPath
   },
   optimization: {
     minimize: !isEnvDevelopment,
@@ -85,9 +84,7 @@ const config = {
       chunks: 'all',
       name: false
     },
-    runtimeChunk: {
-      name: entrypoint => `runtime-${entrypoint.name}`
-    }
+    runtimeChunk: 'single'
   },
   module: {
     rules: [
@@ -110,7 +107,17 @@ const config = {
               isEnvDevelopment && require.resolve('style-loader'),
               !isEnvDevelopment && MiniCssExtractPlugin.loader,
               require.resolve('css-loader'),
-              require.resolve('postcss-loader')
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-preset-env')({
+                      stage: 3
+                    })
+                  ]
+                }
+              }
             ].filter(Boolean)
           },
           {
@@ -119,7 +126,17 @@ const config = {
               isEnvDevelopment && require.resolve('style-loader'),
               !isEnvDevelopment && MiniCssExtractPlugin.loader,
               require.resolve('css-loader'),
-              require.resolve('postcss-loader'),
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-preset-env')({
+                      stage: 3
+                    })
+                  ]
+                }
+              },
               require.resolve('less-loader')
             ].filter(Boolean)
           },
@@ -128,7 +145,7 @@ const config = {
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
-              name: 'media/[name].[hash:8].[ext]'
+              name: 'media/image/[name].[hash:8].[ext]'
             }
           },
           {
@@ -143,7 +160,7 @@ const config = {
                 loader: 'url-loader',
                 options: {
                   limit: 1024,
-                  name: 'font/[name].[hash:8].[ext]'
+                  name: 'media/font/[name].[hash:8].[ext]'
                 }
               }
             ]
@@ -155,7 +172,7 @@ const config = {
             loader: require.resolve('file-loader'),
             exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             options: {
-              name: 'static/media/[name].[hash:8].[ext]'
+              name: 'media/file/[name].[hash:8].[ext]'
             }
           }
         ]
@@ -181,12 +198,11 @@ const config = {
         filename: 'css/[name].[contenthash:8].css',
         chunkFilename: 'css/[name].[contenthash:8].chunk.css'
       }),
-    !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     // scope hosting
+    !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ].filter(Boolean),
   devServer: {
-    open: true,
     disableHostCheck: true,
     compress: true,
     clientLogLevel: 'none',
