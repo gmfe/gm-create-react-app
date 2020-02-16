@@ -4,8 +4,6 @@ import SVGCopy from '../svg/copy.svg'
 import A from './a'
 import B from './b/index'
 
-debugger
-
 const App = () => {
   return (
     <div>

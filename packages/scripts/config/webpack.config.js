@@ -205,7 +205,6 @@ const config = {
   devServer: {
     disableHostCheck: true,
     compress: true,
-    clientLogLevel: 'none',
     contentBase: PATH.appDirectory,
     hot: true,
     publicPath: appConfig.publicPath,
