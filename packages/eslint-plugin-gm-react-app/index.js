@@ -27,9 +27,8 @@ module.exports = {
       ],
       plugins: ['gm-react-app', 'prettier'],
       rules: {
-        // TODO
-        // 'prettier/prettier': 'error',
         ...recommendedRules,
+        'prettier/prettier': 1,
         'react/display-name': 0,
         'react/no-find-dom-node': 0,
         'react/prop-types': [
@@ -38,7 +37,6 @@ module.exports = {
         ],
         'react/jsx-handler-names': 1,
         camelcase: 0,
-
         'import/no-unresolved': [1, { ignore: ['^gm-i18n$'] }],
         'import/default': 'off',
         'import/namespace': 'off',
@@ -49,57 +47,8 @@ module.exports = {
       settings: {
         react: {
           version: 'detect'
-        },
-        'import/parsers': {
-          '@typescript-eslint/parser': ['.ts', '.tsx']
-        },
-        'import/resolver': {
-          // use <root>/tsconfig.json
-          typescript: {
-            alwaysTryTypes: true
-          }
         }
-      },
-      // TODO
-      overrides: [
-        {
-          files: ['*.tsx', '*.ts'],
-          plugins: ['@typescript-eslint'],
-          parser: '@typescript-eslint/parser',
-          extends: [
-            'plugin:react/recommended',
-            'plugin:@typescript-eslint/recommended',
-            'prettier/@typescript-eslint',
-            'plugin:prettier/recommended'
-          ],
-          rules: {
-            'react/prop-types': 'off',
-            'import/no-unresolved': 'off',
-            'prettier/prettier': 'error',
-            '@typescript-eslint/ban-ts-ignore': 'off',
-            '@typescript-eslint/no-explicit-any': 'off',
-            '@typescript-eslint/no-empty-interface': 'off',
-            '@typescript-eslint/camelcase': 'off',
-            '@typescript-eslint/no-unused-vars': 'error',
-            '@typescript-eslint/member-naming': [
-              'error',
-              {
-                private: '^_',
-                protected: '^__'
-              }
-            ],
-            'react/display-name': 'off'
-          },
-          parserOptions: {
-            project: './tsconfig.json',
-            ecmaFeatures: {
-              jsx: true
-            },
-            sourceType: 'module',
-            ecmaVersion: 2020
-          }
-        }
-      ]
+      }
     }
   }
 }

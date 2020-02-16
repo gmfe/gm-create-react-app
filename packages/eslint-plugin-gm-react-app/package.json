@@ -20,7 +20,6 @@
     "url": "https://github.com/gmfe/gm-react-app/issues"
   },
   "dependencies": {
-    "@typescript-eslint/parser": "^2.19.2",
     "babel-eslint": "^10.0.2",
     "create-eslint-index": "^1.0.0",
     "eslint": "^6.7.0",
@@ -28,7 +27,6 @@
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-jsx": "^8.1.0",
     "eslint-import-resolver-gmfe-alias": "^0.0.2",
-    "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prettier": "^3.1.2",
@@ -39,7 +37,9 @@
     "import-modules": "^2.0.0",
     "jsx-ast-utils": "^2.2.3",
     "lodash": "^4.17.14",
-    "mocha": "^6.2.2",
     "prettier": "^1.19.1"
+  },
+  "devDependencies": {
+    "mocha": "^7.0.1"
   }
 }

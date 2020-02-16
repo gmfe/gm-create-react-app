@@ -33,16 +33,17 @@
     }
   },
   "devDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "typescript": "~3.7.2",
-    "@gm-react-app/scripts": "0.0.1",
-    "babel-preset-gm-react-app": "0.0.1",
-    "eslint-plugin-gm-react-app": "0.0.1",
-    "styled-jsx": "^3.2.4",
+    "@gm-react-app/scripts": "0.0.2",
+    "babel-preset-gm-react-app": "0.0.2",
+    "eslint-plugin-gm-react-app": "0.0.2",
     "husky": "^4.2.3",
     "lerna": "^3.19.0",
-    "lint-staged": "^10.0.7"
+    "lint-staged": "^10.0.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-jsx": "^3.2.4",
+    "typescript": "~3.7.2",
+    "webpack-cli": "^3.3.11"
   },
   "browserslist": {
     "production": [

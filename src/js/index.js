@@ -1,5 +1,5 @@
+import { hot } from 'react-hot-loader/root'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import SVGCopy from '../svg/copy.svg'
 import A from './a'
 import B from './b/index.tsx'
@@ -16,4 +16,4 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+export default hot(App)

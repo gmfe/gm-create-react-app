@@ -1,12 +1,27 @@
-# TODO
+gm-react-app
 
-eslint 配置，有点复杂
+# 使用
 
-# demo
+安装
 
-feature
+```shell script
+yarn install @gm-react-app/scripts
+```
 
-- typescript
+配置自动
+
+```shell script
+yarn run check
+```
+
+配置手动
+
+# feature
+
+**入口**
+
+/src/index.js
+
 - svg 要在 /svg/xxx.svg 下
 - less
 - style-jsx
@@ -21,6 +36,54 @@ react-hot-loader
 
 browserslist
 
+**环境**
+
+process.env.NODE_ENV development test production
+
+process.env.GIT_BRANCH
+
+process.env.GIT_COMMIT
+
+**变量**
+
+`__DEBUG__`
+`__DEVELOPMENT__`
+`__TEST__`
+`__PRODUCTION__`
+`__VERSION__` 来自 package.json version
+
+# 详细配置
+
+## react-hot-loader
+
+see https://github.com/gaearon/react-hot-loader
+
+额外只需在
+
+## deploy.js localjs
+
+path
+config/deploy.js
+config/local.js
+
+```javascript
+module.exports = {
+  // 生产必填，开发默认 '/build/'
+  publicPath: '//js.guanmai.cn/build/xxxx/',
+  // 默认 8080
+  port: 8080,
+  // 默认不启用
+  https: false,
+  proxy: {
+    '/core/*': {
+      target: 'url',
+      changeOrigin: true
+    }
+  }
+}
+```
+
+
 ```json
 {
   "browserslist": {
@@ -33,17 +96,3 @@ browserslist
   }
 }
 ```
-
-# script
-
-check
-
-- html
-  - babel-polyfill
-- package
-  - browserslist
-- .xxx
-  - eslint
-  - prettier
-  - svgr
-  - babel.config.js
