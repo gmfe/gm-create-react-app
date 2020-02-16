@@ -1,6 +1,6 @@
 {
   "name": "@gm-react-app/scripts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-react-app/tree/master/packages/scripts#readme",
@@ -23,7 +23,9 @@
   },
   "dependencies": {
     "@svgr/webpack": "^4.3.2",
+    "babel-preset-gm-react-app": "^0.0.3",
     "cross-spawn": "^7.0.1",
+    "eslint-plugin-gm-react-app": "^0.0.3",
     "fs": "0.0.2",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
@@ -35,8 +37,6 @@
     "terser-webpack-plugin": "^2.1.0",
     "webpack": "^4.37.0",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.11",
-    "babel-preset-gm-react-app": "0.0.2",
-    "eslint-plugin-gm-react-app": "0.0.2"
+    "webpack-dev-server": "^3.1.11"
   }
 }
