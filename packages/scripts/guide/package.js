@@ -1,5 +1,7 @@
 const { PATH } = require('../util')
 const fs = require('fs')
+const _ = require('lodash')
+
 console.log('--> package.json')
 
 const json = require(PATH.appPackageJson)
@@ -34,6 +36,28 @@ json.browserslist = {
 
 delete json.babel
 
-// TODO check dependencies devDependencies
+const babelDependencies = require('babel-preset-gm-react-app/package')
+  .dependencies
+
+const eslintDependencies = require('eslint-plugin-gm-react-app/package')
+  .dependencies
+delete eslintDependencies.lodash
+
+const scriptsDependencies = require('@gm-react-app/scripts/package')
+  .dependencies
+
+const dependencies = require(PATH.appDirectory + '/package').dependencies
+
+const dep = Object.assign(
+  {},
+  babelDependencies,
+  eslintDependencies,
+  scriptsDependencies
+)
+const sameDeps = _.intersection(_.keys(dependencies), _.keys(dep))
+
+if (sameDeps.length > 0) {
+  console.warn('package.json dependencies 可以不用列' + sameDeps)
+}
 
 fs.writeFileSync(PATH.appPackageJson, JSON.stringify(json, null, 2))
