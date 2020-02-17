@@ -81,8 +81,7 @@ const config = {
       })
     ],
     splitChunks: {
-      chunks: 'all',
-      name: false
+      chunks: 'all'
     },
     runtimeChunk: 'single'
   },
@@ -149,7 +148,7 @@ const config = {
             }
           },
           {
-            test: /svg\/(\w|\W)+\.svg$/,
+            test: /\/src\/svg\/(\w|\W)+\.svg$/,
             use: ['@svgr/webpack']
           },
           // iconfont 应该要废弃掉
@@ -190,7 +189,8 @@ const config = {
     new HtmlWebpackPlugin({
       template: PATH.appIndexTemplate,
       branch: process.env.GIT_BRANCH || 'none',
-      commit: process.env.GIT_COMMIT || 'none'
+      commit: process.env.GIT_COMMIT || 'none',
+      env: process.env.NODE_ENV || 'none'
     }),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&

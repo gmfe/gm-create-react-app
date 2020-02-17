@@ -5,36 +5,30 @@ gm-react-app
 安装
 
 ```shell script
-yarn install @gm-react-app/scripts
+yarn add @gm-react-app/scripts
 ```
 
 配置自动
 
 ```shell script
-yarn run check
+gm-react-app-scripts check
 ```
 
 配置手动
+见。。。
 
 # feature
 
-**入口**
+svg [svgr](https://github.com/gregberge/svgr) 只局限在 /src/svg 下，避免和其他 svg 冲突
 
-/src/index.js
+less
 
-- svg 要在 /svg/xxx.svg 下
-- less
-- style-jsx
-- [ ] iconfont
-- [ ] react-hot-loader
-- [ ] 自定义配置 webpack
-- [ ] env
+style-jsx
 
-babel polyfill
+template ejs 语法
 
 react-hot-loader
 
-browserslist
 
 **环境**
 
@@ -52,51 +46,3 @@ process.env.GIT_COMMIT
 `__PRODUCTION__`
 `__VERSION__` 来自 package.json version
 
-# 详细配置
-
-## 入口
-
-/src/index.js
-
-## react-hot-loader
-
-see https://github.com/gaearon/react-hot-loader
-
-额外只需在
-
-## deploy.js localjs
-
-path
-config/deploy.js
-config/local.js
-
-```javascript
-module.exports = {
-  // 生产必填，开发默认 '/build/'
-  publicPath: '//js.guanmai.cn/build/xxxx/',
-  // 默认 8080
-  port: 8080,
-  // 默认不启用
-  https: false,
-  proxy: {
-    '/core/*': {
-      target: 'url',
-      changeOrigin: true
-    }
-  }
-}
-```
-
-
-```json
-{
-  "browserslist": {
-    "production": ["iOS >= 8", "Android >= 5.0"],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-}
-```

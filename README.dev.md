@@ -8,9 +8,9 @@ webpack 自定义
 
 js include resolve alias
 
-react-hot-loader
+webpack-bundle-analyzer
 
-template
+@gmfe
 
 # 说明
 
@@ -22,14 +22,22 @@ my-project
   config/
     deploy.js
     local.js
-    index.html
   src/
     index.js
-  
-
+    index.html
+  .eslintrc.js
+  .gitignore
+  .prettierrc.js
+  .svgrrc.json
+  babel.config.js
+  package.json
+  yarn.lock
 ```
 
+
 入口 /src/index.js
+
+模板 /src/index.html 支持 ejs 语法
 
 配置 /config/deploy.js /config/local.js
 
@@ -41,6 +49,7 @@ module.exports = {
   port: 8080,
   // 默认不启用
   https: false,
+  // 代理
   proxy: {
     '/core/*': {
       target: 'url',
@@ -50,64 +59,36 @@ module.exports = {
 }
 ```
 
+/build 构建产物
+
 ## package.json
 
 包含以下内容
 
-```json
-{
-  "scripts": {
-    "start": "gm-react-app-scripts start",
-    "build:test": "gm-react-app-scripts test",
-    "build:prod": "gm-react-app-scripts build"
-  },
-  "lint-staged": {
-    "./src/**/*.{js,json}": [
-      "eslint --cache --fix",
-      "git add"
-    ],
-    "./src/**/*.{less,css}": [
-      "stylelint --cache --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "browserslist": {
-    "production": [
-      "iOS >= 8",
-      "Android >= 5.0"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-}
-```
-
-- config
-  - deploy.js
-- template
-  - index.html 即可
-- html
-  - meta
-  - babel-polyfill
-  - fetch
 - package
+  - version
+  - scripts
+  - husky 
+  - lint-staged
   - browserslist
+  - 检查依赖
 - .xxx
   - eslint
   - prettier
   - svgr
   - babel.config.js
   - gitignore
+  - postcss 移除
 - react-hot-loader 
-  - app.js hot
+  - app.js hot 
+- template
+  - index.html
+    - meta
+    - platform
+    - fe_branch
+    - git_commit
+    - polyfill
+    - fetch
  
 # 大文件
 

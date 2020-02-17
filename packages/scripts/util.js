@@ -12,7 +12,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
 let packageJson
 function getPackageJson() {
-  packageJson = JSON.parse(fs.readFileSync(appDirectory + '/package.json'))
+  packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
   return packageJson
 }
 
@@ -60,10 +60,13 @@ const getConfig = () => {
 const PATH = {
   appDirectory,
   appBuild: resolveApp('build'),
-  appIndexTemplate: resolveApp('config/index.html'),
+  appConfig: resolveApp('config'),
   appSrc: resolveApp('src'),
-  appIndexJs: resolveApp('src/index.js')
+  appIndexTemplate: resolveApp('src/index.html'),
+  appIndexJs: resolveApp('src/index.js'),
+  appPackageJson: resolveApp('package.json')
 }
+
 const { version } = getPackageJson()
 
 const commandInclude = [PATH.appSrc, /gm-/]
