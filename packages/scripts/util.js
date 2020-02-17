@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs-extra')
 const sh = require('shelljs')
 const path = require('path')
 

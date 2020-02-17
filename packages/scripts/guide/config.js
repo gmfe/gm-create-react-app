@@ -1,5 +1,5 @@
 const { PATH } = require('../util')
-const fs = require('fs')
+const fs = require('fs-extra')
 
 console.log('--> config')
 

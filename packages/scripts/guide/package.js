@@ -1,5 +1,5 @@
 const { PATH } = require('../util')
-const fs = require('fs')
+const fs = require('fs-extra')
 const _ = require('lodash')
 
 console.log('--> package.json')
@@ -46,7 +46,7 @@ delete eslintDependencies.lodash
 const scriptsDependencies = require('@gm-react-app/scripts/package')
   .dependencies
 
-const dependencies = require(PATH.appDirectory + '/package').dependencies
+const app = require(PATH.appDirectory + '/package')
 
 const dep = Object.assign(
   {},
@@ -54,7 +54,10 @@ const dep = Object.assign(
   eslintDependencies,
   scriptsDependencies
 )
-const sameDeps = _.intersection(_.keys(dependencies), _.keys(dep))
+const sameDeps = _.intersection(
+  _.keys(app.dependencies).concat(_.keys(app.devDependencies)),
+  _.keys(dep)
+)
 
 if (sameDeps.length > 0) {
   console.warn('package.json dependencies 可以不用列' + sameDeps)

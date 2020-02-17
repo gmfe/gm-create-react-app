@@ -24,6 +24,7 @@ my-project
   config/
     deploy.js
     local.js
+    webpack.config.js
   src/
     index.js
     index.html
@@ -58,6 +59,8 @@ module.exports = {
   }
 }
 ```
+
+/config/webpack.config.js 如果修改 webpack 配置，提供此文件
 
 入口 /src/index.js
 

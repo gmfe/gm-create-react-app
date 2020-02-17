@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
-
+const fs = require('fs-extra')
+const path = require('path')
 const {
   isEnvDevelopment,
   isEnvTest,
@@ -19,7 +20,7 @@ const appConfig = getConfig()
 
 // 以下配置综合参考 CRA 和 相关文章
 
-const config = {
+let config = {
   mode: isEnvDevelopment ? 'development' : 'production',
   entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].filter(
     Boolean
@@ -216,6 +217,16 @@ const config = {
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ].filter(Boolean),
+  resolve: {
+    alias: {
+      // yarn link 后保持 react 一致
+      react: path.resolve('react'),
+      common: PATH.appDirectory + 'src/js/common/',
+      stores: PATH.appDirectory + 'src/js/stores/',
+      svg: PATH.appDirectory + 'src/svg/',
+      img: PATH.appDirectory + 'src/img/'
+    }
+  },
   devServer: {
     disableHostCheck: true,
     compress: true,
@@ -230,6 +241,10 @@ const config = {
     proxy: appConfig.proxy || {},
     https: appConfig.https || false
   }
+}
+
+if (fs.existsSync(PATH.appConfig + '/webpack.config.js')) {
+  config = require(PATH.appConfig + '/webpack.config.js')(config)
 }
 
 module.exports = config

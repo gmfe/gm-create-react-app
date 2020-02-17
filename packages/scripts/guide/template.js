@@ -1,5 +1,5 @@
 const { PATH } = require('../util')
-const fs = require('fs')
+const fs = require('fs-extra')
 
 console.log('--> template')
 
@@ -27,4 +27,4 @@ if (fs.existsSync(PATH.appIndexTemplate)) {
 }
 
 // 移除之前的
-fs.rmdirSync(PATH.appDirectory + '/template')
+fs.removeSync(PATH.appDirectory + '/template')
