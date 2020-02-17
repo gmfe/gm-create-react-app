@@ -45,6 +45,7 @@
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
+    "file-loader": "^5.0.2",
     "lerna": "^3.19.0"
   },
   "browserslist": {

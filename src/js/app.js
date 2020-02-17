@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root'
 import React from 'react'
 import Svgr from './svgr'
 import StyleJsx from './style_jsx/index'
@@ -40,4 +39,4 @@ const App = () => {
   )
 }
 
-export default hot(App)
+export default App

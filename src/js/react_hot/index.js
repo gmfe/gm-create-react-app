@@ -8,7 +8,7 @@ const Input = () => {
 }
 
 const A = () => {
-  return <div>aaaaaaaaaa</div>
+  return <div>a</div>
 }
 
 const ReactHot = () => {
