@@ -5,27 +5,27 @@ module.exports = api => {
     sourceType: 'unambiguous', // 自动推断编译的模块类型(cjs,es6)
     // 插件顺序从前往后
     plugins: [
-      ['@babel/plugin-proposal-class-properties', { loose: true }],
-
+      // decorators 需要再 class-properties 前
       [
-        '@babel/plugin-proposal-decorators',
+        require('@babel/plugin-proposal-decorators'),
         {
           legacy: true
         }
       ],
-      '@babel/plugin-proposal-function-bind',
-      '@babel/plugin-proposal-object-rest-spread',
-      '@babel/plugin-proposal-optional-chaining',
-      '@babel/plugin-syntax-dynamic-import',
-      '@babel/plugin-transform-runtime',
-      'react-hot-loader/babel',
-      'styled-jsx/babel'
+      [require('@babel/plugin-proposal-class-properties'), { loose: true }],
+      require('@babel/plugin-proposal-function-bind'),
+      require('@babel/plugin-proposal-object-rest-spread'),
+      require('@babel/plugin-proposal-optional-chaining'),
+      require('@babel/plugin-syntax-dynamic-import'),
+      require('@babel/plugin-transform-runtime'),
+      require('react-hot-loader/babel'),
+      require('styled-jsx/babel')
     ],
     // 从后往前
     presets: [
-      '@babel/preset-react',
+      require('@babel/preset-react'),
       [
-        '@babel/preset-env',
+        require('@babel/preset-env'),
         {
           // for tree shaking
           modules: false

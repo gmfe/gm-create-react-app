@@ -6,12 +6,13 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
 const fs = require('fs-extra')
 const path = require('path')
+const _ = require('lodash')
 const {
   isEnvDevelopment,
   isEnvTest,
   isEnvProduction,
   version,
-  commandInclude,
+  commonInclude,
   PATH,
   getConfig
 } = require('../util')
@@ -19,6 +20,8 @@ const {
 const appConfig = getConfig()
 
 // 以下配置综合参考 CRA 和 相关文章
+
+
 
 let config = {
   mode: isEnvDevelopment ? 'development' : 'production',
@@ -93,8 +96,8 @@ let config = {
           // 提高性能，只处理 /src，要处理 node_modules 自行添加
           {
             test: /\.js$/,
-            include: commandInclude,
-            loader: 'babel-loader',
+            include: commonInclude,
+            loader: require.resolve('babel-loader'),
             options: {
               cacheDirectory: true,
               cacheCompression: false,
@@ -109,14 +112,14 @@ let config = {
               require.resolve('css-loader'),
               {
                 loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-preset-env')({
-                      stage: 3
-                    })
-                  ]
-                }
+                // options: {
+                //   ident: 'postcss',
+                //   plugins: () => [
+                //     require('postcss-preset-env')({
+                //       stage: 3
+                //     })
+                //   ]
+                // }
               }
             ].filter(Boolean)
           },
@@ -149,7 +152,7 @@ let config = {
             }
           },
           {
-            test: /\/src\/svg\/(\w|\W)+\.svg$/,
+            test: /\/svg\/(\w|\W)+\.svg$/,
             use: [
               {
                 loader: '@svgr/webpack',
@@ -171,7 +174,7 @@ let config = {
             test: /(fontawesome-webfont|glyphicons-halflings-regular|iconfont)\.(woff|woff2|ttf|eot|svg)($|\?)/,
             use: [
               {
-                loader: 'url-loader',
+                loader: require.resolve('url-loader'),
                 options: {
                   limit: 1024,
                   name: 'media/font/[name].[hash:8].[ext]'
@@ -182,13 +185,13 @@ let config = {
           // new loader ? add here before file-loader
 
           // other assets
-          {
-            loader: require.resolve('file-loader'),
-            exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
-            options: {
-              name: 'media/file/[name].[hash:8].[ext]'
-            }
-          }
+          // {
+          //   loader: require.resolve('file-loader'),
+          //   exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+          //   options: {
+          //     name: 'media/file/[name].[hash:8].[ext]'
+          //   }
+          // }
         ]
       }
     ]
@@ -218,14 +221,19 @@ let config = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ].filter(Boolean),
   resolve: {
-    alias: {
-      // yarn link 后保持 react 一致
-      react: path.resolve('react'),
-      common: PATH.appDirectory + 'src/js/common/',
-      stores: PATH.appDirectory + 'src/js/stores/',
-      svg: PATH.appDirectory + 'src/svg/',
-      img: PATH.appDirectory + 'src/img/'
-    }
+    alias: _.pickBy(
+      {
+        // yarn link 后保持 react 一致
+        react:
+          isEnvDevelopment &&
+          path.resolve(PATH.appDirectory + '/node_modules/react'),
+        common: PATH.appDirectory + '/src/js/common/',
+        stores: PATH.appDirectory + '/src/js/stores/',
+        svg: PATH.appDirectory + '/src/svg/',
+        img: PATH.appDirectory + '/src/img/'
+      },
+      Boolean
+    )
   },
   devServer: {
     disableHostCheck: true,

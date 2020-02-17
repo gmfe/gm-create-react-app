@@ -69,7 +69,7 @@ const PATH = {
 
 const { version } = getPackageJson()
 
-const commandInclude = [PATH.appSrc, /gm-/, /@gmfe/, /@gm-touch/]
+const commonInclude = [PATH.appSrc, /gm-/, /@gmfe/, /@gm-touch/]
 
 module.exports = {
   isEnvDevelopment,
@@ -78,7 +78,7 @@ module.exports = {
   appDirectory,
   PATH,
   version,
-  commandInclude,
+  commonInclude,
   shellExec,
   getConfig
 }

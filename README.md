@@ -66,7 +66,7 @@ module.exports = {
 
 模板 /src/index.html，支持 ejs 语法
 
-svg [svgr](https://github.com/gregberge/svgr) 只局限在 /src/svg 下，避免和其他 svg 冲突
+svg [svgr](https://github.com/gregberge/svgr) 只局限在 /svg 下，避免和其他 svg 冲突
 
 ## babel
 
@@ -81,6 +81,19 @@ style-jsx
 ## 其他
 
 react-hot-loader
+
+默认做了 alias
+
+```
+    alias: {
+      // yarn link 后保持 react 一致
+      react: path.resolve('react'),
+      common: PATH.appDirectory + 'src/js/common/',
+      stores: PATH.appDirectory + 'src/js/stores/',
+      svg: PATH.appDirectory + 'src/svg/',
+      img: PATH.appDirectory + 'src/img/'
+    }
+```
 
 环境
 
