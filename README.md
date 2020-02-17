@@ -14,6 +14,8 @@ yarn add @gm-react-app/scripts
 gm-react-app-scripts guide
 ```
 
+之后跟着指引做就对了
+
 # 说明
 
 ## 文件夹
@@ -70,7 +72,7 @@ svg [svgr](https://github.com/gregberge/svgr) 只局限在 /svg 下，避免和�
 
 ## babel
 
-默认值解析 src/目录下和 node_modules/下的 gm-、@gmfe、@gm-touch，其他需自行补充
+默认值解析 src/目录下和 node_modules/下的 gm-、@gmfe、@gm-touch，其他请联系作者 or 自行补充
 
 ## css
 
@@ -111,4 +113,11 @@ __DEVELOPMENT__
 __TEST__
 __PRODUCTION__
 __VERSION__ 来自 package.json version
+```
+
+模板变量
+```
+htmlWebpackPlugin.options.branch
+htmlWebpackPlugin.options.commit
+htmlWebpackPlugin.options.env
 ```
