@@ -3,7 +3,7 @@ const spawn = require('cross-spawn')
 
 const script = process.argv[2]
 
-if (['start', 'build', 'test', 'bootstrap'].includes(script)) {
+if (['start', 'build', 'test', 'guide'].includes(script)) {
   const result = spawn.sync('node', [require.resolve('../scripts/' + script)], {
     stdio: 'inherit'
   })

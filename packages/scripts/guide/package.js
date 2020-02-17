@@ -32,6 +32,8 @@ json.browserslist = {
   ]
 }
 
+delete json.babel
+
 // TODO check dependencies devDependencies
 
 fs.writeFileSync(PATH.appPackageJson, JSON.stringify(json, null, 2))

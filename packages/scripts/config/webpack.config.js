@@ -149,7 +149,21 @@ const config = {
           },
           {
             test: /\/src\/svg\/(\w|\W)+\.svg$/,
-            use: ['@svgr/webpack']
+            use: [
+              {
+                loader: '@svgr/webpack',
+                options: {
+                  icon: true,
+                  expandProps: 'start',
+                  svgProps: {
+                    fill: 'currentColor',
+                    // className 冗余
+                    className:
+                      "{'gm-svg-icon t-svg-icon ' + (props.className || '')}"
+                  }
+                }
+              }
+            ]
           },
           // iconfont 应该要废弃掉
           {

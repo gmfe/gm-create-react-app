@@ -14,11 +14,12 @@
   },
   "homepage": "https://github.com/gmfe/gm-react-app#readme",
   "scripts": {
-    "start": "gm-react-app-scripts start",
-    "build": "gm-react-app-scripts build",
     "publish-latest": "lerna publish --force-publish",
     "publish-beta": "lerna publish --force-publish --dist-tag beta",
-    "autolink": "cd packages;cd babel-preset-gm-react-app; yarn link; cd ../eslint-plugin-gm-react-app; yarn link; cd ../scripts; yarn link; cd ..; yarn link @gm-react-app/scripts eslint-plugin-gm-react-app babel-preset-gm-react-app"
+    "autolink": "cd packages;cd babel-preset-gm-react-app; yarn link; cd ../eslint-plugin-gm-react-app; yarn link; cd ../scripts; yarn link; cd ..; yarn link @gm-react-app/scripts eslint-plugin-gm-react-app babel-preset-gm-react-app",
+    "start": "gm-react-app-scripts start",
+    "build:test": "gm-react-app-scripts test",
+    "build:prod": "gm-react-app-scripts build"
   },
   "lint-staged": {
     "./src/**/*.{js,json}": [

@@ -34,10 +34,9 @@ my-project
   yarn.lock
 ```
 
-
 入口 /src/index.js
 
-模板 /src/index.html 支持 ejs 语法
+模板 /src/index.html，支持 ejs 语法
 
 配置 /config/deploy.js /config/local.js
 
@@ -59,38 +58,9 @@ module.exports = {
 }
 ```
 
-/build 构建产物
-
-## package.json
-
-包含以下内容
-
-- package
-  - version
-  - scripts
-  - husky 
-  - lint-staged
-  - browserslist
-  - 检查依赖
-- .xxx
-  - eslint
-  - prettier
-  - svgr
-  - babel.config.js
-  - gitignore
-  - postcss 移除
-- react-hot-loader 
-  - app.js hot 
-- template
-  - index.html
-    - meta
-    - platform
-    - fe_branch
-    - git_commit
-    - polyfill
-    - fetch
+/build 构建产物 
  
-# 大文件
+# 其他
 
 moment
 
