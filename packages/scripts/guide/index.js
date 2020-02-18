@@ -13,6 +13,18 @@ if (!fs.existsSync(PATH.appIndexJs)) {
   console.error('请提供 /src/index.js')
 }
 
+if (fs.existsSync(PATH.appDirectory + '/webpack.config.dll.js')) {
+  fs.removeSync(PATH.appDirectory + '/webpack.config.dll.js')
+}
+
+if (fs.existsSync(PATH.appDirectory + '/webpack.config.js')) {
+  fs.removeSync(PATH.appDirectory + '/webpack.config.js')
+}
+
+if (fs.existsSync(PATH.appDirectory + '/Jenkinsfile')) {
+  fs.removeSync(PATH.appDirectory + '/Jenkinsfile')
+}
+
 require('./config')
 require('./package')
 require('./dot')
@@ -25,12 +37,4 @@ if (!indexJs.includes('react-hot-loader/root')) {
   console.warn(
     '请设置好 /src/index.js 内引入 react-hot-loader，具体 https://github.com/gaearon/react-hot-loader'
   )
-}
-
-if (fs.existsSync(PATH.appDirectory + '/webpack.config.dll.js')) {
-  fs.removeSync(PATH.appDirectory + '/webpack.config.dll.js')
-}
-
-if (fs.existsSync(PATH.appDirectory + '/webpack.config.js')) {
-  fs.removeSync(PATH.appDirectory + '/webpack.config.js')
 }
