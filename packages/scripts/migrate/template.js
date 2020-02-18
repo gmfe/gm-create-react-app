@@ -27,4 +27,6 @@ if (fs.existsSync(PATH.appIndexTemplate)) {
 }
 
 // 移除之前的
-fs.removeSync(PATH.appDirectory + '/template')
+if(fs.existsSync(PATH.appDirectory + '/template')){
+  console.error('请移除 template')
+}
