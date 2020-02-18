@@ -69,6 +69,14 @@ fs.writeFileSync(
 `
 )
 
+fs.writeFileSync(
+  PATH.appDirectory + '/.stylelintrc',
+  `{
+  "extends": "stylelint-config-standard"
+}
+`
+)
+
 if (fs.existsSync(PATH.appDirectory + '/.babelrc.json')) {
   fs.removeSync(PATH.appDirectory + '/.babelrc.json')
 }

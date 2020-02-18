@@ -35,6 +35,7 @@ my-project
   .eslintrc.js
   .gitignore
   .prettierrc.js
+  .stylelintrc
   babel.config.js
   package.json
   yarn.lock

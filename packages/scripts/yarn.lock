@@ -1597,10 +1597,10 @@ babel-plugin-syntax-jsx@6.18.0:
   resolved "https://registry.npmjs.org/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
   integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
 
-babel-preset-gm-react-app@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/babel-preset-gm-react-app/-/babel-preset-gm-react-app-0.0.6.tgz#f7b12d24263aa71499b41e4c0de09eab6dae195b"
-  integrity sha512-2zQx63ONULU7mMTiy34IpN1+515QDkj13h2z6UYrwSNk4x14gJyeqSVljI7uYWCi5dGQXmJuyONAuNVkCaYy8g==
+babel-preset-gm-react-app@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/babel-preset-gm-react-app/-/babel-preset-gm-react-app-0.1.2.tgz#7d0b7fd7599808a982a20c7f9119493895cf9d8d"
+  integrity sha512-jG78SPG1mP8RUkpM6ZltuUAIBbpOX/SN7SqaIBy+/h+fyf1Ixu8aibMay7oqWA2RsxVC1W0Zdi7LMrQd7+bshQ==
   dependencies:
     "@babel/cli" "^7.8.4"
     "@babel/core" "^7.8.4"
@@ -3219,10 +3219,10 @@ eslint-plugin-es@^3.0.0:
     eslint-utils "^2.0.0"
     regexpp "^3.0.0"
 
-eslint-plugin-gm-react-app@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.npmjs.org/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-0.0.6.tgz#670a58a9a3e6bad2bd555963cfff30436854ed4c"
-  integrity sha512-HMFss33guvxHcUJEhJgsfC0cyAuflxL/xOockEtYlOtsZCGi8Qb8Nd1CL5jKHVglgE1zw2PvAfoXOjFpi09mkw==
+eslint-plugin-gm-react-app@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-0.1.2.tgz#75aee57b723b8d7b5e938aa1d90ff15f3299aaac"
+  integrity sha512-z1jbEEssI/c9DFs3Qjv4NrhYVHGIuCOrCAeZZlm0U4TRfMv+Fw1zLOidmXBOd0KGJFK7xST4U+NRwR7tDaQ6QA==
   dependencies:
     babel-eslint "^10.0.2"
     create-eslint-index "^1.0.0"
@@ -8603,6 +8603,18 @@ stylehacks@^4.0.0:
     browserslist "^4.0.0"
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
+
+stylelint-config-recommended@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/stylelint-config-recommended/-/stylelint-config-recommended-3.0.0.tgz#e0e547434016c5539fe2650afd58049a2fd1d657"
+  integrity sha512-F6yTRuc06xr1h5Qw/ykb2LuFynJ2IxkKfCMf+1xqPffkxh0S09Zc902XCffcsw/XMFq/OzQ1w54fLIDtmRNHnQ==
+
+stylelint-config-standard@^20.0.0:
+  version "20.0.0"
+  resolved "https://registry.npmjs.org/stylelint-config-standard/-/stylelint-config-standard-20.0.0.tgz#06135090c9e064befee3d594289f50e295b5e20d"
+  integrity sha512-IB2iFdzOTA/zS4jSVav6z+wGtin08qfj+YyExHB3LF9lnouQht//YyB0KZq9gGz5HNPkddHOzcY8HsUey6ZUlA==
+  dependencies:
+    stylelint-config-recommended "^3.0.0"
 
 stylelint@^13.2.0:
   version "13.2.0"
