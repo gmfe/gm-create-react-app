@@ -11,7 +11,7 @@ yarn add @gm-react-app/scripts
 迁移指引
 
 ```shell script
-gras guide
+gras migrate
 ```
 
 之后跟着指引做就对了
