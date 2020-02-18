@@ -16,7 +16,8 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bin": {
-    "gm-react-app-scripts": "./bin/scripts.js"
+    "gm-react-app-scripts": "./bin/scripts.js",
+    "gras": "./bin/scripts.js"
   },
   "bugs": {
     "url": "https://github.com/gmfe/gm-react-app/issues"

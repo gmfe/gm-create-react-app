@@ -112,14 +112,14 @@ let config = {
               require.resolve('css-loader'),
               {
                 loader: require.resolve('postcss-loader'),
-                // options: {
-                //   ident: 'postcss',
-                //   plugins: () => [
-                //     require('postcss-preset-env')({
-                //       stage: 3
-                //     })
-                //   ]
-                // }
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-preset-env')({
+                      stage: 3
+                    })
+                  ]
+                }
               }
             ].filter(Boolean)
           },
@@ -176,7 +176,7 @@ let config = {
               {
                 loader: require.resolve('url-loader'),
                 options: {
-                  limit: 1024,
+                  limit: 10000,
                   name: 'media/font/[name].[hash:8].[ext]'
                 }
               }

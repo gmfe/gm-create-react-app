@@ -17,9 +17,9 @@
     "publish-latest": "lerna publish --force-publish",
     "publish-beta": "lerna publish --force-publish --dist-tag beta",
     "autolink": "cd packages;cd babel-preset-gm-react-app; yarn link; cd ../eslint-plugin-gm-react-app; yarn link; cd ../scripts; yarn link; cd ..; yarn link @gm-react-app/scripts eslint-plugin-gm-react-app babel-preset-gm-react-app",
-    "start": "gm-react-app-scripts start",
-    "build:test": "gm-react-app-scripts test",
-    "build:prod": "gm-react-app-scripts build"
+    "start": "gras start",
+    "build:test": "gras test",
+    "build:prod": "gras build"
   },
   "lint-staged": {
     "./src/**/*.{js,json}": [
@@ -37,7 +37,7 @@
     }
   },
   "dependencies": {
-    "@gm-react-app/scripts": "0.0.6",
+    "@gm-react-app/scripts": "^0.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-loadable": "^5.5.0",

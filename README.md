@@ -8,10 +8,10 @@ gm-react-app
 yarn add @gm-react-app/scripts
 ```
 
-安装&迁移 指引
+迁移指引
 
 ```shell script
-gm-react-app-scripts guide
+gras guide
 ```
 
 之后跟着指引做就对了
