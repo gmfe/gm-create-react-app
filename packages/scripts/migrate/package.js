@@ -10,9 +10,9 @@ if (!json.version) {
   json.version = '1.0.0'
 }
 
-json.scripts.start = 'gm-react-app-scripts start'
-json.scripts['build:test'] = 'gm-react-app-scripts test'
-json.scripts['build:prod'] = 'gm-react-app-scripts build'
+json.scripts.start = 'gras start'
+json.scripts['build:test'] = 'gras test'
+json.scripts['build:prod'] = 'gras build'
 
 json['lint-staged'] = {
   './src/**/*.{js,json}': ['eslint --cache --fix', 'git add'],
