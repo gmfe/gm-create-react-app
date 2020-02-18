@@ -3,28 +3,7 @@ const fs = require('fs-extra')
 
 console.log('begin bootstrap')
 
-console.log('--> 文件')
-
-if (fs.existsSync(PATH.appBuild)) {
-  fs.removeSync(PATH.appBuild)
-}
-
-if (!fs.existsSync(PATH.appIndexJs)) {
-  console.error('请提供 /src/index.js')
-}
-
-if (fs.existsSync(PATH.appDirectory + '/webpack.config.dll.js')) {
-  fs.removeSync(PATH.appDirectory + '/webpack.config.dll.js')
-}
-
-if (fs.existsSync(PATH.appDirectory + '/webpack.config.js')) {
-  fs.removeSync(PATH.appDirectory + '/webpack.config.js')
-}
-
-if (fs.existsSync(PATH.appDirectory + '/Jenkinsfile')) {
-  fs.removeSync(PATH.appDirectory + '/Jenkinsfile')
-}
-
+require('./file')
 require('./config')
 require('./package')
 require('./dot')
