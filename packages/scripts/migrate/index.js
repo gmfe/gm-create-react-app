@@ -17,3 +17,5 @@ if (!indexJs.includes('react-hot-loader/root')) {
     '请设置好 /src/index.js 内引入 react-hot-loader，具体 https://github.com/gaearon/react-hot-loader'
   )
 }
+
+console.warn('gm-react-app-scripts 会修改响应的文件，请通过git来review')
