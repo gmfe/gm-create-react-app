@@ -18,4 +18,4 @@ if (!indexJs.includes('react-hot-loader/root')) {
   )
 }
 
-console.warn('gm-react-app-scripts 会修改响应的文件，请通过git来review')
+console.warn('gm-react-app-scripts 会修改相应的文件，请通过git认真review再提交代码')
