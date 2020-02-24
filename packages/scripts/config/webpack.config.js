@@ -231,6 +231,7 @@ let config = {
         react:
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/react'),
+        'react-dom/server': isEnvDevelopment && require.resolve('@hot-loader/react-dom/server'),
         'react-dom': isEnvDevelopment && require.resolve('@hot-loader/react-dom'),
         common: PATH.appDirectory + '/src/js/common/',
         stores: PATH.appDirectory + '/src/js/stores/',
