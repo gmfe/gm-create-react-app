@@ -3,12 +3,14 @@ import Svgr from './svgr'
 import StyleJsx from './style_jsx/index'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import Loadable from 'react-loadable'
+import CssModules from './css_modules'
 
 const App = () => {
   return (
     <div>
       <Svgr />
       <StyleJsx />
+      <CssModules />
       <div>
         <div>
           router

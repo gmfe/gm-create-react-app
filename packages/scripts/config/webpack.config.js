@@ -21,8 +21,6 @@ const appConfig = getConfig()
 
 // 以下配置综合参考 CRA 和 相关文章
 
-
-
 let config = {
   mode: isEnvDevelopment ? 'development' : 'production',
   entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].filter(
@@ -117,6 +115,9 @@ let config = {
                   plugins: () => [
                     require('postcss-preset-env')({
                       stage: 3
+                    }),
+                    require('postcss-modules')({
+                      scopeBehaviour: 'global'
                     })
                   ]
                 }
@@ -136,6 +137,9 @@ let config = {
                   plugins: () => [
                     require('postcss-preset-env')({
                       stage: 3
+                    }),
+                    require('postcss-modules')({
+                      scopeBehaviour: 'global'
                     })
                   ]
                 }
@@ -181,7 +185,7 @@ let config = {
                 }
               }
             ]
-          },
+          }
           // new loader ? add here before file-loader
 
           // other assets
@@ -227,6 +231,7 @@ let config = {
         react:
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/react'),
+        'react-dom': isEnvDevelopment && require.resolve('@hot-loader/react-dom'),
         common: PATH.appDirectory + '/src/js/common/',
         stores: PATH.appDirectory + '/src/js/stores/',
         svg: PATH.appDirectory + '/src/svg/',
