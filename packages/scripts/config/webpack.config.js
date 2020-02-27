@@ -107,7 +107,12 @@ let config = {
             use: [
               isEnvDevelopment && require.resolve('style-loader'),
               !isEnvDevelopment && MiniCssExtractPlugin.loader,
-              require.resolve('css-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  modules: true
+                }
+              },
               {
                 loader: require.resolve('postcss-loader'),
                 options: {
@@ -115,9 +120,6 @@ let config = {
                   plugins: () => [
                     require('postcss-preset-env')({
                       stage: 3
-                    }),
-                    require('postcss-modules')({
-                      scopeBehaviour: 'global'
                     })
                   ]
                 }
@@ -129,7 +131,12 @@ let config = {
             use: [
               isEnvDevelopment && require.resolve('style-loader'),
               !isEnvDevelopment && MiniCssExtractPlugin.loader,
-              require.resolve('css-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  modules: true
+                }
+              },
               {
                 loader: require.resolve('postcss-loader'),
                 options: {
@@ -137,9 +144,6 @@ let config = {
                   plugins: () => [
                     require('postcss-preset-env')({
                       stage: 3
-                    }),
-                    require('postcss-modules')({
-                      scopeBehaviour: 'global'
                     })
                   ]
                 }
@@ -231,8 +235,10 @@ let config = {
         react:
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/react'),
-        'react-dom/server': isEnvDevelopment && require.resolve('@hot-loader/react-dom/server'),
-        'react-dom': isEnvDevelopment && require.resolve('@hot-loader/react-dom'),
+        'react-dom/server':
+          isEnvDevelopment && require.resolve('@hot-loader/react-dom/server'),
+        'react-dom':
+          isEnvDevelopment && require.resolve('@hot-loader/react-dom'),
         common: PATH.appDirectory + '/src/js/common/',
         stores: PATH.appDirectory + '/src/js/stores/',
         svg: PATH.appDirectory + '/src/svg/',
