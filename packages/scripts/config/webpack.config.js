@@ -19,8 +19,31 @@ const {
 
 const appConfig = getConfig()
 
-// 以下配置综合参考 CRA 和 相关文章
+function getCss(options = { modules: false }) {
+  return [
+    isEnvDevelopment && require.resolve('style-loader'),
+    !isEnvDevelopment && MiniCssExtractPlugin.loader,
+    {
+      loader: require.resolve('css-loader'),
+      options: {
+        modules: options.modules
+      }
+    },
+    {
+      loader: require.resolve('postcss-loader'),
+      options: {
+        ident: 'postcss',
+        plugins: () => [
+          require('postcss-preset-env')({
+            stage: 3
+          })
+        ]
+      }
+    }
+  ]
+}
 
+// 以下配置综合参考 CRA 和 相关文章
 let config = {
   mode: isEnvDevelopment ? 'development' : 'production',
   entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].filter(
@@ -103,53 +126,23 @@ let config = {
             }
           },
           {
+            test: /\.module\.css$/,
+            use: [...getCss({ modules: true })].filter(Boolean)
+          },
+          {
             test: /\.css$/,
+            use: [...getCss()].filter(Boolean)
+          },
+          {
+            test: /\.module\.less$/,
             use: [
-              isEnvDevelopment && require.resolve('style-loader'),
-              !isEnvDevelopment && MiniCssExtractPlugin.loader,
-              {
-                loader: require.resolve('css-loader'),
-                options: {
-                  modules: true
-                }
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-preset-env')({
-                      stage: 3
-                    })
-                  ]
-                }
-              }
+              ...getCss({ modules: true }),
+              require.resolve('less-loader')
             ].filter(Boolean)
           },
           {
             test: /\.less$/,
-            use: [
-              isEnvDevelopment && require.resolve('style-loader'),
-              !isEnvDevelopment && MiniCssExtractPlugin.loader,
-              {
-                loader: require.resolve('css-loader'),
-                options: {
-                  modules: true
-                }
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-preset-env')({
-                      stage: 3
-                    })
-                  ]
-                }
-              },
-              require.resolve('less-loader')
-            ].filter(Boolean)
+            use: [...getCss(), require.resolve('less-loader')].filter(Boolean)
           },
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
