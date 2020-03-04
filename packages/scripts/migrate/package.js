@@ -19,8 +19,8 @@ json.scripts['build:test'] = 'gras test'
 json.scripts['build:prod'] = 'gras build'
 
 json['lint-staged'] = {
-  './src/**/*.{js,json}': ['eslint --cache --fix', 'git add'],
-  './src/**/*.{less,css}': ['stylelint --cache --fix', 'git add']
+  './src/**/*.{js,json}': ['eslint --cache --fix'],
+  './src/**/*.{less,css}': ['stylelint --cache --fix']
 }
 
 json.husky = {
