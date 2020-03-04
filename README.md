@@ -114,6 +114,9 @@ __DEVELOPMENT__
 __TEST__
 __PRODUCTION__
 __VERSION__ 来自 package.json version
+__NAME__ 来自 package.json aliasName
+__BRANCH__
+__COMMIT__
 ```
 
 模板变量

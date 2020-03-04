@@ -10,12 +10,6 @@ const isEnvProduction = env === 'production'
 const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
 
-let packageJson
-function getPackageJson() {
-  packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
-  return packageJson
-}
-
 function shellExec(com) {
   if (sh.exec(com).code !== 0) {
     sh.exit(1)
@@ -67,9 +61,9 @@ const PATH = {
   appPackageJson: resolveApp('package.json')
 }
 
-const { version } = getPackageJson()
-
 const commonInclude = [PATH.appSrc, /gm-/, /@gmfe/, /@gm-touch/]
+
+const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
 
 module.exports = {
   isEnvDevelopment,
@@ -77,7 +71,7 @@ module.exports = {
   isEnvProduction,
   appDirectory,
   PATH,
-  version,
+  packageJson,
   commonInclude,
   shellExec,
   getConfig

@@ -11,7 +11,7 @@ const {
   isEnvDevelopment,
   isEnvTest,
   isEnvProduction,
-  version,
+  packageJson,
   commonInclude,
   PATH,
   getConfig
@@ -203,7 +203,10 @@ let config = {
       __DEVELOPMENT__: isEnvDevelopment,
       __TEST__: isEnvTest,
       __PRODUCTION__: isEnvProduction,
-      __VERSION__: JSON.stringify(version)
+      __VERSION__: JSON.stringify(packageJson.version),
+      __NAME__: packageJson.aliasName || 'none',
+      __BRANCH__: process.env.GIT_BRANCH || 'none',
+      __COMMIT__: process.env.GIT_COMMIT || 'none'
     }),
     new HtmlWebpackPlugin({
       template: PATH.appIndexTemplate,

@@ -10,6 +10,10 @@ if (!json.version) {
   json.version = '1.0.0'
 }
 
+if (!json.aliasName) {
+  console.log('请提供 aliasName')
+}
+
 json.scripts.start = 'gras start'
 json.scripts['build:test'] = 'gras test'
 json.scripts['build:prod'] = 'gras build'
