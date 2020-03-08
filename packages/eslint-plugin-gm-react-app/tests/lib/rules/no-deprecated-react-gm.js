@@ -24,6 +24,9 @@ ruleTester.run('no-deprecated-react-gm', rule, {
     },
     {
       code: '<div className={className("gm-text-12", {"gm-text-12": true})} />'
+    },
+    {
+      code: '<div className="aaaa-btn-sdfa" />'
     }
   ],
   invalid: [

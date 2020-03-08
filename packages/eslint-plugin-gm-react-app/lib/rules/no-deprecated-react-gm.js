@@ -57,7 +57,7 @@ module.exports = {
               node,
               messageId: 'class_gm-font-x'
             })
-          } else if (text.includes('btn-') && !text.includes('gm-btn')) {
+          } else if (text.includes('btn-') && !text.includes('-btn')) {
             context.report({
               node,
               messageId: 'class_btn'
