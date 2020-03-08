@@ -50,6 +50,10 @@ ruleTester.run('no-deprecated-react-gm', rule, {
     {
       code: '<div className="gm-font-5" />',
       errors: [{ messageId: 'class_gm-font-x' }]
+    },
+    {
+      code: '<button className="btn btn-default">lala</button>',
+      errors: [{ messageId: 'class_btn' }]
     }
   ]
 })

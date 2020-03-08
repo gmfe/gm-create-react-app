@@ -13,7 +13,8 @@ module.exports = {
       comTreeSelect: 'TreeSelect 废弃，请使用 TreeV2',
       comTrigger: 'Trigger 废弃，请使用 Popover',
       comDropper: 'Dropper 废弃，请使用 Uploader',
-      'class_gm-font-x': '废弃，请使用 gm-text-x'
+      'class_gm-font-x': '废弃，请使用 gm-text-x',
+      class_btn: '废弃，请用 Button'
     }
   },
   create: function(context) {
@@ -56,10 +57,13 @@ module.exports = {
               node,
               messageId: 'class_gm-font-x'
             })
+          } else if (text.includes('btn-') && !text.includes('gm-btn')) {
+            context.report({
+              node,
+              messageId: 'class_btn'
+            })
           }
         }
-
-        return
       }
     }
   }

@@ -61,7 +61,8 @@ const PATH = {
   appPackageJson: resolveApp('package.json')
 }
 
-const commonInclude = [PATH.appSrc, /gm-/, /@gmfe/, /@gm-touch/]
+// gmfe 包含 @gmfe，写 gmfe 方便 link 的时候
+const commonInclude = [PATH.appSrc, /gm-/, /gmfe/, /gm-touch/, /gm-common/]
 
 const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
 
