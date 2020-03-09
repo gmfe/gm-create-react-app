@@ -50,7 +50,7 @@ let config = {
     Boolean
   ),
   // 暂时不启动 source-map
-  devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : false,
+  devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : 'source-map',
   output: {
     path: PATH.appBuild,
     filename: isEnvDevelopment
