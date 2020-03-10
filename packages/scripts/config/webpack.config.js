@@ -204,9 +204,9 @@ let config = {
       __TEST__: isEnvTest,
       __PRODUCTION__: isEnvProduction,
       __VERSION__: JSON.stringify(packageJson.version),
-      __NAME__: packageJson.aliasName || 'none',
-      __BRANCH__: process.env.GIT_BRANCH || 'none',
-      __COMMIT__: process.env.GIT_COMMIT || 'none'
+      __NAME__: JSON.stringify(packageJson.aliasName || 'none'),
+      __BRANCH__: JSON.stringify(process.env.GIT_BRANCH || 'none'),
+      __COMMIT__: JSON.stringify(process.env.GIT_COMMIT || 'none')
     }),
     new HtmlWebpackPlugin({
       template: PATH.appIndexTemplate,
