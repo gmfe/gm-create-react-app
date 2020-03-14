@@ -25,7 +25,7 @@ module.exports = {
         'prettier/react',
         'prettier/standard'
       ],
-      plugins: ['gm-react-app', 'prettier'],
+      plugins: ['gm-react-app', 'prettier', 'react-hooks'],
       rules: {
         ...recommendedRules,
         'prettier/prettier': 1,
@@ -36,6 +36,8 @@ module.exports = {
           { ignore: ['children', 'location', 'params', 'match'] }
         ],
         'react/jsx-handler-names': 1,
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'warn',
         camelcase: 0,
         'import/no-unresolved': [1, { ignore: ['^gm-i18n$'] }],
         'import/default': 'off',
