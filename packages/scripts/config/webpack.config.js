@@ -63,6 +63,8 @@ let config = {
     minimize: !isEnvDevelopment,
     minimizer: [
       new TerserPlugin({
+        cache: true,
+        parallel: true,
         terserOptions: {
           mangle: false // Note `mangle.properties` is `false` by default.
         }
