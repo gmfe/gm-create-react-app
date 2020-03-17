@@ -2,8 +2,6 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const safePostCssParser = require('postcss-safe-parser')
 const fs = require('fs-extra')
 const path = require('path')
 const _ = require('lodash')
@@ -82,8 +80,9 @@ let config = {
           // 提高性能，只处理 /src，要处理 node_modules 自行添加
           {
             test: /\.js$/,
-            include: commonInclude,
             loader: require.resolve('babel-loader'),
+            include: commonInclude,
+            exclude: /@babel\/runtime/,
             options: {
               cacheDirectory: true,
               cacheCompression: false,
