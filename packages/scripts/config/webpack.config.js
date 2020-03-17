@@ -50,7 +50,7 @@ let config = {
     Boolean
   ),
   // 暂时不启动 source-map
-  devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : 'source-map',
+  devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : false,
   output: {
     path: PATH.appBuild,
     filename: isEnvDevelopment
@@ -66,42 +66,7 @@ let config = {
     minimizer: [
       new TerserPlugin({
         terserOptions: {
-          parse: {
-            ecma: 8
-          },
-          compress: {
-            ecma: 5,
-            warnings: false,
-            comparisons: false,
-            inline: 2
-          },
-          mangle: {
-            safari10: true
-          },
-          keep_classnames: !isEnvDevelopment,
-          keep_fnames: !isEnvDevelopment,
-          output: {
-            ecma: 5,
-            comments: false,
-            ascii_only: true
-          }
-        },
-        sourceMap: true
-      }),
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorOptions: {
-          parser: safePostCssParser,
-          map: {
-            // `inline: false` forces the sourcemap to be output into a
-            // separate file
-            inline: false,
-            // `annotation: true` appends the sourceMappingURL to the end of
-            // the css file, helping the browser find the sourcemap
-            annotation: true
-          }
-        },
-        cssProcessorPluginOptions: {
-          preset: ['default', { minifyFontValues: { removeQuotes: false } }]
+          mangle: false // Note `mangle.properties` is `false` by default.
         }
       })
     ],
@@ -216,10 +181,10 @@ let config = {
     }),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
-      new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash:8].css',
-        chunkFilename: 'css/[name].[contenthash:8].chunk.css'
-      }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].chunk.css'
+    }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)

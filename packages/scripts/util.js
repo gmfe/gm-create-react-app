@@ -61,9 +61,17 @@ const PATH = {
   appPackageJson: resolveApp('package.json')
 }
 
-// gmfe 包含 @gmfe，写 gmfe 方便 link 的时候
 // query-string 比较坑爹，里面用了 const
-const commonInclude = [PATH.appSrc, /gm-/, /gmfe/, /gm-touch/, /gm-common/, /gm_static_storage/, /react-mgm/, /query-string/]
+const commonInclude = [
+  PATH.appSrc,
+  /gm-/,
+  /gmfe/,
+  /gm-touch/,
+  /gm-common/,
+  /gm_static_storage/,
+  /react-mgm/,
+  /query-string/
+]
 
 const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
 
