@@ -14,6 +14,10 @@ if (!json.aliasName) {
   console.log('请提供 aliasName')
 }
 
+if (!json.clientName) {
+  console.log('请提供 clientName')
+}
+
 json.scripts.start = 'gras start'
 json.scripts['build:test'] = 'gras test'
 json.scripts['build:prod'] = 'gras build'

@@ -115,6 +115,7 @@ __TEST__
 __PRODUCTION__
 __VERSION__ 来自 package.json version
 __NAME__ 来自 package.json aliasName
+__CLIENT_NAME__ 来自 package.json clientName
 __BRANCH__
 __COMMIT__
 ```

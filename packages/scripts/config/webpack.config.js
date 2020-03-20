@@ -15,6 +15,11 @@ const {
   getConfig
 } = require('../util')
 
+// 做个检测，需要提供 aliasName clientName
+if (!packageJson.aliasName || !packageJson.clientName) {
+  throw new Error('请提供 aliasName clientName')
+}
+
 const appConfig = getConfig()
 
 function getCss(options = { modules: false }) {
@@ -171,6 +176,7 @@ let config = {
       __PRODUCTION__: isEnvProduction,
       __VERSION__: JSON.stringify(packageJson.version),
       __NAME__: JSON.stringify(packageJson.aliasName || 'none'),
+      __CLIENT_NAME__: JSON.stringify(packageJson.clientName || 'none'),
       __BRANCH__: JSON.stringify(process.env.GIT_BRANCH || 'none'),
       __COMMIT__: JSON.stringify(process.env.GIT_COMMIT || 'none')
     }),
@@ -182,10 +188,10 @@ let config = {
     }),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8].css',
-      chunkFilename: 'css/[name].[contenthash:8].chunk.css'
-    }),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name].[contenthash:8].css',
+        chunkFilename: 'css/[name].[contenthash:8].chunk.css'
+      }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
