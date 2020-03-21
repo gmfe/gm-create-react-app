@@ -1917,10 +1917,10 @@ babel-plugin-syntax-jsx@6.18.0:
   resolved "https://registry.npmjs.org/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
   integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
 
-babel-preset-gm-react-app@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/babel-preset-gm-react-app/-/babel-preset-gm-react-app-1.3.0.tgz#c0616970381745b7c116a02ce59a845b94fc2d37"
-  integrity sha512-iQscS+nXIOcTBRkq3txIewuJIG0RAxSwe286HvJhSinBZcSp2q1uiND2mY0P7wrpq4Khxsjss3JQpZLxYLDCxw==
+babel-preset-gm-react-app@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.npmjs.org/babel-preset-gm-react-app/-/babel-preset-gm-react-app-1.3.2.tgz#5bcd700ebd17de1612343dd0dbdd5bd64f1199d0"
+  integrity sha512-0iTnqoFMLLWoDJQAESWLXtLqaw62N8a4ZyfCfuVjia0FKHnNzJuWewbRFBI4/dNjYhbciltVkoOeVlMwNYyWJw==
   dependencies:
     "@babel/cli" "^7.8.4"
     "@babel/core" "^7.8.4"
@@ -3393,10 +3393,10 @@ eslint-plugin-es@^3.0.0:
     eslint-utils "^2.0.0"
     regexpp "^3.0.0"
 
-eslint-plugin-gm-react-app@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-1.3.0.tgz#2945fe7b39b8e95da4fb7d89a5436697f00076e0"
-  integrity sha512-jja2befmOKK8MWmX9yZGXaUKaS/WGirGOdmeZnsoi8RCoGmvf6xfIp7Y1hOybVo+gQwwQuwbNDnDRDlTUUQU+g==
+eslint-plugin-gm-react-app@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.npmjs.org/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-1.3.2.tgz#76ad10998cfa40d92e29dd2c060255979bc01ab9"
+  integrity sha512-+Ue7CkqN8leGC9rbst/cYGY1nVlaLjW26g+oi7UKJ8lZZd0wTXGDXZeDK/HGmdvQpEyf1GAhhAhqYuFj/9Tlwg==
   dependencies:
     babel-eslint "^10.0.2"
     create-eslint-index "^1.0.0"
@@ -5455,6 +5455,13 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash-webpack-plugin@^0.11.5:
+  version "0.11.5"
+  resolved "https://registry.npmjs.org/lodash-webpack-plugin/-/lodash-webpack-plugin-0.11.5.tgz#c4bd064b4f561c3f823fa5982bdeb12c475390b9"
+  integrity sha512-QWfEIYxpixOdbd6KBe5g6MDWcyTgP3trDXwKHFqTlXrWiLcs/67fGQ0IWeRyhWlTITQIgMpJAYd2oeIztuV5VA==
+  dependencies:
+    lodash "^4.17.4"
+
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
@@ -5480,7 +5487,7 @@ lodash.templatesettings@^4.0.0:
   dependencies:
     lodash._reinterpolate "^3.0.0"
 
-lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3:
+lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.4:
   version "4.17.15"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
