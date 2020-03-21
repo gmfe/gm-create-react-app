@@ -87,14 +87,19 @@ let config = {
           // 提高性能，只处理 /src，要处理 node_modules 自行添加
           {
             test: /\.js$/,
-            loader: require.resolve('babel-loader'),
+            use: [
+              { loader: require.resolve('thread-loader') },
+              {
+                loader: require.resolve('babel-loader'),
+                options: {
+                  cacheDirectory: true,
+                  cacheCompression: false,
+                  compact: !isEnvDevelopment
+                }
+              }
+            ],
             include: commonInclude,
-            exclude: /@babel\/runtime/,
-            options: {
-              cacheDirectory: true,
-              cacheCompression: false,
-              compact: !isEnvDevelopment
-            }
+            exclude: /@babel\/runtime/
           },
           {
             test: /\.module\.css$/,
