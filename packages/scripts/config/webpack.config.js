@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const fs = require('fs-extra')
 const path = require('path')
 const _ = require('lodash')
@@ -25,8 +24,8 @@ const appConfig = getConfig()
 
 function getCss(options = { modules: false }) {
   return [
-    isEnvDevelopment && require.resolve('style-loader'),
     !isEnvDevelopment && MiniCssExtractPlugin.loader,
+    isEnvDevelopment && require.resolve('style-loader'),
     {
       loader: require.resolve('css-loader'),
       options: {
@@ -77,7 +76,8 @@ let config = {
       })
     ],
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
+      minSize: 0
     },
     runtimeChunk: 'single'
   },
@@ -194,14 +194,13 @@ let config = {
     }),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
-      new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash:8].css',
-        chunkFilename: 'css/[name].[contenthash:8].chunk.css'
-      }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].chunk.css'
+    }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new LodashModuleReplacementPlugin()
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ].filter(Boolean),
   resolve: {
     alias: _.pickBy(
