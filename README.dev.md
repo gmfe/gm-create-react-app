@@ -1,3 +1,0 @@
-# TODO
-
-webpack-bundle-analyzer
