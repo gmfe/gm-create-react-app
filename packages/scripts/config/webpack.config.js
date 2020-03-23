@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const fs = require('fs-extra')
 const path = require('path')
 const _ = require('lodash')
@@ -201,8 +200,7 @@ let config = {
       }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new LodashModuleReplacementPlugin()
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ].filter(Boolean),
   resolve: {
     alias: _.pickBy(
