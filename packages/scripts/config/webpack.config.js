@@ -77,12 +77,6 @@ let config = {
     ],
     splitChunks: {
       cacheGroups: {
-        commons: {
-          chunks: 'async',
-          minChunks: 2,
-          maxInitialRequests: 5, // The default limit is too small to showcase the effect
-          minSize: 0
-        },
         vendor: {
           test: /node_modules/,
           chunks: 'async',
