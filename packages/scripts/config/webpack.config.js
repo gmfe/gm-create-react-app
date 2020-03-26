@@ -58,10 +58,10 @@ let config = {
     path: PATH.appBuild,
     filename: isEnvDevelopment
       ? `js/bundle.js`
-      : `js/[name].[contenthash:8].js`,
+      : `js/[name]/[contenthash:8]/index.js`,
     chunkFilename: isEnvDevelopment
       ? 'js/[name].chunk.js'
-      : 'js/[name].[contenthash:8].chunk.js',
+      : 'js/[name]/[contenthash:8]/chunk.js',
     publicPath: appConfig.publicPath
   },
   optimization: {
@@ -76,8 +76,21 @@ let config = {
       })
     ],
     splitChunks: {
-      chunks: 'all',
-      minSize: 0
+      cacheGroups: {
+        commons: {
+          chunks: 'async',
+          minChunks: 2,
+          maxInitialRequests: 5, // The default limit is too small to showcase the effect
+          minSize: 0
+        },
+        vendor: {
+          test: /node_modules/,
+          chunks: 'async',
+          name: 'vendor',
+          priority: 10,
+          enforce: true
+        }
+      }
     },
     runtimeChunk: 'single'
   },
@@ -195,8 +208,8 @@ let config = {
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
       new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash:8].css',
-        chunkFilename: 'css/[name].[contenthash:8].chunk.css'
+        filename: 'css/[name]/[contenthash:8]/index.css',
+        chunkFilename: 'css/[name]/[contenthash:8]/chunk.css'
       }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
