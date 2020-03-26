@@ -58,10 +58,10 @@ let config = {
     path: PATH.appBuild,
     filename: isEnvDevelopment
       ? `js/bundle.js`
-      : `js/[name].[contenthash:8].js`,
+      : `js/[name]/[contenthash:8]/index.js`,
     chunkFilename: isEnvDevelopment
       ? 'js/[name].chunk.js'
-      : 'js/[name].[contenthash:8].chunk.js',
+      : 'js/[name]/[contenthash:8]/chunk.js',
     publicPath: appConfig.publicPath
   },
   optimization: {
@@ -77,7 +77,26 @@ let config = {
     ],
     splitChunks: {
       chunks: 'all',
-      minSize: 0
+      automaticNameDelimiter: '.',
+      // 暂时先这样，后面逐步完善
+      cacheGroups: {
+        react_base: {
+          test: /\/node_modules\/(react|react-dom|prop-types)\//,
+          chunks: 'all',
+          priority: 10
+        },
+        // 未来通过 webpack 按需加载最好
+        lodash_moment: {
+          test: /\/node_modules\/(lodash|moment)\//,
+          chunks: 'all',
+          priority: 10
+        },
+        mobx_base: {
+          test: /\/node_modules\/(mobx|mobx-react)\//,
+          chunks: 'all',
+          priority: 10
+        }
+      }
     },
     runtimeChunk: 'single'
   },
@@ -195,8 +214,8 @@ let config = {
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
       new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash:8].css',
-        chunkFilename: 'css/[name].[contenthash:8].chunk.css'
+        filename: 'css/[name]/[contenthash:8]/index.css',
+        chunkFilename: 'css/[name]/[contenthash:8]/chunk.css'
       }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
