@@ -70,7 +70,9 @@ const commonInclude = [
   /gm-common/,
   /gm_static_storage/,
   /react-mgm/,
-  /query-string/
+  /query-string/,
+  /split-on-first/,
+  /strict-uri-encode/
 ]
 
 const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
