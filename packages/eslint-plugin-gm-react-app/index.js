@@ -93,7 +93,7 @@ module.exports = {
             'import/extensions': [
               2,
               'ignorePackages',
-              { ts: 'never', tsx: 'never', json: 'never', js: 'never' }
+              { ts: 'never', tsx: 'never', json: 'always', js: 'never' }
             ],
             'no-useless-constructor': 'off',
             '@typescript-eslint/no-useless-constructor': 'error',
