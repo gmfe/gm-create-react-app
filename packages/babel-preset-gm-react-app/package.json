@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-gm-react-app",
-  "version": "2.1.0",
+  "version": "2.1.1-alpha.3",
   "description": "",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-react-app/tree/master/packages/babel-preset-gm-react-app#readme",
@@ -25,6 +25,7 @@
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-proposal-function-bind": "^7.8.3",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
