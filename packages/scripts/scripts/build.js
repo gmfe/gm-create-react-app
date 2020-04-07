@@ -9,5 +9,5 @@ process.on('unhandledRejection', err => {
 const { shellExec } = require('../util')
 
 shellExec(
-  'webpack -p --color --config ' + require.resolve('../config/webpack.config')
+  'webpack -p --color --config ' + require.resolve('../config/webpack.config'),
 )

@@ -6,7 +6,7 @@ module.exports = {
     docs: {
       description: 'do not use deprecated by react-gm.',
       category: 'Possible Errors',
-      recommended: 'error'
+      recommended: 'error',
     },
     messages: {
       comSearchSelect: 'SearchSelect FilterSelect 废弃，请使用 MoreSelect',
@@ -14,8 +14,8 @@ module.exports = {
       comTrigger: 'Trigger 废弃，请使用 Popover',
       comDropper: 'Dropper 废弃，请使用 Uploader',
       'class_gm-font-x': '废弃，请使用 gm-text-x',
-      class_btn: '废弃，请用 Button'
-    }
+      class_btn: '废弃，请用 Button',
+    },
   },
   create: function(context) {
     return {
@@ -25,28 +25,28 @@ module.exports = {
         if (comName === 'SearchSelect' || comName === 'FilterSelect') {
           context.report({
             node,
-            messageId: 'comSearchSelect'
+            messageId: 'comSearchSelect',
           })
         } else if (comName === 'TreeSelect') {
           context.report({
             node,
-            messageId: 'comTreeSelect'
+            messageId: 'comTreeSelect',
           })
         } else if (comName === 'Trigger') {
           context.report({
             node,
-            messageId: 'comTrigger'
+            messageId: 'comTrigger',
           })
         } else if (comName === 'Dropper') {
           context.report({
             node,
-            messageId: 'comDropper'
+            messageId: 'comDropper',
           })
         }
 
         const classNameProp = getProp(
           node.openingElement.attributes,
-          'className'
+          'className',
         )
 
         if (classNameProp) {
@@ -55,16 +55,16 @@ module.exports = {
           if (text.includes('gm-font-')) {
             context.report({
               node,
-              messageId: 'class_gm-font-x'
+              messageId: 'class_gm-font-x',
             })
           } else if (text.includes('btn-') && !text.includes('-btn')) {
             context.report({
               node,
-              messageId: 'class_btn'
+              messageId: 'class_btn',
             })
           }
         }
-      }
+      },
     }
-  }
+  },
 }

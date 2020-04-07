@@ -6,57 +6,57 @@ const ruleTester = new RuleTester({
     ecmaVersion: 6,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
-  }
+      jsx: true,
+    },
+  },
 })
 
 ruleTester.run('no-deprecated-react-gm', rule, {
   valid: [
     {
-      code: '<MoreSelect />'
+      code: '<MoreSelect />',
     },
     {
-      code: '<Popover />'
+      code: '<Popover />',
     },
     {
-      code: '<div className="gm-text-12"/>'
+      code: '<div className="gm-text-12"/>',
     },
     {
-      code: '<div className={className("gm-text-12", {"gm-text-12": true})} />'
+      code: '<div className={className("gm-text-12", {"gm-text-12": true})} />',
     },
     {
-      code: '<div className="aaaa-btn-sdfa" />'
-    }
+      code: '<div className="aaaa-btn-sdfa" />',
+    },
   ],
   invalid: [
     {
       code: '<SearchSelect />',
-      errors: [{ messageId: 'comSearchSelect' }]
+      errors: [{ messageId: 'comSearchSelect' }],
     },
     {
       code: '<FilterSelect />',
-      errors: [{ messageId: 'comSearchSelect' }]
+      errors: [{ messageId: 'comSearchSelect' }],
     },
     {
       code: '<TreeSelect />',
-      errors: [{ messageId: 'comTreeSelect' }]
+      errors: [{ messageId: 'comTreeSelect' }],
     },
     {
       code: '<Trigger />',
-      errors: [{ messageId: 'comTrigger' }]
+      errors: [{ messageId: 'comTrigger' }],
     },
     {
       code: '<Dropper />',
-      errors: [{ messageId: 'comDropper' }]
+      errors: [{ messageId: 'comDropper' }],
     },
     {
       code: '<div className="gm-font-5" />',
-      errors: [{ messageId: 'class_gm-font-x' }]
+      errors: [{ messageId: 'class_gm-font-x' }],
     },
     {
       code: '<button className="btn btn-default">lala</button>',
-      errors: [{ messageId: 'class_btn' }]
-    }
-  ]
+      errors: [{ messageId: 'class_btn' }],
+    },
+  ],
 })
