@@ -30,7 +30,8 @@ module.exports = api => {
           // for tree shaking
           modules: false
         }
-      ]
+      ],
+      require('@babel/preset-typescript')
     ]
   }
 }
