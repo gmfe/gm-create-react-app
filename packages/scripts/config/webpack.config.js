@@ -78,6 +78,7 @@ let config = {
     splitChunks: {
       chunks: 'all',
       automaticNameDelimiter: '.',
+      maxInitialRequests: 5,
       // 暂时先这样，后面逐步完善
       cacheGroups: {
         react_base: {
@@ -92,7 +93,7 @@ let config = {
           priority: 10
         },
         mobx_base: {
-          test: /\/node_modules\/(mobx|mobx-react)\//,
+          test: /\/node_modules\/(mobx|mobx-react|mobx-react-lite)\//,
           chunks: 'all',
           priority: 10
         }
