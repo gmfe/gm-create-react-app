@@ -1,0 +1,17 @@
+{
+  "name": "ts-config-gm-react-app",
+  "version": "2.0.5-alpha.5",
+  "main": "tsconfig.json",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmfe/gm-react-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gmfe/gm-react-app/issues"
+  },
+  "author": "liyatang <liyatang@qq.com>",
+  "license": "ISC",
+  "peerDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
