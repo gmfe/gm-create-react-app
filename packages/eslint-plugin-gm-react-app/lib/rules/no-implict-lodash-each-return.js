@@ -4,23 +4,23 @@ module.exports = {
     docs: {
       description: 'disallow implict return in lodash _.each',
       category: 'Possible Errors',
-      recommended: 'error'
+      recommended: 'error',
     },
     messages: {
       expectedBlockStatement:
         'Expected body of ArrowFunction callback of _.each to be BlockStatement.',
       expectedLiteralReturnStatement:
-        'Expected ReturnStatement of Callback of _.each must be have no argument or have argument of Literal true or false.'
-    }
+        'Expected ReturnStatement of Callback of _.each must be have no argument or have argument of Literal true or false.',
+    },
   },
   create: function(context) {
-    let functionNames = ['each', 'eachRight', 'forEach', 'forEachRight']
+    const functionNames = ['each', 'eachRight', 'forEach', 'forEachRight']
 
     let funcInfo = {
       upper: null,
       codePath: null,
       shouldCheck: false,
-      node: null
+      node: null,
     }
 
     function shouldCheck(node) {
@@ -38,7 +38,7 @@ module.exports = {
           node.callee.property.type === 'Identifier' &&
           functionNames.includes(node.callee.property.name)
         if (isLod && isEach) {
-          let CallBackNode = node.arguments[1] //获取第二个参数
+          const CallBackNode = node.arguments[1] // 获取第二个参数
           const isArrowFunction =
             CallBackNode && CallBackNode.type === 'ArrowFunctionExpression'
           const isFunction =
@@ -47,7 +47,7 @@ module.exports = {
             if (CallBackNode.body.type !== 'BlockStatement') {
               context.report({
                 node: CallBackNode,
-                messageId: 'expectedBlockStatement'
+                messageId: 'expectedBlockStatement',
               })
             } else {
               return true
@@ -66,7 +66,7 @@ module.exports = {
           upper: funcInfo,
           codePath,
           shouldCheck: !!shouldCheck(node),
-          node
+          node,
         }
       },
 
@@ -77,18 +77,18 @@ module.exports = {
 
       ReturnStatement: function(node) {
         if (funcInfo.shouldCheck) {
-          let pass =
-            !node.argument || //return无参数 //或return true/false字面量
+          const pass =
+            !node.argument || // return无参数 //或return true/false字面量
             (node.argument.type === 'Literal' &&
               (node.argument.value === true || node.argument.value === false))
           if (!pass) {
             context.report({
               node,
-              messageId: 'expectedLiteralReturnStatement'
+              messageId: 'expectedLiteralReturnStatement',
             })
           }
         }
-      }
+      },
     }
-  }
+  },
 }

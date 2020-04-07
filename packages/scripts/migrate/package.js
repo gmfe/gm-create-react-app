@@ -23,14 +23,14 @@ json.scripts['build:test'] = 'gras test'
 json.scripts['build:prod'] = 'gras build'
 
 json['lint-staged'] = {
-  './src/**/*.{js,json}': ['eslint --cache --fix'],
-  './src/**/*.{less,css}': ['stylelint --cache --fix']
+  './src/**/*.{ts,tsx,js,json}': ['eslint --cache --fix'],
+  './src/**/*.{less,css}': ['stylelint --cache --fix'],
 }
 
 json.husky = {
   hooks: {
-    'pre-commit': 'lint-staged'
-  }
+    'pre-commit': 'lint-staged',
+  },
 }
 
 json.browserslist = {
@@ -38,8 +38,8 @@ json.browserslist = {
   development: [
     'last 1 chrome version',
     'last 1 firefox version',
-    'last 1 safari version'
-  ]
+    'last 1 safari version',
+  ],
 }
 
 delete json.babel
@@ -60,11 +60,11 @@ const dep = Object.assign(
   {},
   babelDependencies,
   eslintDependencies,
-  scriptsDependencies
+  scriptsDependencies,
 )
 const sameDeps = _.intersection(
   _.keys(app.dependencies).concat(_.keys(app.devDependencies)),
-  _.keys(dep)
+  _.keys(dep),
 )
 
 if (sameDeps.length > 0) {

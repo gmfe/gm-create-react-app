@@ -5,11 +5,11 @@ module.exports = {
       description:
         "get template state (starts with 'g_') from window not allowed.",
       category: 'Possible Errors',
-      recommended: 'error'
+      recommended: 'error',
     },
     messages: {
-      expected: '不允许直接从全局对象获取模板变量.'
-    }
+      expected: '不允许直接从全局对象获取模板变量.',
+    },
   },
   create: function(context) {
     return {
@@ -22,10 +22,10 @@ module.exports = {
         ) {
           context.report({
             node,
-            messageId: 'expected'
+            messageId: 'expected',
           })
         }
-      }
+      },
     }
-  }
+  },
 }

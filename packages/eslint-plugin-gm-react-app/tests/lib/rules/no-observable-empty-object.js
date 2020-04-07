@@ -4,9 +4,9 @@ const rule = require('../../../lib/rules/no-observable-empty-object')
 const ruleTester = new RuleTester({
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module'
+    sourceType: 'module',
   },
-  parser: 'babel-eslint'
+  parser: 'babel-eslint',
 })
 
 const cases = {
@@ -30,7 +30,7 @@ const cases = {
         class Store extends Component {
           statusTaskCycle = {};
         }
-      `
+      `,
   ],
   invalid: [
     {
@@ -39,9 +39,9 @@ const cases = {
               @observable statusTaskCycle = {};
             }
           `,
-      errors: [{ messageId: 'expected' }]
-    }
-  ]
+      errors: [{ messageId: 'expected' }],
+    },
+  ],
 }
 
 ruleTester.run('no-observable-empty-object', rule, cases)

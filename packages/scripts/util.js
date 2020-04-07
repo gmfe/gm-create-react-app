@@ -58,7 +58,7 @@ const PATH = {
   appSrc: resolveApp('src'),
   appIndexTemplate: resolveApp('src/index.html'),
   appIndexJs: resolveApp('src/index.js'),
-  appPackageJson: resolveApp('package.json')
+  appPackageJson: resolveApp('package.json'),
 }
 
 // query-string 比较坑爹，里面用了 const
@@ -72,7 +72,7 @@ const commonInclude = [
   /react-mgm/,
   /query-string/,
   /split-on-first/,
-  /strict-uri-encode/
+  /strict-uri-encode/,
 ]
 
 const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
@@ -86,5 +86,5 @@ module.exports = {
   packageJson,
   commonInclude,
   shellExec,
-  getConfig
+  getConfig,
 }
