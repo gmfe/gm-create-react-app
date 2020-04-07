@@ -9,17 +9,18 @@ module.exports = api => {
       [
         require('@babel/plugin-proposal-decorators'),
         {
-          legacy: true
-        }
+          legacy: true,
+        },
       ],
       [require('@babel/plugin-proposal-class-properties'), { loose: true }],
       require('@babel/plugin-proposal-function-bind'),
       require('@babel/plugin-proposal-object-rest-spread'),
+      require('@babel/plugin-proposal-nullish-coalescing-operator'),
       require('@babel/plugin-proposal-optional-chaining'),
       require('@babel/plugin-syntax-dynamic-import'),
       require('@babel/plugin-transform-runtime'),
       require('react-hot-loader/babel'),
-      require('styled-jsx/babel')
+      require('styled-jsx/babel'),
     ],
     // 从后往前
     presets: [
@@ -28,9 +29,10 @@ module.exports = api => {
         require('@babel/preset-env'),
         {
           // for tree shaking
-          modules: false
-        }
-      ]
-    ]
+          modules: false,
+        },
+      ],
+      require('@babel/preset-typescript'),
+    ],
   }
 }

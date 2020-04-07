@@ -5,7 +5,7 @@ const script = process.argv[2]
 
 if (['start', 'build', 'test', 'migrate'].includes(script)) {
   const result = spawn.sync('node', [require.resolve('../scripts/' + script)], {
-    stdio: 'inherit'
+    stdio: 'inherit',
   })
   process.exit(result.status)
 } else {

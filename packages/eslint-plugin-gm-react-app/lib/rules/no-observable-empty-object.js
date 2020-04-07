@@ -4,16 +4,16 @@ module.exports = {
     docs: {
       description: 'mobx observable empty object not allowed.',
       category: 'Possible Errors',
-      recommended: 'error'
+      recommended: 'error',
     },
     messages: {
-      expected: 'mobx observable empty object not allowed.'
-    }
+      expected: 'mobx observable empty object not allowed.',
+    },
   },
   create: function(context) {
     return {
       ClassProperty: function(node) {
-        let isObservable =
+        const isObservable =
           node.decorators &&
           node.decorators[0].expression.type === 'Identifier' &&
           node.decorators[0].expression.name === 'observable'
@@ -25,10 +25,10 @@ module.exports = {
         ) {
           context.report({
             node,
-            messageId: 'expected'
+            messageId: 'expected',
           })
         }
-      }
+      },
     }
-  }
+  },
 }

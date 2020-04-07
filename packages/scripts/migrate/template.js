@@ -14,7 +14,7 @@ if (fs.existsSync(PATH.appIndexTemplate)) {
     '____fe_branch',
     '____git_commit',
     '//js.guanmai.cn/build/libs/babel-polyfill/7.4.4/dist/polyfill.min.js',
-    '//js.guanmai.cn/build/libs/gm-fetch/2.0.1/gm-fetch.min.js'
+    '//js.guanmai.cn/build/libs/gm-fetch/2.0.1/gm-fetch.min.js',
   ]
 
   list.forEach(value => {
@@ -27,6 +27,6 @@ if (fs.existsSync(PATH.appIndexTemplate)) {
 }
 
 // 移除之前的
-if(fs.existsSync(PATH.appDirectory + '/template')){
+if (fs.existsSync(PATH.appDirectory + '/template')) {
   console.error('请移除 template')
 }

@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const fs = require('fs-extra')
 const path = require('path')
 const _ = require('lodash')
@@ -13,14 +14,13 @@ const {
   packageJson,
   commonInclude,
   PATH,
-  getConfig
+  getConfig,
 } = require('../util')
 
 // 做个检测，需要提供 aliasName clientName
 if (!packageJson.aliasName || !packageJson.clientName) {
   throw new Error('请提供 aliasName clientName')
 }
-
 const appConfig = getConfig()
 
 function getCss(options = { modules: false }) {
@@ -30,8 +30,8 @@ function getCss(options = { modules: false }) {
     {
       loader: require.resolve('css-loader'),
       options: {
-        modules: options.modules
-      }
+        modules: options.modules,
+      },
     },
     {
       loader: require.resolve('postcss-loader'),
@@ -39,11 +39,11 @@ function getCss(options = { modules: false }) {
         ident: 'postcss',
         plugins: () => [
           require('postcss-preset-env')({
-            stage: 3
-          })
-        ]
-      }
-    }
+            stage: 3,
+          }),
+        ],
+      },
+    },
   ]
 }
 
@@ -51,7 +51,7 @@ function getCss(options = { modules: false }) {
 let config = {
   mode: isEnvDevelopment ? 'development' : 'production',
   entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].filter(
-    Boolean
+    Boolean,
   ),
   // 暂时不启动 source-map
   devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : false,
@@ -63,7 +63,7 @@ let config = {
     chunkFilename: isEnvDevelopment
       ? 'js/[name].chunk.js'
       : 'js/[name]/[contenthash:8]/chunk.js',
-    publicPath: appConfig.publicPath
+    publicPath: appConfig.publicPath,
   },
   optimization: {
     minimize: !isEnvDevelopment,
@@ -72,9 +72,9 @@ let config = {
         cache: true,
         parallel: true,
         terserOptions: {
-          mangle: false // Note `mangle.properties` is `false` by default.
-        }
-      })
+          mangle: false, // Note `mangle.properties` is `false` by default.
+        },
+      }),
     ],
     splitChunks: {
       chunks: 'all',
@@ -84,22 +84,22 @@ let config = {
         react_base: {
           test: /\/node_modules\/(react|react-dom|prop-types)\//,
           chunks: 'all',
-          priority: 10
+          priority: 10,
         },
         // 未来通过 webpack 按需加载最好
         lodash_moment: {
           test: /\/node_modules\/(lodash|moment)\//,
           chunks: 'all',
-          priority: 10
+          priority: 10,
         },
         mobx_base: {
           test: /\/node_modules\/(mobx|mobx-react)\//,
           chunks: 'all',
-          priority: 10
-        }
-      }
+          priority: 10,
+        },
+      },
     },
-    runtimeChunk: 'single'
+    runtimeChunk: 'single',
   },
   module: {
     rules: [
@@ -107,7 +107,7 @@ let config = {
         oneOf: [
           // 提高性能，只处理 /src，要处理 node_modules 自行添加
           {
-            test: /\.js$/,
+            test: /\.(js|tsx?)$/,
             use: [
               { loader: require.resolve('thread-loader') },
               {
@@ -115,39 +115,39 @@ let config = {
                 options: {
                   cacheDirectory: true,
                   cacheCompression: false,
-                  compact: !isEnvDevelopment
-                }
-              }
+                  compact: !isEnvDevelopment,
+                },
+              },
             ],
             include: commonInclude,
-            exclude: /@babel\/runtime/
+            exclude: /@babel\/runtime/,
           },
           {
             test: /\.module\.css$/,
-            use: [...getCss({ modules: true })].filter(Boolean)
+            use: [...getCss({ modules: true })].filter(Boolean),
           },
           {
             test: /\.css$/,
-            use: [...getCss()].filter(Boolean)
+            use: [...getCss()].filter(Boolean),
           },
           {
             test: /\.module\.less$/,
             use: [
               ...getCss({ modules: true }),
-              require.resolve('less-loader')
-            ].filter(Boolean)
+              require.resolve('less-loader'),
+            ].filter(Boolean),
           },
           {
             test: /\.less$/,
-            use: [...getCss(), require.resolve('less-loader')].filter(Boolean)
+            use: [...getCss(), require.resolve('less-loader')].filter(Boolean),
           },
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
             options: {
               limit: 10000,
-              name: 'media/image/[name].[hash:8].[ext]'
-            }
+              name: 'media/image/[name].[hash:8].[ext]',
+            },
           },
           {
             test: /\/svg\/(\w|\W)+\.svg$/,
@@ -161,11 +161,11 @@ let config = {
                     fill: 'currentColor',
                     // className 冗余
                     className:
-                      "{'gm-svg-icon t-svg-icon ' + (props.className || '')}"
-                  }
-                }
-              }
-            ]
+                      "{'gm-svg-icon t-svg-icon ' + (props.className || '')}",
+                  },
+                },
+              },
+            ],
           },
           // iconfont 应该要废弃掉
           {
@@ -175,11 +175,11 @@ let config = {
                 loader: require.resolve('url-loader'),
                 options: {
                   limit: 10000,
-                  name: 'media/font/[name].[hash:8].[ext]'
-                }
-              }
-            ]
-          }
+                  name: 'media/font/[name].[hash:8].[ext]',
+                },
+              },
+            ],
+          },
           // new loader ? add here before file-loader
 
           // other assets
@@ -190,12 +190,16 @@ let config = {
           //     name: 'media/file/[name].[hash:8].[ext]'
           //   }
           // }
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
   plugins: [
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      memoryLimit: 4096,
+      tsconfig: PATH.appDirectory + '/tsconfig.json'
+    }),
     new webpack.DefinePlugin({
       __DEBUG__: isEnvDevelopment,
       __DEVELOPMENT__: isEnvDevelopment,
@@ -205,23 +209,23 @@ let config = {
       __NAME__: JSON.stringify(packageJson.aliasName || 'none'),
       __CLIENT_NAME__: JSON.stringify(packageJson.clientName || 'none'),
       __BRANCH__: JSON.stringify(process.env.GIT_BRANCH || 'none'),
-      __COMMIT__: JSON.stringify(process.env.GIT_COMMIT || 'none')
+      __COMMIT__: JSON.stringify(process.env.GIT_COMMIT || 'none'),
     }),
     new HtmlWebpackPlugin({
       template: PATH.appIndexTemplate,
       branch: process.env.GIT_BRANCH || 'none',
       commit: process.env.GIT_COMMIT || 'none',
-      env: process.env.NODE_ENV || 'none'
+      env: process.env.NODE_ENV || 'none',
     }),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
       new MiniCssExtractPlugin({
         filename: 'css/[name]/[contenthash:8]/index.css',
-        chunkFilename: 'css/[name]/[contenthash:8]/chunk.css'
+        chunkFilename: 'css/[name]/[contenthash:8]/chunk.css',
       }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ].filter(Boolean),
   resolve: {
     alias: _.pickBy(
@@ -237,10 +241,11 @@ let config = {
         common: PATH.appDirectory + '/src/js/common/',
         stores: PATH.appDirectory + '/src/js/stores/',
         svg: PATH.appDirectory + '/src/svg/',
-        img: PATH.appDirectory + '/src/img/'
+        img: PATH.appDirectory + '/src/img/',
       },
-      Boolean
-    )
+      Boolean,
+    ),
+    extensions: ['.js', '.tsx', '.ts'],
   },
   devServer: {
     disableHostCheck: true,
@@ -249,13 +254,13 @@ let config = {
     hot: true,
     publicPath: appConfig.publicPath,
     historyApiFallback: {
-      index: appConfig.publicPath + 'index.html'
+      index: appConfig.publicPath + 'index.html',
     },
     host: '0.0.0.0',
     port: appConfig.port || 8080,
     proxy: appConfig.proxy || {},
-    https: appConfig.https || false
-  }
+    https: appConfig.https || false,
+  },
 }
 
 if (fs.existsSync(PATH.appConfig + '/webpack.config.js')) {
