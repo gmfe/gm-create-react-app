@@ -22,7 +22,7 @@ module.exports = {
     }
   }
 }
-`
+`,
 )
 
 fs.writeFileSync(
@@ -44,6 +44,16 @@ fs.writeFileSync(
     `
 )
 
+fs.writeFileSync(
+  PATH.appDirectory + '/tsconfig.json',
+  `
+    {
+      "extends": "ts-config-gm-react-app/tsconfig",
+      "include": ["node_modules/@gm-common/**/global.d.ts"]
+    }
+    `
+)
+
 
 const gitIgnore = `.DS_Store
 .idea
@@ -59,12 +69,12 @@ config/local.js
 build/
 `
 const readGitIgnore = fs.readFileSync(PATH.appDirectory + '/.gitignore', {
-  encoding: 'utf-8'
+  encoding: 'utf-8',
 })
 
 fs.writeFileSync(
   PATH.appDirectory + '/.gitignore',
-  _.uniq(gitIgnore.split('\n').concat(readGitIgnore.split('\n'))).join('\n')
+  _.uniq(gitIgnore.split('\n').concat(readGitIgnore.split('\n'))).join('\n'),
 )
 
 fs.writeFileSync(
@@ -72,9 +82,10 @@ fs.writeFileSync(
   `module.exports = {
   semi: false,
   singleQuote: true,
-  jsxSingleQuote: true
+  jsxSingleQuote: true,
+  trailingComma: 'all',
 }
-`
+`,
 )
 
 fs.writeFileSync(
@@ -86,7 +97,7 @@ fs.writeFileSync(
     presets: ['gm-react-app']
   }
 }
-`
+`,
 )
 
 fs.writeFileSync(
@@ -94,7 +105,7 @@ fs.writeFileSync(
   `{
   "extends": "stylelint-config-standard"
 }
-`
+`,
 )
 
 if (fs.existsSync(PATH.appDirectory + '/.babelrc.json')) {
