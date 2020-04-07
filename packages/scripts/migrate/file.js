@@ -19,7 +19,6 @@ if (fs.existsSync(PATH.appDirectory + '/webpack.config.js')) {
   fs.removeSync(PATH.appDirectory + '/webpack.config.js')
 }
 
-
 if (fs.existsSync(PATH.appDirectory + '/webpack.config.monitor.js')) {
   fs.removeSync(PATH.appDirectory + '/webpack.config.monitor.js')
 }

@@ -1,3 +1,4 @@
+const { resolve } = require
 const createIndex = require('create-eslint-index')
 const importModules = require('import-modules')
 const rules = importModules('lib/rules', { camelize: false })
@@ -5,9 +6,9 @@ const rules = importModules('lib/rules', { camelize: false })
 const recommendedRules = createIndex.createConfig(
   {
     plugin: 'gm-react-app',
-    field: 'meta.docs.recommended'
+    field: 'meta.docs.recommended',
   },
-  rules
+  rules,
 )
 
 module.exports = {
@@ -23,9 +24,16 @@ module.exports = {
         'plugin:import/errors',
         'prettier',
         'prettier/react',
-        'prettier/standard'
+        'prettier/standard',
       ],
-      plugins: ['gm-react-app', 'prettier', 'react-hooks'],
+      plugins: ['gm-react-app', 'react-hooks', 'prettier'],
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+        ecmaVersion: 2020,
+        sourceType: 'module',
+      },
       rules: {
         ...recommendedRules,
         'prettier/prettier': 1,
@@ -33,7 +41,7 @@ module.exports = {
         'react/no-find-dom-node': 0,
         'react/prop-types': [
           2,
-          { ignore: ['children', 'location', 'params', 'match'] }
+          { ignore: ['children', 'location', 'params', 'match'] },
         ],
         'react/jsx-handler-names': 1,
         'react-hooks/rules-of-hooks': 'error',
@@ -44,13 +52,82 @@ module.exports = {
         'import/namespace': 'off',
         'import/no-named-as-default': 'off',
         'import/no-named-as-default-member': 'off',
-        'import/no-duplicates': 'off'
+        'import/no-duplicates': 'off',
       },
       settings: {
         react: {
-          version: 'detect'
-        }
-      }
-    }
-  }
+          version: 'detect',
+        },
+        'import/resolver': {
+          typescript: {
+            directory: [resolve('ts-config-gm-react-app/tsconfig.json')],
+          },
+        },
+      },
+      globals: {
+        // 全局变量
+      },
+      overrides: [
+        {
+          files: ['**/*.tsx'],
+          rules: {
+            'react/prop-types': 'off',
+          },
+        },
+        {
+          files: ['**/*.ts', '**/*.tsx'],
+          parser: '@typescript-eslint/parser',
+          extends: [
+            'standard',
+            'standard-jsx',
+            'plugin:react/recommended',
+            'plugin:import/warnings',
+            'plugin:import/errors',
+            'plugin:import/typescript',
+            'prettier',
+            'prettier/react',
+            'prettier/standard',
+            'prettier/@typescript-eslint',
+          ],
+          plugins: [
+            'gm-react-app',
+            'react-hooks',
+            '@typescript-eslint',
+            'prettier',
+          ],
+          parserOptions: {
+            ecmaFeatures: {
+              jsx: true,
+            },
+            ecmaVersion: 2020,
+            sourceType: 'module',
+          },
+          rules: {
+            'prettier/prettier': 'error',
+            ...recommendedRules,
+            '@typescript-eslint/member-naming': [
+              'error',
+              {
+                private: '^_',
+                protected: '^__',
+              },
+            ],
+            'import/extensions': [
+              2,
+              'ignorePackages',
+              { ts: 'never', tsx: 'never', json: 'always', js: 'never' },
+            ],
+            'no-unused-vars': 'off',
+            'no-useless-constructor': 'off',
+            '@typescript-eslint/no-useless-constructor': 'error',
+            'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
+            'react/state-in-constructor': [2, 'never'],
+            '@typescript-eslint/no-empty-interface': 'warn',
+            'import/no-extraneous-dependencies': 'error',
+            'react/button-has-type': 0,
+          },
+        },
+      ],
+    },
+  },
 }
