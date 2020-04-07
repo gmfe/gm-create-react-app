@@ -15,6 +15,7 @@ module.exports = api => {
       [require('@babel/plugin-proposal-class-properties'), { loose: true }],
       require('@babel/plugin-proposal-function-bind'),
       require('@babel/plugin-proposal-object-rest-spread'),
+      require('@babel/plugin-proposal-nullish-coalescing-operator'),
       require('@babel/plugin-proposal-optional-chaining'),
       require('@babel/plugin-syntax-dynamic-import'),
       require('@babel/plugin-transform-runtime'),
