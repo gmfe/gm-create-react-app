@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const fs = require('fs-extra')
 const path = require('path')
 const _ = require('lodash')
@@ -194,6 +195,7 @@ let config = {
     ]
   },
   plugins: [
+    isEnvDevelopment && new CaseSensitivePathsPlugin(),
     new webpack.DefinePlugin({
       __DEBUG__: isEnvDevelopment,
       __DEVELOPMENT__: isEnvDevelopment,
