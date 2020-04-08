@@ -1751,16 +1751,17 @@ babel-plugin-syntax-jsx@6.18.0:
   resolved "https://registry.npm.taobao.org/babel-plugin-syntax-jsx/download/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
   integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
 
-babel-preset-gm-react-app@^2.0.5-alpha.0:
-  version "2.0.5-alpha.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-gm-react-app/-/babel-preset-gm-react-app-2.0.5-alpha.0.tgz#b0668d53096b92e9948b5a46244b136668fb825e"
-  integrity sha512-R9bC275KC5/2951VKRc9imQ3760NfEv6nbEKwQlVfOmqgSP2SqGlPObzhVoe79TfCmOhCQYtQSv6MZ63/v+znA==
+babel-preset-gm-react-app@^2.0.5-alpha.4:
+  version "2.0.5-alpha.4"
+  resolved "https://registry.yarnpkg.com/babel-preset-gm-react-app/-/babel-preset-gm-react-app-2.0.5-alpha.4.tgz#668b763bf80a30f86ee66c57318d6b4845578583"
+  integrity sha512-7Wi62IasrzgwENjLin6sn9JsbvoECdOAJfzrcGDlhHjIvWPGt8/HZTM1feZAlE2ytlCItGwzx4497zJrrEua9Q==
   dependencies:
     "@babel/cli" "^7.8.4"
     "@babel/core" "^7.8.4"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
     "@babel/plugin-proposal-decorators" "^7.8.3"
     "@babel/plugin-proposal-function-bind" "^7.8.3"
+    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.8.3"
     "@babel/plugin-proposal-object-rest-spread" "^7.8.3"
     "@babel/plugin-proposal-optional-chaining" "^7.8.3"
     "@babel/plugin-syntax-dynamic-import" "^7.8.3"
@@ -3239,10 +3240,10 @@ eslint-plugin-es@^3.0.0:
     eslint-utils "^2.0.0"
     regexpp "^3.0.0"
 
-eslint-plugin-gm-react-app@^2.0.5-alpha.0:
-  version "2.0.5-alpha.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-2.0.5-alpha.0.tgz#6f0c80c6a1faf9cf720f31cb449a9ce03941bb0f"
-  integrity sha512-1KvQyH7TXdlG+4256tWA718XXec+V8hd6KUPE/2efESNVxgDviXnMFJVljOGaBPQn4KTOzp40Rm8Y1LgQndF3w==
+eslint-plugin-gm-react-app@^2.0.5-alpha.4:
+  version "2.0.5-alpha.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-2.0.5-alpha.4.tgz#810720342e81fce78e69b9ebfcaa44fcbcc4c6d5"
+  integrity sha512-T5G+VrMjRhIkgKjMUMgQlZ283rbEaCCcEBusT8UlVdDF1QmscDyjUtPfM2ZpoO6kYvxagHfubKZNBO6cFjehdw==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.27.0"
     "@typescript-eslint/parser" "^2.27.0"

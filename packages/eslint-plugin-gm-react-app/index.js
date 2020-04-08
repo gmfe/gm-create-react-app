@@ -62,7 +62,7 @@ module.exports = {
       },
       overrides: [
         {
-          files: ['**/*.ts', '**/*.tsx'],
+          files: ['**/*.tsx?'],
           parser: '@typescript-eslint/parser',
           extends: [
             'standard',
@@ -95,6 +95,7 @@ module.exports = {
               'ignorePackages',
               { ts: 'never', tsx: 'never', json: 'always', js: 'never' }
             ],
+            'no-unused-vars': 'off',
             'no-useless-constructor': 'off',
             '@typescript-eslint/no-useless-constructor': 'error',
             'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
