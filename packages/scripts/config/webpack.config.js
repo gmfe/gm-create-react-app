@@ -78,7 +78,7 @@ let config = {
     splitChunks: {
       chunks: 'all',
       automaticNameDelimiter: '.',
-      maxInitialRequests: 5,
+      maxInitialRequests: 4,
       // 暂时先这样，后面逐步完善
       cacheGroups: {
         react_base: {
