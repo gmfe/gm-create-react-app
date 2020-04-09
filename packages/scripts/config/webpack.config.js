@@ -241,6 +241,7 @@ let config = {
       },
       Boolean,
     ),
+    extensions: ['.js', '.tsx', '.tsx'],
   },
   devServer: {
     disableHostCheck: true,
