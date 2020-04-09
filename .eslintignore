@@ -1,0 +1,4 @@
+packages/*/node_modules/*
+stories.js
+packages/*/src/**/*stories.tsx
+packages/*/src/**/*stories.ts

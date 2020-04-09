@@ -4,12 +4,12 @@ module.exports = {
     docs: {
       description: 'do not use deprecated by gm-util.',
       category: 'Possible Errors',
-      recommended: 'error'
+      recommended: 'error',
     },
     messages: {
-      isMobile: 'is.mobile 废弃，请使用 is.phone()'
+      isMobile: 'is.mobile 废弃，请使用 is.phone()',
       // TODO other
-    }
+    },
   },
   create: function(context) {
     return {
@@ -22,10 +22,10 @@ module.exports = {
         ) {
           context.report({
             node,
-            messageId: 'isMobile'
+            messageId: 'isMobile',
           })
         }
-      }
+      },
     }
-  }
+  },
 }

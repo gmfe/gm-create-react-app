@@ -8,7 +8,7 @@ const recommendedRules = createIndex.createConfig(
     plugin: 'gm-react-app',
     field: 'meta.docs.recommended',
   },
-  rules
+  rules,
 )
 
 module.exports = {
@@ -26,7 +26,14 @@ module.exports = {
         'prettier/react',
         'prettier/standard',
       ],
-      plugins: ['gm-react-app', 'prettier', 'react-hooks'],
+      plugins: ['gm-react-app', 'react-hooks', 'prettier'],
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+        ecmaVersion: 2020,
+        sourceType: 'module',
+      },
       rules: {
         ...recommendedRules,
         'prettier/prettier': 1,
@@ -61,12 +68,6 @@ module.exports = {
         // 全局变量
       },
       overrides: [
-        {
-          files: ['**/*.d.ts'],
-          rules: {
-            'import/no-duplicate': 'off',
-          },
-        },
         {
           files: ['**/*.tsx'],
           rules: {
