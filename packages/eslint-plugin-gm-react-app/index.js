@@ -62,6 +62,18 @@ module.exports = {
       },
       overrides: [
         {
+          files: ['**/*.d.ts'],
+          rules: {
+            'import/no-duplicate': 'off',
+          },
+        },
+        {
+          files: ['**/*.tsx'],
+          rules: {
+            'react/prop-types': 'off',
+          },
+        },
+        {
           files: ['**/*.ts', '**/*.tsx'],
           parser: '@typescript-eslint/parser',
           extends: [
@@ -78,9 +90,9 @@ module.exports = {
           ],
           plugins: [
             'gm-react-app',
-            'prettier',
             'react-hooks',
             '@typescript-eslint',
+            'prettier',
           ],
           parserOptions: {
             ecmaFeatures: {
@@ -110,23 +122,8 @@ module.exports = {
             'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
             'react/state-in-constructor': [2, 'never'],
             '@typescript-eslint/no-empty-interface': 'warn',
-            'import/no-extraneous-dependencies': [
-              'error',
-              { devDependencies: true },
-            ],
+            'import/no-extraneous-dependencies': 'error',
             'react/button-has-type': 0,
-          },
-        },
-        {
-          files: ['**/*.d.ts'],
-          rules: {
-            'import/no-duplicate': 'off',
-          },
-        },
-        {
-          files: ['**/*.tsx'],
-          rules: {
-            'react/prop-types': 'off',
           },
         },
       ],
