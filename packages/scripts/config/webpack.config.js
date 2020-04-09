@@ -107,7 +107,7 @@ let config = {
         oneOf: [
           // 提高性能，只处理 /src，要处理 node_modules 自行添加
           {
-            test: /\.js$/,
+            test: /\.(js|tsx?)$/,
             use: [
               { loader: require.resolve('thread-loader') },
               {
