@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const fs = require('fs-extra')
 const path = require('path')
 const _ = require('lodash')
@@ -20,6 +21,7 @@ const {
 if (!packageJson.aliasName || !packageJson.clientName) {
   throw new Error('请提供 aliasName clientName')
 }
+console.log(PATH.appDirectory)
 
 const appConfig = getConfig()
 
@@ -196,6 +198,10 @@ let config = {
   },
   plugins: [
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      memoryLimit: 4096,
+      tsconfig: PATH.appDirectory + '/tsconfig.json',
+    }),
     new webpack.DefinePlugin({
       __DEBUG__: isEnvDevelopment,
       __DEVELOPMENT__: isEnvDevelopment,
