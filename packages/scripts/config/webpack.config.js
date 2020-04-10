@@ -21,8 +21,6 @@ const {
 if (!packageJson.aliasName || !packageJson.clientName) {
   throw new Error('请提供 aliasName clientName')
 }
-console.log(PATH.appDirectory)
-
 const appConfig = getConfig()
 
 function getCss(options = { modules: false }) {
@@ -247,7 +245,7 @@ let config = {
       },
       Boolean,
     ),
-    extensions: ['.js', '.tsx', '.tsx'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
   devServer: {
     disableHostCheck: true,
