@@ -58,22 +58,8 @@ module.exports = {
         react: {
           version: 'detect',
         },
-        'import/resolver': {
-          typescript: {
-            directory: [resolve('ts-config-gm-react-app/tsconfig.json')],
-          },
-        },
-      },
-      globals: {
-        // 全局变量
       },
       overrides: [
-        {
-          files: ['**/*.tsx'],
-          rules: {
-            'react/prop-types': 'off',
-          },
-        },
         {
           files: ['**/*.ts', '**/*.tsx'],
           parser: '@typescript-eslint/parser',
@@ -102,9 +88,17 @@ module.exports = {
             ecmaVersion: 2020,
             sourceType: 'module',
           },
+          settings: {
+            'import/resolver': {
+              typescript: {
+                directory: [resolve('ts-config-gm-react-app/tsconfig.json')],
+              },
+            },
+          },
           rules: {
             'prettier/prettier': 'error',
             ...recommendedRules,
+            'react/prop-types': 'off',
             '@typescript-eslint/member-naming': [
               'error',
               {
