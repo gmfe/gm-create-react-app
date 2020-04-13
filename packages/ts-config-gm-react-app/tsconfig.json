@@ -63,9 +63,5 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "resolveJsonModule": true
-  },
-  "files": [
-    "node_modules/@gm-common/fingerprint/global.d.ts",
-    "node_modules/@gm-common/request/global.d.ts"
-  ]
+  }
 }
