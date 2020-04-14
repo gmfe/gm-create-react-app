@@ -25,6 +25,26 @@ module.exports = {
 `
 )
 
+fs.writeFileSync(
+  PATH.appDirectory + '/jsconfig.json',
+  `
+    {
+      "compilerOptions":{
+        "baseUrl": ".",
+        "paths": {
+          "common/*": ["src/js/common/*"],
+          "stores/*": ["src/js/stores/*"],
+          "svg/*": ["src/js/svg/*"],
+          "img/*": ["src/img/*"]
+        },
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+      }
+    }
+    `
+)
+
+
 const gitIgnore = `.DS_Store
 .idea
 .vscode
