@@ -4,8 +4,8 @@ const rule = require('../../../lib/rules/no-implict-lodash-each-return')
 const ruleTester = new RuleTester({
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module'
-  }
+    sourceType: 'module',
+  },
 })
 
 const cases = {
@@ -33,7 +33,7 @@ const cases = {
               return false
           })
       `,
-    //multi _.each
+    // multi _.each
     `
           _.each(list, v => {
               v.checked = false;
@@ -43,7 +43,7 @@ const cases = {
               v.checked = false;
           })
       `,
-    //nested _.each
+    // nested _.each
     `
           _.each(list, v => {
               v.checked = false;
@@ -53,7 +53,7 @@ const cases = {
               return false
           })
       `,
-    //multi return statement
+    // multi return statement
     `
           _.each(list, v => {
               v.checked = false;
@@ -68,7 +68,7 @@ const cases = {
               return false
           })
       `,
-    //not each
+    // not each
     ` 
         _.map(list, v => {
             v.checked = false;
@@ -97,16 +97,16 @@ const cases = {
         `,
     ` 
         each([], null)
-        `
+        `,
   ],
   invalid: [
     {
       code: `
               _.each(list, v => v.checked = false);
           `,
-      errors: [{ messageId: 'expectedBlockStatement' }]
+      errors: [{ messageId: 'expectedBlockStatement' }],
     },
-    //return not Literal
+    // return not Literal
     {
       code: `
             _.each(list, v => {
@@ -114,7 +114,7 @@ const cases = {
                 return v;
             })
           `,
-      errors: [{ messageId: 'expectedLiteralReturnStatement' }]
+      errors: [{ messageId: 'expectedLiteralReturnStatement' }],
     },
     {
       code: `
@@ -123,7 +123,7 @@ const cases = {
               return v;
           })
         `,
-      errors: [{ messageId: 'expectedLiteralReturnStatement' }]
+      errors: [{ messageId: 'expectedLiteralReturnStatement' }],
     },
     {
       code: `
@@ -132,7 +132,7 @@ const cases = {
               return v;
           })
         `,
-      errors: [{ messageId: 'expectedLiteralReturnStatement' }]
+      errors: [{ messageId: 'expectedLiteralReturnStatement' }],
     },
     {
       code: `
@@ -141,9 +141,9 @@ const cases = {
               return v;
           })
         `,
-      errors: [{ messageId: 'expectedLiteralReturnStatement' }]
+      errors: [{ messageId: 'expectedLiteralReturnStatement' }],
     },
-    //return not Boolean Literal
+    // return not Boolean Literal
     {
       code: `
         _.each(list, v => {
@@ -151,9 +151,9 @@ const cases = {
             return 123;
         })
         `,
-      errors: [{ messageId: 'expectedLiteralReturnStatement' }]
+      errors: [{ messageId: 'expectedLiteralReturnStatement' }],
     },
-    //multi _.each
+    // multi _.each
     {
       code: `
               _.each(list, v => {
@@ -162,9 +162,9 @@ const cases = {
               })
               _.each(list, v => v.checked = false)
           `,
-      errors: [{ messageId: 'expectedBlockStatement' }]
+      errors: [{ messageId: 'expectedBlockStatement' }],
     },
-    //nested _.each
+    // nested _.each
     {
       code: `
         _.each(list, v => {
@@ -176,9 +176,9 @@ const cases = {
             return false
         })
         `,
-      errors: [{ messageId: 'expectedLiteralReturnStatement' }]
+      errors: [{ messageId: 'expectedLiteralReturnStatement' }],
     },
-    //nested _.each
+    // nested _.each
     {
       code: `
         _.each(list, v => {
@@ -187,9 +187,9 @@ const cases = {
             return false
         })
         `,
-      errors: [{ messageId: 'expectedBlockStatement' }]
+      errors: [{ messageId: 'expectedBlockStatement' }],
     },
-    //multi return statement
+    // multi return statement
     {
       code: `
             _.each(list, v => {
@@ -205,9 +205,9 @@ const cases = {
                 return false
             })
         `,
-      errors: [{ messageId: 'expectedLiteralReturnStatement' }]
-    }
-  ]
+      errors: [{ messageId: 'expectedLiteralReturnStatement' }],
+    },
+  ],
 }
 
 ruleTester.run('no-implict-lodash-each-return', rule, cases)
