@@ -1,6 +1,6 @@
 {
   "name": "ts-config-gm-react-app",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "main": "tsconfig.json",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
   },
   "author": "liyatang <liyatang@qq.com>",
   "license": "ISC",
-  "dependencies": {
+  "peerDependencies": {
     "typescript": "^3.8.3"
   }
 }

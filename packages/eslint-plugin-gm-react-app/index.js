@@ -119,6 +119,7 @@ module.exports = {
             '@typescript-eslint/no-empty-interface': 'warn',
             'import/no-extraneous-dependencies': 'error',
             'react/button-has-type': 0,
+            'no-undef':0
           },
         },
       ],
