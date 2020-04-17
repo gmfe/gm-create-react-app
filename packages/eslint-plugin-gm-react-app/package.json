@@ -40,7 +40,8 @@
     "import-modules": "^2.0.0",
     "jsx-ast-utils": "^2.2.3",
     "lodash": "^4.17.14",
-    "prettier": "^2.0.4"
+    "prettier": "^2.0.4",
+    "ts-config-gm-react-app": "^3.0.2"
   },
   "devDependencies": {
     "mocha": "^7.1.1"
