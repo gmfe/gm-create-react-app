@@ -17,7 +17,7 @@ module.exports = {
         common: path.resolve(__dirname, 'src/js/common/'),
         stores: path.resolve(__dirname, 'src/js/stores/'),
         svg: path.resolve(__dirname, 'src/svg/'),
-        img: path.resolve(__dirname, 'src/img/')
+        img: path.resolve(__dirname, 'src/img/'),
       }
     }
   }
@@ -27,33 +27,30 @@ module.exports = {
 
 fs.writeFileSync(
   PATH.appDirectory + '/jsconfig.json',
-  `
-    {
-      "compilerOptions":{
-        "baseUrl": ".",
-        "paths": {
-          "common/*": ["src/js/common/*"],
-          "stores/*": ["src/js/stores/*"],
-          "svg/*": ["src/js/svg/*"],
-          "img/*": ["src/img/*"]
-        },
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
-      }
-    }
-    `
+  `{
+  "compilerOptions":{
+    "baseUrl": ".",
+    "paths": {
+      "common/*": ["src/js/common/*"],
+      "stores/*": ["src/js/stores/*"],
+      "svg/*": ["src/js/svg/*"],
+      "img/*": ["src/img/*"]
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}
+`,
 )
 
 fs.writeFileSync(
   PATH.appDirectory + '/tsconfig.json',
-  `
-    {
-      "extends": "ts-config-gm-react-app/tsconfig",
-      "include": ["node_modules/@gm-common/**/global.d.ts"]
-    }
-    `
+  `{
+  "extends": "ts-config-gm-react-app/tsconfig",
+  "include": ["node_modules/@gm-common/**/global.d.ts"]
+}
+`,
 )
-
 
 const gitIgnore = `.DS_Store
 .idea
@@ -94,7 +91,7 @@ fs.writeFileSync(
   api.cache(true)
 
   return {
-    presets: ['gm-react-app']
+    presets: ['gm-react-app'],
   }
 }
 `,
