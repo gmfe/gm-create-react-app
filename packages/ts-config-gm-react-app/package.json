@@ -1,6 +1,6 @@
 {
   "name": "ts-config-gm-react-app",
-  "version": "3.0.4-alpha.2",
+  "version": "3.0.4-beta.0",
   "main": "tsconfig.json",
   "repository": {
     "type": "git",
@@ -14,5 +14,5 @@
   "peerDependencies": {
     "typescript": "^3.8.3"
   },
-  "gitHead": "bff5acfc95ef9b68507407bee10611c1172fd307"
+  "gitHead": "f749e1ebf05ae6fd0bb4e99c4e443adf84278e30"
 }
