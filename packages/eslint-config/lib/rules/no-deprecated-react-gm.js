@@ -1,0 +1,70 @@
+const { getProp } = require('jsx-ast-utils')
+
+module.exports = {
+  meta: {
+    type: 'problem',
+    docs: {
+      description: 'do not use deprecated by react-gm.',
+      category: 'Possible Errors',
+      recommended: 'error',
+    },
+    messages: {
+      comSearchSelect: 'SearchSelect FilterSelect 废弃，请使用 MoreSelect',
+      comTreeSelect: 'TreeSelect 废弃，请使用 TreeV2',
+      comTrigger: 'Trigger 废弃，请使用 Popover',
+      comDropper: 'Dropper 废弃，请使用 Uploader',
+      'class_gm-font-x': '废弃，请使用 gm-text-x',
+      class_btn: '废弃，请用 Button',
+    },
+  },
+  create: function(context) {
+    return {
+      JSXElement: function(node) {
+        const comName = node.openingElement.name.name
+
+        if (comName === 'SearchSelect' || comName === 'FilterSelect') {
+          context.report({
+            node,
+            messageId: 'comSearchSelect',
+          })
+        } else if (comName === 'TreeSelect') {
+          context.report({
+            node,
+            messageId: 'comTreeSelect',
+          })
+        } else if (comName === 'Trigger') {
+          context.report({
+            node,
+            messageId: 'comTrigger',
+          })
+        } else if (comName === 'Dropper') {
+          context.report({
+            node,
+            messageId: 'comDropper',
+          })
+        }
+
+        const classNameProp = getProp(
+          node.openingElement.attributes,
+          'className',
+        )
+
+        if (classNameProp) {
+          const text = context.getSourceCode().getText(classNameProp)
+
+          if (text.includes('gm-font-')) {
+            context.report({
+              node,
+              messageId: 'class_gm-font-x',
+            })
+          } else if (text.includes('btn-') && !text.includes('-btn')) {
+            context.report({
+              node,
+              messageId: 'class_btn',
+            })
+          }
+        }
+      },
+    }
+  },
+}
