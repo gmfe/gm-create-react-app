@@ -5,9 +5,9 @@ const rules = importModules('lib/rules', { camelize: false })
 const recommendedRules = createIndex.createConfig(
   {
     plugin: 'gm-react-app',
-    field: 'meta.docs.recommended',
+    field: 'meta.docs.recommended'
   },
-  rules,
+  rules
 )
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
         'plugin:import/errors',
         'prettier',
         'prettier/react',
-        'prettier/standard',
+        'prettier/standard'
       ],
       plugins: ['gm-react-app', 'prettier', 'react-hooks'],
       rules: {
@@ -33,7 +33,7 @@ module.exports = {
         'react/no-find-dom-node': 0,
         'react/prop-types': [
           2,
-          { ignore: ['children', 'location', 'params', 'match'] },
+          { ignore: ['children', 'location', 'params', 'match'] }
         ],
         'react/jsx-handler-names': 1,
         'react-hooks/rules-of-hooks': 'error',
@@ -44,13 +44,13 @@ module.exports = {
         'import/namespace': 'off',
         'import/no-named-as-default': 'off',
         'import/no-named-as-default-member': 'off',
-        'import/no-duplicates': 'off',
+        'import/no-duplicates': 'off'
       },
       settings: {
         react: {
-          version: 'detect',
-        },
-      },
-    },
-  },
+          version: 'detect'
+        }
+      }
+    }
+  }
 }

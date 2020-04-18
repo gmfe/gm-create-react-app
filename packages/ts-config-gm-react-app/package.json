@@ -13,6 +13,5 @@
   "license": "ISC",
   "peerDependencies": {
     "typescript": "^3.8.3"
-  },
-  "gitHead": "f749e1ebf05ae6fd0bb4e99c4e443adf84278e30"
+  }
 }

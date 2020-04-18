@@ -36,6 +36,5 @@
     "@babel/runtime": "^7.8.4",
     "react-hot-loader": "^4.12.19",
     "styled-jsx": "^3.2.4"
-  },
-  "gitHead": "f749e1ebf05ae6fd0bb4e99c4e443adf84278e30"
+  }
 }
