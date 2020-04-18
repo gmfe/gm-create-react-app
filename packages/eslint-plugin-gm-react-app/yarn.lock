@@ -1970,10 +1970,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-ts-config-gm-react-app@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.npm.taobao.org/ts-config-gm-react-app/download/ts-config-gm-react-app-3.0.3.tgz#48f12104fb50db0d5b0c0096e80f39815518a5d8"
-  integrity sha1-SPEhBPtQ2w1bDACW6A85gVUYpdg=
+ts-config-gm-react-app@^3.0.4-beta.0:
+  version "3.0.4-beta.0"
+  resolved "https://registry.npm.taobao.org/ts-config-gm-react-app/download/ts-config-gm-react-app-3.0.4-beta.0.tgz#51bb852a43396be499a2f9a1a37bfd9bbd3a2788"
+  integrity sha1-UbuFKkM5a+SZovmho3v9m706J4g=
 
 tsconfig-paths@^3.9.0:
   version "3.9.0"

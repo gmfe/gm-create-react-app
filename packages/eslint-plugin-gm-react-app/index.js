@@ -1,4 +1,3 @@
-const { resolve } = require
 const createIndex = require('create-eslint-index')
 const importModules = require('import-modules')
 const rules = importModules('lib/rules', { camelize: false })
@@ -26,14 +25,7 @@ module.exports = {
         'prettier/react',
         'prettier/standard',
       ],
-      plugins: ['gm-react-app', 'react-hooks', 'prettier'],
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-        ecmaVersion: 2020,
-        sourceType: 'module',
-      },
+      plugins: ['gm-react-app', 'prettier', 'react-hooks'],
       rules: {
         ...recommendedRules,
         'prettier/prettier': 1,
@@ -59,70 +51,6 @@ module.exports = {
           version: 'detect',
         },
       },
-      overrides: [
-        {
-          files: ['**/*.ts', '**/*.tsx'],
-          parser: '@typescript-eslint/parser',
-          extends: [
-            'standard',
-            'standard-jsx',
-            'plugin:react/recommended',
-            'plugin:import/warnings',
-            'plugin:import/errors',
-            'plugin:import/typescript',
-            'prettier',
-            'prettier/react',
-            'prettier/standard',
-            'prettier/@typescript-eslint',
-          ],
-          plugins: [
-            'gm-react-app',
-            'react-hooks',
-            '@typescript-eslint',
-            'prettier',
-          ],
-          parserOptions: {
-            ecmaFeatures: {
-              jsx: true,
-            },
-            ecmaVersion: 2020,
-            sourceType: 'module',
-          },
-          settings: {
-            'import/resolver': {
-              typescript: {
-                directory: [resolve('ts-config-gm-react-app/tsconfig.json')],
-              },
-            },
-          },
-          rules: {
-            'prettier/prettier': 'error',
-            ...recommendedRules,
-            'react/prop-types': 'off',
-            '@typescript-eslint/member-naming': [
-              'error',
-              {
-                private: '^_',
-                protected: '^__',
-              },
-            ],
-            'import/extensions': [
-              2,
-              'ignorePackages',
-              { ts: 'never', tsx: 'never', json: 'always', js: 'never' },
-            ],
-            'no-unused-vars': 'off',
-            'no-useless-constructor': 'off',
-            '@typescript-eslint/no-useless-constructor': 'error',
-            'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
-            'react/state-in-constructor': [2, 'never'],
-            '@typescript-eslint/no-empty-interface': 'warn',
-            'import/no-extraneous-dependencies': 'error',
-            'react/button-has-type': 0,
-            'no-undef':0
-          },
-        },
-      ],
     },
   },
 }
