@@ -54,12 +54,13 @@ module.exports = {
   // 默认不启用
   https: false,
   // 代理
-  proxy: {
-    '/core/*': {
+  proxy: [
+    {
+      context: ['/xxxx', '/xxx'],
       target: 'url',
-      changeOrigin: true
-    }
-  }
+      changeOrigin: true,
+    },
+  ],
 }
 ```
 
@@ -121,6 +122,7 @@ __COMMIT__
 ```
 
 模板变量
+
 ```
 htmlWebpackPlugin.options.branch
 htmlWebpackPlugin.options.commit

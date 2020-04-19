@@ -13,11 +13,9 @@ if (fs.existsSync(PATH.appIndexTemplate)) {
     '__platform',
     '____fe_branch',
     '____git_commit',
-    '//js.guanmai.cn/build/libs/babel-polyfill/7.4.4/dist/polyfill.min.js',
-    '//js.guanmai.cn/build/libs/gm-fetch/2.0.1/gm-fetch.min.js',
   ]
 
-  list.forEach(value => {
+  list.forEach((value) => {
     if (!template.includes(value)) {
       console.error('请提供 ', value)
     }

@@ -11,9 +11,9 @@ module.exports = {
       // TODO other
     },
   },
-  create: function(context) {
+  create: function (context) {
     return {
-      MemberExpression: function(node) {
+      MemberExpression: function (node) {
         if (
           node.object.type === 'Identifier' &&
           node.object.name === 'is' &&
