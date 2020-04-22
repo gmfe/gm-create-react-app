@@ -79,24 +79,24 @@ let config = {
     splitChunks: {
       chunks: 'all',
       automaticNameDelimiter: '.',
+      minSize: 50000,
+      maxAsyncRequests: 4,
+      maxInitialRequests: 3,
       // 暂时先这样，后面逐步完善
       cacheGroups: {
-        react_base: {
-          test: /\/node_modules\/(react|react-dom|prop-types)\//,
+        // 作为基础包
+        common_base: {
+          test: /\/node_modules\/(react|react-dom|prop-types|lodash|moment|mobx|mobx-react|mobx-react-lite)\//,
           chunks: 'all',
           priority: 10,
         },
-        // 未来通过 webpack 按需加载最好
-        lodash_moment: {
-          test: /\/node_modules\/(lodash|moment)\//,
-          chunks: 'all',
+        // 减少冗余
+        common_chunk: {
+          test: path.resolve(PATH.appDirectory + '/src'),
+          minChunks: 3,
           priority: 10,
-        },
-        mobx_base: {
-          test: /\/node_modules\/(mobx|mobx-react)\//,
-          chunks: 'all',
-          priority: 10,
-        },
+          reuseExistingChunk: true
+        }
       },
     },
     runtimeChunk: 'single',
