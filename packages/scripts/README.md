@@ -1,5 +1,3 @@
-gm-react-app
-
 # 使用
 
 安装

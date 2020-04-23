@@ -1,5 +1,20 @@
 
-模板变量
+# 使用
+
+安装
+
+```shell script
+yarn add @gm-react-app/scripts-lib
+```
+
+创建新包
+
+```shell script
+grasl create-package xxxx
+```
+
+
+# 模板变量
 
 ## 命令 package
 ```
