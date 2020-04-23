@@ -3,14 +3,6 @@ const fs = require('fs-extra')
 
 console.log('--> config')
 
-if (fs.existsSync(PATH.appConfig + '/deploy.json')) {
-  console.error('请迁移 deploy.json 到 deply.js')
-}
-
-if (fs.existsSync(PATH.appConfig + '/local.json')) {
-  console.error('请迁移 local.json 到 local.js')
-}
-
 try {
   const deploy = require(PATH.appConfig + '/deploy')
 

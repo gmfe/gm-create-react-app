@@ -11,9 +11,9 @@ module.exports = {
       expected: '不允许直接从全局对象获取模板变量.',
     },
   },
-  create: function(context) {
+  create: function (context) {
     return {
-      MemberExpression: function(node) {
+      MemberExpression: function (node) {
         if (
           node.object.type === 'Identifier' &&
           node.object.name === 'window' &&

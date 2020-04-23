@@ -198,7 +198,7 @@ let config = {
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
     new ForkTsCheckerWebpackPlugin({
       memoryLimit: 4096,
-      tsconfig: PATH.appDirectory + '/tsconfig.json'
+      tsconfig: PATH.appDirectory + '/tsconfig.json',
     }),
     new webpack.DefinePlugin({
       __DEBUG__: isEnvDevelopment,

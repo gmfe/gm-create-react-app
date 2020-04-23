@@ -17,9 +17,9 @@ module.exports = {
       class_btn: '废弃，请用 Button',
     },
   },
-  create: function(context) {
+  create: function (context) {
     return {
-      JSXElement: function(node) {
+      JSXElement: function (node) {
         const comName = node.openingElement.name.name
 
         if (comName === 'SearchSelect' || comName === 'FilterSelect') {

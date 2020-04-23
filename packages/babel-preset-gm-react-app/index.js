@@ -1,4 +1,4 @@
-module.exports = api => {
+module.exports = (api) => {
   api.assertVersion('^7.0.0')
 
   return {

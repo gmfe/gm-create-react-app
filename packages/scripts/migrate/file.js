@@ -28,7 +28,7 @@ if (fs.existsSync(PATH.appDirectory + '/Jenkinsfile')) {
 }
 
 const movePath = ['/js', '/css', '/svg', '/img', '/locales']
-movePath.forEach(p => {
+movePath.forEach((p) => {
   if (fs.existsSync(PATH.appDirectory + p)) {
     fs.moveSync(PATH.appDirectory + p, PATH.appSrc + p)
   }

@@ -8,7 +8,7 @@ const isEnvTest = env === 'test'
 const isEnvProduction = env === 'production'
 
 const appDirectory = fs.realpathSync(process.cwd())
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath)
+const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
 
 function shellExec(com) {
   if (sh.exec(com).code !== 0) {

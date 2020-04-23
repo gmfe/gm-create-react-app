@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '//js.guanmai.cn/build/my-project/'
+  publicPath: '//js.guanmai.cn/build/my-project/',
 }

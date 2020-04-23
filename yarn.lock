@@ -1047,21 +1047,21 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@gm-react-app/scripts@^3.0.4":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@gm-react-app/scripts/-/scripts-3.0.4.tgz#3ed77b6265d05001d1f7c2d5103c9931f0aeff4f"
-  integrity sha512-i9fP+Abq462zsUVErhhMGo1YHix5wsjr/MTtzRMNn85k3QEj4t1XPrhXIiVnLOUqHAVG9MSgeVU0Pali2svSAw==
+"@gm-react-app/scripts@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.npmjs.org/@gm-react-app/scripts/-/scripts-3.0.5.tgz#f072e1609595ead31bd0b011da30767bfbb1f40f"
+  integrity sha512-HAcCw8bzl+SFzpsv3kxjU5FzIWz5mk+zT1lJDMRzh0kJPallvjSV4BfuGAz3ydCSrxCjSt6sZjTI1ePhs8us5w==
   dependencies:
     "@babel/core" "^7.8.4"
     "@hot-loader/react-dom" "^16.11.0"
     "@svgr/webpack" "^5.3.1"
     "@types/react" "^16.9.32"
     babel-loader "^8.0.6"
-    babel-preset-gm-react-app "^3.0.4"
+    babel-preset-gm-react-app "^3.0.5"
     case-sensitive-paths-webpack-plugin "^2.3.0"
     cross-spawn "^7.0.2"
     css-loader "^3.5.1"
-    eslint-plugin-gm-react-app "^3.0.4"
+    eslint-plugin-gm-react-app "^3.0.5"
     file-loader "^6.0.0"
     fork-ts-checker-webpack-plugin "^4.1.3"
     fs "0.0.2"
@@ -1083,7 +1083,7 @@
     stylelint-config-standard "^20.0.0"
     terser-webpack-plugin "^2.1.0"
     thread-loader "^2.1.3"
-    ts-config-gm-react-app "^3.0.4"
+    ts-config-gm-react-app "^3.0.5"
     typescript "^3.8.3"
     url-loader "^4.0.0"
     webpack "^4.42.1"
@@ -2815,10 +2815,10 @@ babel-plugin-syntax-jsx@6.18.0, babel-plugin-syntax-jsx@^6.18.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
   integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
 
-babel-preset-gm-react-app@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/babel-preset-gm-react-app/-/babel-preset-gm-react-app-3.0.4.tgz#f76f970a30d96200b08a19db38a6aae3d1ecb588"
-  integrity sha512-VTQ91ZxLKN7EoWflu870BokeAqLGHZtZVWbCYTzFNMylRIa5gER811SeVgH7vCbjXPj+sI0iODDmp/+ZO6SCLw==
+babel-preset-gm-react-app@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.npmjs.org/babel-preset-gm-react-app/-/babel-preset-gm-react-app-3.0.5.tgz#15ada3dcffbf616805c0391b665c04fce5510303"
+  integrity sha512-CjraPfiXlqYHJwdZGT3iCXmLvRxUcz8IqO5Z1pQ6nGIuOkTkeLFCkn90/yOSZV93JmUeTOtzJbXAvPidSyPeaQ==
   dependencies:
     "@babel/cli" "^7.8.4"
     "@babel/core" "^7.8.4"
@@ -4652,10 +4652,10 @@ eslint-plugin-es@^3.0.0:
     eslint-utils "^2.0.0"
     regexpp "^3.0.0"
 
-eslint-plugin-gm-react-app@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-3.0.4.tgz#ffdbaeca7121a0772b7e692dce966ffd22bf3f42"
-  integrity sha512-tyOCzz1/h1B7aio8VKpHS5THyobrnyYXnVZca/caVSalWGp6rQJFKnb7cl75dnTKeZc/KiYNIEOETH+DaKwoOg==
+eslint-plugin-gm-react-app@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.npmjs.org/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-3.0.5.tgz#3dd2c9f0d25838c132f555b7b46086f5bc778a50"
+  integrity sha512-wSD+Tv6nMTu3ldQpBnODrGSgUq8Ej8mNbvUiDBojIP/HlMFtpP2DKa/5j/FIVffOCy/mAF/QBgrGc2bLHD4Wiw==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.27.0"
     "@typescript-eslint/parser" "^2.27.0"
@@ -4678,7 +4678,8 @@ eslint-plugin-gm-react-app@^3.0.4:
     jsx-ast-utils "^2.2.3"
     lodash "^4.17.14"
     prettier "^2.0.4"
-    ts-config-gm-react-app "^3.0.4"
+    ts-config-gm-react-app "^3.0.5"
+    typescript "^3.8.3"
 
 eslint-plugin-import@^2.20.2:
   version "2.20.2"
@@ -11232,10 +11233,10 @@ trough@^1.0.0:
   resolved "https://registry.yarnpkg.com/trough/-/trough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
   integrity sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==
 
-ts-config-gm-react-app@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/ts-config-gm-react-app/-/ts-config-gm-react-app-3.0.4.tgz#67cd5dd3296b1c308f7ae694dddd8da90623e053"
-  integrity sha512-cRJEFEWTe/9LJv12IcSxt+66zLS6goMHqIGU9uEkQO9mO65ZKom6G/BZgN+w4YWIpypNl1q0NOLM9I7d+nVwkw==
+ts-config-gm-react-app@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.0.5.tgz#41cab4674c8e28921c0cd5869a5059ed64251c99"
+  integrity sha512-8dkcpOOuReYF4xOLZkplAPp7kfWYDBveTEBFRQu/6gGIl/PW0ONOFyCxApGwfIGLyWDGQ23yjYTCL0x9tFY45Q==
 
 tsconfig-paths@^3.9.0:
   version "3.9.0"

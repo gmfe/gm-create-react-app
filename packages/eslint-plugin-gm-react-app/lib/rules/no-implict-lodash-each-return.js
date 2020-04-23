@@ -13,7 +13,7 @@ module.exports = {
         'Expected ReturnStatement of Callback of _.each must be have no argument or have argument of Literal true or false.',
     },
   },
-  create: function(context) {
+  create: function (context) {
     const functionNames = ['each', 'eachRight', 'forEach', 'forEachRight']
 
     let funcInfo = {
@@ -75,7 +75,7 @@ module.exports = {
         funcInfo = funcInfo.upper
       },
 
-      ReturnStatement: function(node) {
+      ReturnStatement: function (node) {
         if (funcInfo.shouldCheck) {
           const pass =
             !node.argument || // return无参数 //或return true/false字面量

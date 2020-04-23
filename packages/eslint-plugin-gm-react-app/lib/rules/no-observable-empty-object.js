@@ -10,9 +10,9 @@ module.exports = {
       expected: 'mobx observable empty object not allowed.',
     },
   },
-  create: function(context) {
+  create: function (context) {
     return {
-      ClassProperty: function(node) {
+      ClassProperty: function (node) {
         const isObservable =
           node.decorators &&
           node.decorators[0].expression.type === 'Identifier' &&
