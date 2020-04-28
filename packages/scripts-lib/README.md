@@ -13,6 +13,12 @@ yarn add @gm-react-app/scripts-lib
 grasl create-package xxxx
 ```
 
+创建 ts 包
+
+```shell script
+grasl create-package xxxx --ts
+```
+
 
 # 模板变量
 

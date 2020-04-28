@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 const spawn = require('cross-spawn')
 
+const scripts = ['start', 'build', 'test', 'migrate']
 const script = process.argv[2]
 
-if (['start', 'build', 'test', 'migrate'].includes(script)) {
+if (scripts.includes(script)) {
   const result = spawn.sync(
     'node',
     [require.resolve('../scripts/' + script)].concat(process.argv.slice(3)),

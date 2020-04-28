@@ -4,9 +4,11 @@ process.on('unhandledRejection', (err) => {
 
 const fs = require('fs-extra')
 const template = require('art-template')
+const argv = require('yargs').argv
 const { PATH, getVersion, getScope, getFiles } = require('../util')
 
-const packageName = process.argv[3]
+const packageName = process.argv[2]
+const isTs = !!argv.ts
 
 if (!packageName) {
   console.error('提供包名')
@@ -27,7 +29,8 @@ fs.mkdirpSync(packagePath)
 
 files.forEach(({ path, type }) => {
   const targetPath =
-    packagePath + path.replace(PATH.template + '/template-js', '')
+    packagePath +
+    path.replace(PATH.template + (isTs ? '/template-ts' : '/template-js'), '')
 
   if (type === 'dir') {
     fs.mkdirpSync(targetPath)
