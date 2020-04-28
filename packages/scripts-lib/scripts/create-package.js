@@ -5,7 +5,7 @@ process.on('unhandledRejection', (err) => {
 const fs = require('fs-extra')
 const template = require('art-template')
 const argv = require('yargs').argv
-const { PATH, getVersion, getScope, getFiles } = require('../util')
+const { PATH, getVersion, getScope, getFiles, shellExec } = require('../util')
 
 const packageName = process.argv[2]
 const isTs = !!argv.ts
@@ -15,7 +15,10 @@ if (!packageName) {
   process.exit(1)
 }
 
+console.log('create package', packageName)
+
 const packagePath = PATH.libPackages + '/' + packageName
+const tempPath = PATH.template + (isTs ? '/template-ts' : '/template-js')
 
 const data = {
   scope: getScope(),
@@ -23,14 +26,12 @@ const data = {
   version: getVersion(),
 }
 
-const files = getFiles(PATH.template)
+const files = getFiles(tempPath)
 
 fs.mkdirpSync(packagePath)
 
 files.forEach(({ path, type }) => {
-  const targetPath =
-    packagePath +
-    path.replace(PATH.template + (isTs ? '/template-ts' : '/template-js'), '')
+  const targetPath = packagePath + path.replace(tempPath, '')
 
   if (type === 'dir') {
     fs.mkdirpSync(targetPath)
@@ -39,3 +40,7 @@ files.forEach(({ path, type }) => {
     fs.writeFileSync(targetPath, parseContent)
   }
 })
+
+console.log('create package done')
+console.log('lerna bootstrap')
+shellExec('lerna bootstrap')
