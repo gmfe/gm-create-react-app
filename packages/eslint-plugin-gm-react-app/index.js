@@ -106,6 +106,12 @@ module.exports = {
                 protected: '^__',
               },
             ],
+            'react/jsx-handler-names': [
+              'error',
+              {
+                eventHandlerPrefix: '_handle',
+              },
+            ],
             'import/extensions': [
               2,
               'ignorePackages',
