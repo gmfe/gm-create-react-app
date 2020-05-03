@@ -106,6 +106,12 @@ module.exports = {
                 protected: '^__',
               },
             ],
+            'react/jsx-handler-names': [
+              'error',
+              {
+                eventHandlerPrefix: '_handle',
+              },
+            ],
             'import/extensions': [
               2,
               'ignorePackages',
@@ -120,6 +126,7 @@ module.exports = {
             'import/no-extraneous-dependencies': 'error',
             'react/button-has-type': 0,
             'no-undef': 0,
+            'import/default': 'off',
           },
         },
       ],
