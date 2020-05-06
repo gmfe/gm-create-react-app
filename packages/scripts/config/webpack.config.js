@@ -59,10 +59,10 @@ let config = {
     path: PATH.appBuild,
     filename: isEnvDevelopment
       ? `js/bundle.js`
-      : `js/[name]/[contenthash:8]/index.js`,
+      : `js/[name]/[contenthash:8].js`,
     chunkFilename: isEnvDevelopment
       ? 'js/[name].chunk.js'
-      : 'js/[name]/[contenthash:8]/chunk.js',
+      : 'js/[name]/[contenthash:8].chunk.js',
     publicPath: appConfig.publicPath,
   },
   optimization: {
@@ -220,8 +220,8 @@ let config = {
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
       new MiniCssExtractPlugin({
-        filename: 'css/[name]/[contenthash:8]/index.css',
-        chunkFilename: 'css/[name]/[contenthash:8]/chunk.css',
+        filename: 'css/[name]/[contenthash:8].css',
+        chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
       }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
