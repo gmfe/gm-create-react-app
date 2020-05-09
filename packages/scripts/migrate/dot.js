@@ -33,7 +33,7 @@ fs.writeFileSync(
     "paths": {
       "common/*": ["src/js/common/*"],
       "stores/*": ["src/js/stores/*"],
-      "svg/*": ["src/js/svg/*"],
+      "svg/*": ["src/svg/*"],
       "img/*": ["src/img/*"]
     },
     "experimentalDecorators": true,
