@@ -70,6 +70,7 @@ const commonInclude = [
   /gm-common/,
   /gm_static_storage/,
   /react-mgm/,
+  /react-gm/,
   /query-string/,
   /split-on-first/,
   /strict-uri-encode/,
