@@ -46,8 +46,7 @@ fs.writeFileSync(
 fs.writeFileSync(
   PATH.appDirectory + '/tsconfig.json',
   `{
-  "extends": "ts-config-gm-react-app/tsconfig",
-  "include": ["node_modules/@gm-common/**/global.d.ts"]
+  "extends": "ts-config-gm-react-app/tsconfig"
 }
 `,
 )
