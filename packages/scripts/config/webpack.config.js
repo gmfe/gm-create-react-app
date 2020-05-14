@@ -199,6 +199,8 @@ let config = {
     new ForkTsCheckerWebpackPlugin({
       memoryLimit: 4096,
       tsconfig: PATH.appDirectory + '/tsconfig.json',
+      checkSyntacticErrors: true,
+      reportFiles: [`${PATH.appSrc}/**/*.{ts,tsx}`],
     }),
     new webpack.DefinePlugin({
       __DEBUG__: isEnvDevelopment,
