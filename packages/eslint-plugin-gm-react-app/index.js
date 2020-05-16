@@ -106,6 +106,12 @@ module.exports = {
                 protected: '^__',
               },
             ],
+            'react/jsx-handler-names': [
+              'error',
+              {
+                eventHandlerPrefix: '_handle',
+              },
+            ],
             'import/extensions': [
               2,
               'ignorePackages',
@@ -117,9 +123,9 @@ module.exports = {
             'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
             'react/state-in-constructor': [2, 'never'],
             '@typescript-eslint/no-empty-interface': 'warn',
-            'import/no-extraneous-dependencies': 'error',
             'react/button-has-type': 0,
             'no-undef': 0,
+            'import/default': 'off',
           },
         },
       ],
