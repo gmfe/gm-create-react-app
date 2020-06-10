@@ -161,7 +161,7 @@ let config = {
                     fill: 'currentColor',
                     // className 冗余
                     className:
-                      "{'gm-svg-icon t-svg-icon ' + (props.className || '')}",
+                      "{'gm-svg-icon t-svg-icon m-svg-icon' + (props.className || '')}",
                   },
                 },
               },
@@ -169,7 +169,7 @@ let config = {
           },
           // iconfont 应该要废弃掉
           {
-            test: /(fontawesome-webfont|glyphicons-halflings-regular|iconfont)\.(woff|woff2|ttf|eot|svg)($|\?)/,
+            test: /(fontawesome-webfont|glyphicons-halflings-regular|iconfont|gm-mobile-icons)\.(woff|woff2|ttf|eot|svg)($|\?)/,
             use: [
               {
                 loader: require.resolve('url-loader'),
