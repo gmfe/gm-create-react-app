@@ -161,7 +161,7 @@ let config = {
                     fill: 'currentColor',
                     // className 冗余
                     className:
-                      "{'gm-svg-icon t-svg-icon m-svg-icon' + (props.className || '')}",
+                      "{'gm-svg-icon t-svg-icon m-svg-icon ' + (props.className || '')}",
                   },
                 },
               },
