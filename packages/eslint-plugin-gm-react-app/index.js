@@ -98,6 +98,7 @@ module.exports = {
           rules: {
             'prettier/prettier': 'error',
             ...recommendedRules,
+            camelcase: 'off',
             'react/prop-types': 'off',
             '@typescript-eslint/member-naming': [
               'error',
@@ -106,6 +107,8 @@ module.exports = {
                 protected: '^__',
               },
             ],
+            'react/display-name': 0,
+            'react/no-find-dom-node': 0,
             'react/jsx-handler-names': [
               'error',
               {
