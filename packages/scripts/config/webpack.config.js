@@ -4,6 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const WebpackBar = require('webpackbar')
+const FriendlyErrorWebpackPlugin = require('friendly-errors-webpack-plugin')
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const SizePlugin = require('size-plugin')
 const fs = require('fs-extra')
 const path = require('path')
 const _ = require('lodash')
@@ -95,8 +99,8 @@ let config = {
           test: path.resolve(PATH.appDirectory + '/src'),
           minChunks: 3,
           priority: 10,
-          reuseExistingChunk: true
-        }
+          reuseExistingChunk: true,
+        },
       },
     },
     runtimeChunk: 'single',
@@ -195,6 +199,8 @@ let config = {
     ],
   },
   plugins: [
+    new WebpackBar(),
+    new FriendlyErrorWebpackPlugin(),
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
     new ForkTsCheckerWebpackPlugin({
       memoryLimit: 4096,
@@ -228,6 +234,7 @@ let config = {
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new SizePlugin({ writeFile: false }),
   ].filter(Boolean),
   resolve: {
     alias: _.pickBy(
@@ -269,4 +276,6 @@ if (fs.existsSync(PATH.appConfig + '/webpack.config.js')) {
   config = require(PATH.appConfig + '/webpack.config.js')(config)
 }
 
-module.exports = config
+const smp = new SpeedMeasurePlugin()
+
+module.exports = smp.wrap(config)
