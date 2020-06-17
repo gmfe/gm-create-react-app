@@ -1812,10 +1812,10 @@ babel-plugin-syntax-jsx@6.18.0, babel-plugin-syntax-jsx@^6.18.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
   integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
 
-babel-preset-gm-react-app@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/babel-preset-gm-react-app/-/babel-preset-gm-react-app-3.1.5.tgz#ce2103b5e0cf335afd077add21de31f0128fe1e6"
-  integrity sha512-em4zlWYcmmN4Tbkh6WL9irXB6uiEfipjcJfek0K4QerFHv7PoUc8G1C4IXrfJYg5uApVCo5xAY0fufQyNaJEFA==
+babel-preset-gm-react-app@^3.1.8:
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/babel-preset-gm-react-app/-/babel-preset-gm-react-app-3.1.8.tgz#4a9f643a2f94630133dcb88362180a085b72ce18"
+  integrity sha512-ubUqYkagO6kTWjrTkWl3VxZDZQAkv+xFEklRf3OVlmrScifBy7ZH7hkzQCVPLeJKuwLxHOl7cZuochR+Jipv0Q==
   dependencies:
     "@babel/cli" "^7.8.4"
     "@babel/core" "^7.8.4"
@@ -3344,10 +3344,10 @@ eslint-plugin-es@^3.0.0:
     eslint-utils "^2.0.0"
     regexpp "^3.0.0"
 
-eslint-plugin-gm-react-app@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-3.1.5.tgz#8f0eeb2c91eca0b25dfcf6377a021a200589af12"
-  integrity sha512-fCY0fHpD1Zlhc8H2yHMKqUm7e6DQV/Yu0Y31UQsh6dfDO4oun820b+3WMKKc3lsfEmY0QWUePGO7KDwM41gH5w==
+eslint-plugin-gm-react-app@^3.1.8:
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-3.1.8.tgz#cdace071e70203dc9c82fe3d34ebb38bd0790fca"
+  integrity sha512-JAw2ezvvqDpxJbYSFvLALO1tZQUJUsqnKuNlB2+hsSLQl1QzKsBNYRFE9U8yDUEV9iYi0UiB4GhTRzavbEqCIQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.27.0"
     "@typescript-eslint/parser" "^2.27.0"
@@ -3370,7 +3370,7 @@ eslint-plugin-gm-react-app@^3.1.5:
     jsx-ast-utils "^2.2.3"
     lodash "^4.17.14"
     prettier "^2.0.4"
-    ts-config-gm-react-app "^3.1.5"
+    ts-config-gm-react-app "^3.1.8"
     typescript "^3.8.3"
 
 eslint-plugin-import@^2.20.2:
@@ -8665,10 +8665,10 @@ trough@^1.0.0:
   resolved "https://registry.yarnpkg.com/trough/-/trough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
   integrity sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==
 
-ts-config-gm-react-app@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/ts-config-gm-react-app/-/ts-config-gm-react-app-3.1.5.tgz#2c973877c3302aa7c569d5d1d69ef16e193247bf"
-  integrity sha512-gtt7IvEwSkDvB0RUukEP1+rGf7vOp7CYQPNoPQ5ZuFnjRrr7jbDk3Wx/7S1SeFdEudjjBV9ovPM0l9HNSgqACQ==
+ts-config-gm-react-app@^3.1.8:
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/ts-config-gm-react-app/-/ts-config-gm-react-app-3.1.8.tgz#439dca5848d0f91bd95598314dc41a53ed70e453"
+  integrity sha512-dhrYJsY4c+3rUnQ7v0C2CnUpAb++gvKRs+G7phBmHIUEsyGMkn5bODt8eVarBjlsNcOHJDjaSf7h98VEJ4vilQ==
 
 tsconfig-paths@^3.9.0:
   version "3.9.0"
@@ -9223,9 +9223,9 @@ websocket-driver@>=0.5.1:
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
-  integrity sha512-nqHUnMXmBzT0w570r2JpJxfiSD1IzoI+HGVdd3aZ0yNi3ngvQ4jv1dtHt5VGxfI2yj5yqImPhOK4vmIh2xMbGg==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
+  integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
 which-module@^2.0.0:
   version "2.0.0"
