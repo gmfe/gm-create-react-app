@@ -1960,11 +1960,6 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-ts-config-gm-react-app@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/ts-config-gm-react-app/-/ts-config-gm-react-app-3.1.5.tgz#2c973877c3302aa7c569d5d1d69ef16e193247bf"
-  integrity sha512-gtt7IvEwSkDvB0RUukEP1+rGf7vOp7CYQPNoPQ5ZuFnjRrr7jbDk3Wx/7S1SeFdEudjjBV9ovPM0l9HNSgqACQ==
-
 tsconfig-paths@^3.9.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.9.0.tgz#098547a6c4448807e8fcb8eae081064ee9a3c90b"

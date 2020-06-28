@@ -19,8 +19,9 @@ module.exports = (api) => {
       require('@babel/plugin-proposal-optional-chaining'),
       require('@babel/plugin-syntax-dynamic-import'),
       require('@babel/plugin-transform-runtime'),
-      require('react-hot-loader/babel'),
       require('styled-jsx/babel'),
+      require('babel-plugin-lodash'),
+      require('react-hot-loader/babel'),
     ],
     // 从后往前
     presets: [
