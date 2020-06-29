@@ -61,19 +61,19 @@ const PATH = {
   appPackageJson: resolveApp('package.json'),
 }
 
-// query-string 比较坑爹，里面用了 const
+// query-string swiper dom7 比较坑爹，里面用了 const
 const commonInclude = [
   PATH.appSrc,
   /gm-/,
   /gmfe/,
-  /gm-touch/,
-  /gm-common/,
   /gm_static_storage/,
   /react-mgm/,
   /react-gm/,
   /query-string/,
   /split-on-first/,
   /strict-uri-encode/,
+  /swiper/,
+  /dom7/,
 ]
 
 const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
