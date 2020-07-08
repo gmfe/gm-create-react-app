@@ -31,6 +31,7 @@ module.exports = (api) => {
         {
           // for tree shaking
           modules: false,
+          useBuiltIns: 'usage',
         },
       ],
       require('@babel/preset-typescript'),
