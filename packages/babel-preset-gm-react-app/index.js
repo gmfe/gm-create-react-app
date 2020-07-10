@@ -33,6 +33,7 @@ module.exports = (api) => {
           // for tree shaking
           modules: false,
           useBuiltIns: 'usage',
+          debug: true,
           corejs: { version: 3, proposals: true },
         },
       ],
