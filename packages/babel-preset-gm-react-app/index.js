@@ -3,6 +3,7 @@ module.exports = (api) => {
 
   return {
     sourceType: 'unambiguous', // 自动推断编译的模块类型(cjs,es6)
+    exclude: [/@babel[/|\\\\]runtime/, /core-js/],
     // 插件顺序从前往后
     plugins: [
       // decorators 需要再 class-properties 前
@@ -32,7 +33,7 @@ module.exports = (api) => {
           // for tree shaking
           modules: false,
           useBuiltIns: 'usage',
-          corejs: { version: 2, proposals: true },
+          corejs: { version: 3, proposals: true },
         },
       ],
       require('@babel/preset-typescript'),
