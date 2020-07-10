@@ -59,6 +59,9 @@ module.exports = {
           version: 'detect',
         },
       },
+      globals: {
+        wx: true,
+      },
       overrides: [
         {
           files: ['**/*.ts', '**/*.tsx'],
