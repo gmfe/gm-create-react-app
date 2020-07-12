@@ -3,7 +3,7 @@ module.exports = (api) => {
 
   return {
     sourceType: 'unambiguous', // 自动推断编译的模块类型(cjs,es6)
-    exclude: [/@babel[/|\\\\]runtime/, /core-js/],
+    // exclude: [/@babel[/|\\\\]runtime/, /core-js/],
     // 插件顺序从前往后
     plugins: [
       // decorators 需要再 class-properties 前
