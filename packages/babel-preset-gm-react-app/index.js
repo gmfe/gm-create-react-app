@@ -22,7 +22,7 @@ module.exports = (api) => {
       [
         require('@babel/plugin-transform-runtime'),
         {
-          corejs: 3,
+          corejs: 2,
         },
       ],
       require('styled-jsx/babel'),
@@ -38,7 +38,7 @@ module.exports = (api) => {
           // for tree shaking
           modules: false,
           useBuiltIns: 'usage',
-          corejs: 3,
+          corejs: 2,
         },
       ],
       [require('@babel/preset-typescript'), { onlyRemoveTypeImports: true }],
