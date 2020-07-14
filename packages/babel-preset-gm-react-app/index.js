@@ -35,7 +35,6 @@ module.exports = (api) => {
           corejs: { version: 2, proposals: true },
         },
       ],
-      require('@babel/preset-typescript'),
     ],
   }
 }
