@@ -19,12 +19,7 @@ module.exports = (api) => {
       require('@babel/plugin-proposal-nullish-coalescing-operator'),
       require('@babel/plugin-proposal-optional-chaining'),
       require('@babel/plugin-syntax-dynamic-import'),
-      [
-        require('@babel/plugin-transform-runtime'),
-        {
-          corejs: 2,
-        },
-      ],
+      require('@babel/plugin-transform-runtime'),
       require('styled-jsx/babel'),
       require('babel-plugin-lodash'),
       require('react-hot-loader/babel'),
@@ -32,15 +27,7 @@ module.exports = (api) => {
     // 从后往前
     presets: [
       require('@babel/preset-react'),
-      [
-        require('@babel/preset-env'),
-        {
-          // for tree shaking
-          modules: false,
-          useBuiltIns: 'usage',
-          corejs: 2,
-        },
-      ],
+      require('@babel/preset-env'),
       [require('@babel/preset-typescript'), { onlyRemoveTypeImports: true }],
     ],
   }
