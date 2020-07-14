@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const fs = require('fs-extra')
@@ -108,7 +109,7 @@ let config = {
         oneOf: [
           // 提高性能，只处理 /src，要处理 node_modules 自行添加
           {
-            test: /\.(js|tsx?)$/,
+            test: /\.js$/,
             use: [
               { loader: require.resolve('thread-loader') },
               {
@@ -122,6 +123,22 @@ let config = {
             ],
             include: commonInclude,
             exclude: /@babel\/runtime/,
+          },
+          {
+            test: /\.tsx?$/,
+            use: [
+              'thread-loader',
+              {
+                loader: 'ts-loader',
+                options: {
+                  transpileOnly: true,
+                  happyPackMode: true,
+                  configFile: PATH.appDirectory,
+                  allowTsInNodeModules: true,
+                  experimentalFileCaching: true,
+                },
+              },
+            ],
           },
           {
             test: /\.module\.css$/,
@@ -229,6 +246,7 @@ let config = {
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new FriendlyErrorsWebpackPlugin(),
     !isEnvDevelopment && new CheckPlugin(),
   ].filter(Boolean),
   resolve: {
