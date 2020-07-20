@@ -22,11 +22,12 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:import/warnings',
         'plugin:import/errors',
+        'plugin:promise/recommended',
         'prettier',
         'prettier/react',
         'prettier/standard',
       ],
-      plugins: ['gm-react-app', 'react-hooks', 'prettier'],
+      plugins: ['gm-react-app', 'react-hooks', 'prettier', 'promise'],
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
