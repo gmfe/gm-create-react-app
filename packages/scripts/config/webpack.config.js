@@ -16,6 +16,7 @@ const {
   PATH,
   getConfig,
 } = require('../util')
+const CheckPlugin = require('./check_plugin')
 
 // 做个检测，需要提供 aliasName clientName
 if (!packageJson.aliasName || !packageJson.clientName) {
@@ -95,8 +96,8 @@ let config = {
           test: path.resolve(PATH.appDirectory + '/src'),
           minChunks: 3,
           priority: 10,
-          reuseExistingChunk: true
-        }
+          reuseExistingChunk: true,
+        },
       },
     },
     runtimeChunk: 'single',
@@ -228,6 +229,7 @@ let config = {
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    !isEnvDevelopment && new CheckPlugin(),
   ].filter(Boolean),
   resolve: {
     alias: _.pickBy(
