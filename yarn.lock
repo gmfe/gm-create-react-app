@@ -11238,6 +11238,11 @@ ts-config-gm-react-app@^3.0.5:
   resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.0.5.tgz#41cab4674c8e28921c0cd5869a5059ed64251c99"
   integrity sha512-8dkcpOOuReYF4xOLZkplAPp7kfWYDBveTEBFRQu/6gGIl/PW0ONOFyCxApGwfIGLyWDGQ23yjYTCL0x9tFY45Q==
 
+ts-config-gm-react-app@^3.2.4:
+  version "3.2.4"
+  resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.2.4.tgz#151c9b4471ab7da918210598b326db6c4202af66"
+  integrity sha512-1aAU+jwU1SsJPCI+O+QDf1zgrC9Elipa6BZGbHz6SO6a99/FlDBYyHTFIyV9OBghJpOGVVDuKd69DZS5NIg67A==
+
 tsconfig-paths@^3.9.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.9.0.tgz#098547a6c4448807e8fcb8eae081064ee9a3c90b"
