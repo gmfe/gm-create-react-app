@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.8.4",
+    "@gm-react-app/template": "^3.2.5",
     "@hot-loader/react-dom": "^16.11.0",
     "@svgr/webpack": "^5.3.1",
     "@types/react": "^16.9.32",
