@@ -6,13 +6,19 @@
 yarn add @gm-react-app/scripts
 ```
 
-迁移指引
+## 迁移指引
 
 ```shell script
 gras migrate
 ```
 
 之后跟着指引做就对了
+
+## 模板
+
+```shell script
+gras create-project xxx
+```
 
 # 说明
 
