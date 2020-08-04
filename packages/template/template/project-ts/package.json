@@ -1,3 +1,6 @@
 {
-  "name": "@{{scope}}/{{name}}"
+  "name": "project",
+  "dependencies": {
+    "@gm-react-app/scripts": "^3.2.5"
+  }
 }
