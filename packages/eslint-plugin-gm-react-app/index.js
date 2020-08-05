@@ -54,6 +54,7 @@ module.exports = {
         'import/no-named-as-default': 'off',
         'import/no-named-as-default-member': 'off',
         'import/no-duplicates': 'off',
+        'promise/catch-or-return': 'off',
       },
       settings: {
         react: {
