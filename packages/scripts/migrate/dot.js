@@ -64,14 +64,19 @@ yarn-error.log
 config/local.js
 build/
 `
-const readGitIgnore = fs.readFileSync(PATH.appDirectory + '/.gitignore', {
-  encoding: 'utf-8',
-})
 
-fs.writeFileSync(
-  PATH.appDirectory + '/.gitignore',
-  _.uniq(gitIgnore.split('\n').concat(readGitIgnore.split('\n'))).join('\n'),
-)
+if (fs.existsSync(PATH.appDirectory + '/.gitignore')) {
+  const readGitIgnore = fs.readFileSync(PATH.appDirectory + '/.gitignore', {
+    encoding: 'utf-8',
+  })
+
+  fs.writeFileSync(
+    PATH.appDirectory + '/.gitignore',
+    _.uniq(gitIgnore.split('\n').concat(readGitIgnore.split('\n'))).join('\n'),
+  )
+} else {
+  fs.writeFileSync(PATH.appDirectory + '/.gitignore', gitIgnore)
+}
 
 fs.writeFileSync(
   PATH.appDirectory + '/.prettierrc.js',
