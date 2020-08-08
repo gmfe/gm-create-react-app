@@ -246,6 +246,7 @@ let config = {
         stores: PATH.appDirectory + '/src/js/stores/',
         svg: PATH.appDirectory + '/src/svg/',
         img: PATH.appDirectory + '/src/img/',
+        '@': PATH.appDirectory + '/src/',
       },
       Boolean,
     ),

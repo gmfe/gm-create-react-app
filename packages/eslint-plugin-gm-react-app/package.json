@@ -39,7 +39,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "import-modules": "^2.0.0",
     "jsx-ast-utils": "^2.2.3",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "prettier": "^2.0.4",
     "ts-config-gm-react-app": "^3.2.9",
     "typescript": "^3.8.3"
