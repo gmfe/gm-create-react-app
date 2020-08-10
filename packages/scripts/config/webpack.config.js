@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const fs = require('fs-extra')
 const path = require('path')
 const _ = require('lodash')
@@ -23,7 +24,6 @@ if (!packageJson.aliasName || !packageJson.clientName) {
   throw new Error('请提供 aliasName clientName')
 }
 const appConfig = getConfig()
-
 function getCss(options = { modules: false }) {
   return [
     !isEnvDevelopment && MiniCssExtractPlugin.loader,
@@ -251,6 +251,9 @@ let config = {
       Boolean,
     ),
     extensions: ['.js', '.tsx', '.ts'],
+    plugins: [new TsconfigPathsPlugin({
+      configFile: PATH.appDirectory + '/tsconfig.json',
+    })]
   },
   devServer: {
     disableHostCheck: true,
