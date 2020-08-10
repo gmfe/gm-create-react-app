@@ -57,7 +57,7 @@ const PATH = {
   appConfig: resolveApp('config'),
   appSrc: resolveApp('src'),
   appIndexTemplate: resolveApp('src/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
+  appIndexJs: resolveApp('src/index'),
   appPackageJson: resolveApp('package.json'),
 }
 
