@@ -1,6 +1,6 @@
 {
   "name": "@gm-react-app/scripts-lib",
-  "version": "4.0.0-beta.3",
+  "version": "4.0.0-beta.4",
   "description": "",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-react-app/tree/master/packages/scripts-lib#readme",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.8.6",
-    "@gm-react-app/template": "^4.0.0-beta.3",
+    "@gm-react-app/template": "^4.0.0-beta.4",
     "@storybook/addon-info": "^5.3.14",
     "@storybook/addon-notes": "^5.3.14",
     "@storybook/addon-storysource": "^5.3.14",
