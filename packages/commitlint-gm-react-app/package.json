@@ -1,5 +1,5 @@
 {
-  "name": "@gm-react-app/template",
+  "name": "@gm-react-app/commitlint-gm-react-app",
   "version": "3.3.2-beta.7",
   "description": "> TODO: description",
   "author": "liyatang <liyatang@qq.com>",
@@ -21,9 +21,6 @@
     "url": "https://github.com/gmfe/gm-react-app/issues"
   },
   "dependencies": {
-    "art-template": "^4.13.2",
-    "fs-extra": "^9.0.1",
-    "path": "^0.12.7",
-    "shelljs": "^0.8.4"
+    "@commitlint/config-conventional": "^9.1.1"
   }
 }

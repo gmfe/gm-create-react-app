@@ -27,28 +27,17 @@ module.exports = {
 )
 
 fs.writeFileSync(
-  PATH.appDirectory + '/jsconfig.json',
-  `{
-  "compilerOptions":{
-    "baseUrl": ".",
-    "paths": {
-      "common/*": ["src/js/common/*"],
-      "stores/*": ["src/js/stores/*"],
-      "svg/*": ["src/svg/*"],
-      "img/*": ["src/img/*"],
-      "@/*": ["src/*"]
-    },
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  }
-}
-`,
-)
-
-fs.writeFileSync(
   PATH.appDirectory + '/tsconfig.json',
   `{
-  "extends": "ts-config-gm-react-app/tsconfig"
+  "extends": "ts-config-gm-react-app/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "importsNotUsedAsValues": "preserve",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*", "global.d.ts"]
 }
 `,
 )
