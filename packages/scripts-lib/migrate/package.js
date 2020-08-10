@@ -29,6 +29,7 @@ json['lint-staged'] = {
 
 json.husky = {
   hooks: {
+    'commit-msg': 'commitlint -E HUSKY_GIT_PARAMS',
     'pre-commit': 'lint-staged',
   },
 }
@@ -40,6 +41,10 @@ json.browserslist = {
     'last 1 firefox version',
     'last 1 safari version',
   ],
+}
+
+json.commitlint = {
+  extends: ['@commitlint/config-conventional'],
 }
 
 delete json.babel

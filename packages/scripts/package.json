@@ -24,6 +24,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.8.4",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
     "@gm-react-app/template": "^3.3.0",
     "@hot-loader/react-dom": "^16.11.0",
     "@svgr/webpack": "^5.3.1",

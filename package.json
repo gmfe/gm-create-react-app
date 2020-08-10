@@ -34,20 +34,9 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS; echo $HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
-  },
-  "dependencies": {
-    "@gm-react-app/scripts": "^3.0.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-loadable": "^5.5.0",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "ts-config-gm-react-app": "^3.2.4"
-  },
-  "devDependencies": {
-    "lerna": "^3.19.0"
   },
   "browserslist": {
     "production": [
@@ -59,5 +48,24 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@gm-react-app/scripts": "^3.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-loadable": "^5.5.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "ts-config-gm-react-app": "^3.2.4"
+  },
+  "devDependencies": {
+    "lerna": "^3.19.0"
   }
 }

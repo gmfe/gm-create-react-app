@@ -28,6 +28,7 @@ module.exports = (api) => {
       require('styled-jsx/babel'),
       require('babel-plugin-lodash'),
       require('react-hot-loader/babel'),
+      require('babel-plugin-mobx-deep-action'),
     ],
     // 从后往前
     presets: [
