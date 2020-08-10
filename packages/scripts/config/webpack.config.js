@@ -127,9 +127,17 @@ let config = {
           {
             test: /\.tsx?$/,
             use: [
-              'thread-loader',
+              { loader: require.resolve('thread-loader') },
               {
-                loader: 'ts-loader',
+                loader: require.resolve('babel-loader'),
+                options: {
+                  cacheDirectory: true,
+                  cacheCompression: false,
+                  compact: !isEnvDevelopment,
+                },
+              },
+              {
+                loader: require.resolve('ts-loader'),
                 options: {
                   transpileOnly: true,
                   happyPackMode: true,
