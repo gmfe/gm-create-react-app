@@ -1259,7 +1259,7 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@gm-react-app/commitlint-gm-react-app@3.3.2-beta.3":
+"@gm-react-app/commitlint-gm-react-app@^3.3.2-beta.3":
   version "3.3.2-beta.3"
   resolved "https://registry.yarnpkg.com/@gm-react-app/commitlint-gm-react-app/-/commitlint-gm-react-app-3.3.2-beta.3.tgz#b09ff9fe539cc72bcacb13a1db3fb8162de0f25c"
   integrity sha512-3KxOYgDoVTxxNFZrv24+AdebCRzMRit/aoxZs2J1tQUaqwCZjkrcko7Uhevu8lDyglHn1vcY7HyjL7msBabuYw==
