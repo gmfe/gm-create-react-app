@@ -44,7 +44,7 @@ json.browserslist = {
 }
 
 json.commitlint = {
-  extends: ['@commitlint/config-conventional'],
+  extends: ['@gm-react-app/commitlint-gm-react-app'],
 }
 
 delete json.babel

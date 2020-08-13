@@ -51,12 +51,12 @@
   },
   "commitlint": {
     "extends": [
-      "@commitlint/config-conventional"
+      "@gm-react-app/commitlint-gm-react-app"
     ]
   },
   "dependencies": {
     "@commitlint/cli": "^9.1.1",
-    "@commitlint/config-conventional": "^9.1.1",
+    "@gm-react-app/commitlint-gm-react-app": "3.3.2-beta.3",
     "@gm-react-app/scripts": "^3.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
