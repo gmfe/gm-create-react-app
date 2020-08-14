@@ -17,7 +17,7 @@ module.exports = {
   rules,
   configs: {
     recommended: {
-      parser: 'babel-eslint',
+      parser: '@babel/eslint-parser',
       extends: [
         'standard',
         'standard-jsx',
