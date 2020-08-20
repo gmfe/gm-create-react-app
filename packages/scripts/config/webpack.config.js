@@ -238,6 +238,12 @@ let config = {
         react:
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/react'),
+        'react-router':
+          isEnvDevelopment &&
+          path.resolve(PATH.appDirectory + '/node_modules/react-router'),
+        'react-router-dom':
+          isEnvDevelopment &&
+          path.resolve(PATH.appDirectory + '/node_modules/react-router-dom'),
         'core-js':
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/core-js'),
