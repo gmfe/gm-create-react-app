@@ -234,10 +234,16 @@ let config = {
   resolve: {
     alias: _.pickBy(
       {
-        // yarn link 后保持 react 一致
+        // yarn link 后保持 react/core-js/core-js-pure 一致
         react:
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/react'),
+        'core-js':
+          isEnvDevelopment &&
+          path.resolve(PATH.appDirectory + '/node_modules/core-js'),
+        'core-js-pure':
+          isEnvDevelopment &&
+          path.resolve(PATH.appDirectory + '/node_modules/core-js-pure'),
         // 'react-dom/server':
         //   isEnvDevelopment && require.resolve('@hot-loader/react-dom/server'),
         // 'react-dom':
