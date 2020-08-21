@@ -98,7 +98,7 @@ module.exports = {
           settings: {
             'import/resolver': {
               typescript: {
-                directory: [resolve(appDirectory + '/tsconfig.json')],
+                project: resolve('ts-config-gm-react-app/tsconfig.json'),
               },
             },
           },
