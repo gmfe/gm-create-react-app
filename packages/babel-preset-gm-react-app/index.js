@@ -1,5 +1,22 @@
-module.exports = (api) => {
+module.exports = (api, options = {}) => {
   api.assertVersion('^7.0.0')
+
+  const { closePolyfill } = options
+
+  const presetEnvOption = {
+    // for tree shaking
+    modules: false,
+  }
+  let pluginTransformRuntimeOption = {}
+
+  if (!closePolyfill) {
+    Object.assign(presetEnvOption, {
+      useBuiltIns: 'usage',
+      corejs: 3,
+    })
+
+    pluginTransformRuntimeOption = { corejs: 3 }
+  }
 
   return {
     sourceType: 'unambiguous', // 自动推断编译的模块类型(cjs,es6)
@@ -21,9 +38,7 @@ module.exports = (api) => {
       require('@babel/plugin-syntax-dynamic-import'),
       [
         require('@babel/plugin-transform-runtime'),
-        {
-          corejs: 3,
-        },
+        pluginTransformRuntimeOption,
       ],
       require('styled-jsx/babel'),
       require('babel-plugin-lodash'),
@@ -33,15 +48,7 @@ module.exports = (api) => {
     // 从后往前
     presets: [
       require('@babel/preset-react'),
-      [
-        require('@babel/preset-env'),
-        {
-          // for tree shaking
-          modules: false,
-          useBuiltIns: 'usage',
-          corejs: 3,
-        },
-      ],
+      [require('@babel/preset-env'), presetEnvOption],
       require('@babel/preset-typescript'),
     ],
   }
