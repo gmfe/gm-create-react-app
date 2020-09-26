@@ -253,6 +253,8 @@ let config = {
         'core-js-pure':
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/core-js-pure'),
+        '@gm-common/x-request': isEnvDevelopment &&
+          path.resolve(PATH.appDirectory + '/node_modules/@gm-common/x-request'),
         // 'react-dom/server':
         //   isEnvDevelopment && require.resolve('@hot-loader/react-dom/server'),
         // 'react-dom':

@@ -64,6 +64,7 @@ const PATH = {
 // query-string swiper dom7 比较坑爹，里面用了 const
 const commonInclude = [
   PATH.appSrc,
+  /gm_api/,
   /gm-/,
   /gmfe/,
   /gm_static_storage/,
