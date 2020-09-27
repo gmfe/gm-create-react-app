@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const WebpackBar = require('webpackbar')
+
 const fs = require('fs-extra')
 const path = require('path')
 const _ = require('lodash')
@@ -23,7 +26,6 @@ if (!packageJson.aliasName || !packageJson.clientName) {
   throw new Error('请提供 aliasName clientName')
 }
 const appConfig = getConfig()
-
 function getCss(options = { modules: false }) {
   return [
     !isEnvDevelopment && MiniCssExtractPlugin.loader,
@@ -196,6 +198,7 @@ let config = {
     ],
   },
   plugins: [
+    isEnvDevelopment && new WebpackBar(),
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
     new ForkTsCheckerWebpackPlugin({
       memoryLimit: 4096,
@@ -234,10 +237,32 @@ let config = {
   resolve: {
     alias: _.pickBy(
       {
-        // yarn link 后保持 react 一致
+        // yarn link 后保持 react/core-js/core-js-pure 一致
         react:
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/react'),
+        'react-router':
+          isEnvDevelopment &&
+          path.resolve(PATH.appDirectory + '/node_modules/react-router'),
+        'react-router-dom':
+          isEnvDevelopment &&
+          path.resolve(PATH.appDirectory + '/node_modules/react-router-dom'),
+        'core-js':
+          isEnvDevelopment &&
+          path.resolve(PATH.appDirectory + '/node_modules/core-js'),
+        'core-js-pure':
+          isEnvDevelopment &&
+          path.resolve(PATH.appDirectory + '/node_modules/core-js-pure'),
+        '@gm-common/x-request':
+          isEnvDevelopment &&
+          path.resolve(
+            PATH.appDirectory + '/node_modules/@gm-common/x-request',
+          ),
+        'gm_api':
+          isEnvDevelopment &&
+          path.resolve(
+            PATH.appDirectory + '/node_modules/gm_api',
+          ),
         // 'react-dom/server':
         //   isEnvDevelopment && require.resolve('@hot-loader/react-dom/server'),
         // 'react-dom':
@@ -251,6 +276,11 @@ let config = {
       Boolean,
     ),
     extensions: ['.js', '.tsx', '.ts'],
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: PATH.appDirectory + '/tsconfig.json',
+      }),
+    ],
   },
   devServer: {
     disableHostCheck: true,
@@ -265,6 +295,7 @@ let config = {
     port: appConfig.port || 8080,
     proxy: appConfig.proxy || {},
     https: appConfig.https || false,
+    open: true,
   },
 }
 

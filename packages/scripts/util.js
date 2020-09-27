@@ -57,13 +57,14 @@ const PATH = {
   appConfig: resolveApp('config'),
   appSrc: resolveApp('src'),
   appIndexTemplate: resolveApp('src/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
+  appIndexJs: resolveApp('src/index'),
   appPackageJson: resolveApp('package.json'),
 }
 
 // query-string swiper dom7 比较坑爹，里面用了 const
 const commonInclude = [
   PATH.appSrc,
+  /gm_api/,
   /gm-/,
   /gmfe/,
   /gm_static_storage/,
