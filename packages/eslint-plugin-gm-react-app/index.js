@@ -47,6 +47,7 @@ module.exports = {
           { ignore: ['children', 'location', 'params', 'match'] },
         ],
         'react/jsx-handler-names': 1,
+        'react/jsx-pascal-case': 0,
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
         camelcase: 0,
@@ -116,6 +117,7 @@ module.exports = {
             ],
             'react/display-name': 0,
             'react/no-find-dom-node': 0,
+            'react/jsx-pascal-case': 0,
             'react/jsx-handler-names': [
               'error',
               {
