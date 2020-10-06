@@ -216,6 +216,7 @@ let config = {
       __CLIENT_NAME__: JSON.stringify(packageJson.clientName || 'none'),
       __BRANCH__: JSON.stringify(process.env.GIT_BRANCH || 'none'),
       __COMMIT__: JSON.stringify(process.env.GIT_COMMIT || 'none'),
+      __AUTO_ROUTER_REG__: appConfig.autoRouterReg || '/index\\.page\\./'
     }),
     new HtmlWebpackPlugin({
       template: PATH.appIndexTemplate,

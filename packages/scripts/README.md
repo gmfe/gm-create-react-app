@@ -65,6 +65,7 @@ module.exports = {
       changeOrigin: true,
     },
   ],
+  autoRouterReg: '/^\\.\\/customer.*?index\\.page\\./',
 }
 ```
 
@@ -123,6 +124,7 @@ __NAME__ 来自 package.json aliasName
 __CLIENT_NAME__ 来自 package.json clientName
 __BRANCH__
 __COMMIT__
+__AUTO_ROUTER_REG__ 方便开发，设置此，使build的文件更少，开发更快。默认 /index\.page\./
 ```
 
 模板变量
