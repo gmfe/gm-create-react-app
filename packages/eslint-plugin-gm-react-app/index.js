@@ -3,7 +3,10 @@ const createIndex = require('create-eslint-index')
 const importModules = require('import-modules')
 const fs = require('fs-extra')
 const rules = importModules('lib/rules', { camelize: false })
+const path = require('path')
+
 const appDirectory = fs.realpathSync(process.cwd())
+
 
 const recommendedRules = createIndex.createConfig(
   {
@@ -99,7 +102,7 @@ module.exports = {
           settings: {
             'import/resolver': {
               typescript: {
-                project: resolve('ts-config-gm-react-app/tsconfig.json'),
+                project: path.resolve(appDirectory, 'tsconfig.json'),
               },
             },
           },
