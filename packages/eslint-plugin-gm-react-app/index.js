@@ -7,7 +7,6 @@ const path = require('path')
 
 const appDirectory = fs.realpathSync(process.cwd())
 
-
 const recommendedRules = createIndex.createConfig(
   {
     plugin: 'gm-react-app',
@@ -102,7 +101,10 @@ module.exports = {
           settings: {
             'import/resolver': {
               typescript: {
-                project: path.resolve(appDirectory, 'tsconfig.json'),
+                project: [
+                  resolve('ts-config-gm-react-app/tsconfig.json'),
+                  path.resolve(appDirectory, 'tsconfig.json'),
+                ],
               },
             },
           },
