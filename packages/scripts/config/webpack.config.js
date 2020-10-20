@@ -254,15 +254,15 @@ let config = {
         'core-js-pure':
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/core-js-pure'),
-        '@gm-common/x-request':
+        '@gm-common':
           isEnvDevelopment &&
           path.resolve(
-            PATH.appDirectory + '/node_modules/@gm-common/x-request',
+            PATH.appDirectory + '/node_modules/@gm-common',
           ),
-        'gm_api':
+        '@gm-pc':
           isEnvDevelopment &&
           path.resolve(
-            PATH.appDirectory + '/node_modules/gm_api',
+            PATH.appDirectory + '/node_modules/@gm-pc',
           ),
         // 'react-dom/server':
         //   isEnvDevelopment && require.resolve('@hot-loader/react-dom/server'),
