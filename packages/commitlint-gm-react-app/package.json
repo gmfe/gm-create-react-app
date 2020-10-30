@@ -21,6 +21,6 @@
     "url": "https://github.com/gmfe/gm-react-app/issues"
   },
   "dependencies": {
-    "@commitlint/config-conventional": "^9.1.1"
+    "@commitlint/config-conventional": "^11.0.0"
   }
 }

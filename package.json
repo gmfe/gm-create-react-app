@@ -16,8 +16,8 @@
   },
   "homepage": "https://github.com/gmfe/gm-react-app#readme",
   "scripts": {
-    "publish-latest": "lerna publish --force-publish",
-    "publish-beta": "lerna publish --force-publish --dist-tag beta --preid beta",
+    "publish-latest": "lerna publish --force-publish --registry https://registry.npmjs.org/",
+    "publish-beta": "lerna publish --force-publish --dist-tag beta --preid beta --registry https://registry.npmjs.org/",
     "start": "gras start",
     "build:test": "gras test",
     "build:prod": "gras build"
