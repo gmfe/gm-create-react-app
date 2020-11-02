@@ -6,7 +6,9 @@ process.on('unhandledRejection', (err) => {
   throw err
 })
 
-const { shellExec } = require('../util')
+const { shellExec, initGitEnv } = require('../util')
+
+initGitEnv()
 
 shellExec(
   'webpack --color --config ' + require.resolve('../config/webpack.config'),

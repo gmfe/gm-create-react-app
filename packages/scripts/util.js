@@ -79,6 +79,18 @@ const commonInclude = [
 
 const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
 
+function initGitEnv() {
+  const commit = sh
+    .exec('git rev-parse HEAD', { silent: true })
+    .stdout.replace('\n', '')
+  const branch = sh
+    .exec('git rev-parse --abbrev-ref HEAD', { silent: true })
+    .stdout.replace('\n', '')
+
+  process.env.GIT_COMMIT = commit
+  process.env.GIT_BRANCH = branch
+}
+
 module.exports = {
   isEnvDevelopment,
   isEnvTest,
@@ -89,4 +101,5 @@ module.exports = {
   commonInclude,
   shellExec,
   getConfig,
+  initGitEnv,
 }
