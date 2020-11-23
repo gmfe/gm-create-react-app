@@ -80,6 +80,7 @@ const commonInclude = [
 const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
 
 function initGitEnv() {
+  if (process.env.GIT_COMMIT || process.env.GIT_BRANCH) return
   const commit = sh
     .exec('git rev-parse HEAD', { silent: true })
     .stdout.replace('\n', '')
