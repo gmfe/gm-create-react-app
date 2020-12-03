@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-gm-react-app",
-  "version": "3.4.8",
+  "version": "3.5.0-beta.0",
   "description": "",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-react-app/tree/master/packages/eslint-plugin-gm-react-app#readme",
@@ -42,7 +42,7 @@
     "jsx-ast-utils": "^2.2.3",
     "lodash": "^4.17.19",
     "prettier": "^2.0.4",
-    "ts-config-gm-react-app": "^3.4.8",
+    "ts-config-gm-react-app": "^3.5.0-beta.0",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
