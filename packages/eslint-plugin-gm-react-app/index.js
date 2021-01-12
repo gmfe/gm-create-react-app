@@ -1,4 +1,3 @@
-const { resolve } = require
 const createIndex = require('create-eslint-index')
 const importModules = require('import-modules')
 const fs = require('fs-extra')
@@ -135,13 +134,15 @@ module.exports = {
             ],
             'no-unused-vars': 'off',
             'no-useless-constructor': 'off',
-            '@typescript-eslint/no-useless-constructor': 'error',
+
             'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
             'react/state-in-constructor': [2, 'never'],
-            '@typescript-eslint/no-empty-interface': 'warn',
             'react/button-has-type': 0,
             'no-undef': 0,
             'import/default': 'off',
+            '@typescript-eslint/no-useless-constructor': 'error',
+            '@typescript-eslint/no-empty-interface': 'warn',
+            '@typescript-eslint/camelcase': 'warn',
           },
         },
       ],
