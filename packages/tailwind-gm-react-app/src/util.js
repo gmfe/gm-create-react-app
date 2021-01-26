@@ -16,6 +16,12 @@ function dotToUnder(str) {
   return str.replace('.', 'd')
 }
 
+function processRem(obj) {
+  _.forIn(obj, (v, k) => {
+    obj[k] = remToPx(v)
+  })
+}
+
 // { 1.5: '0.375rem' } => { 1_5: '7.5px' }
 function processDotAndRem(obj) {
   _.forIn(obj, (v, k) => {
@@ -30,7 +36,7 @@ function processDotAndRem(obj) {
 }
 
 // xs: ['0.75rem', { lineHeight: '1rem' }],
-function processFontSize(obj) {
+function processFontSizeRem(obj) {
   const getPx = (v) => v * 16
   _.forIn(obj, (v, k) => {
     obj[k] = [
@@ -51,17 +57,19 @@ function processDivide(obj) {
   })
 }
 
+// 具体看 defaultConfig.stub.js 的逻辑
 function processTheme(config, theme) {
   config.theme[theme] = config.theme[theme]((theme) => config.theme[theme], {
     negative: (obj) => _.mapKeys(obj, (v, k) => `-${k}`),
-    // TODO 暂时没研究
+    // TODO 暂时没研究，貌似用处不大
     breakpoints: (obj) => ({}),
   })
 }
 
 module.exports = {
+  processRem,
   processDotAndRem,
-  processFontSize,
+  processFontSizeRem,
   processDivide,
   processTheme,
 }
