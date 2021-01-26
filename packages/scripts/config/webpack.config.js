@@ -39,12 +39,15 @@ function getCss(options = { modules: false }) {
     {
       loader: require.resolve('postcss-loader'),
       options: {
-        ident: 'postcss',
-        plugins: () => [
-          require('postcss-preset-env')({
-            stage: 3,
-          }),
-        ],
+        postcssOptions: {
+          ident: 'postcss',
+          plugins: [
+            require('tailwindcss'),
+            require('postcss-preset-env')({
+              stage: 3,
+            }),
+          ],
+        },
       },
     },
   ]
