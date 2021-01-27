@@ -42,6 +42,7 @@ function getCss(options = { modules: false }) {
         postcssOptions: {
           ident: 'postcss',
           plugins: () => [
+            require('tailwindcss'),
             require('postcss-preset-env')({
               stage: 3,
             }),
@@ -74,6 +75,7 @@ let config = {
     minimize: !isEnvDevelopment,
     minimizer: [
       new TerserPlugin({
+        cache: true,
         parallel: true,
         terserOptions: {
           mangle: false, // Note `mangle.properties` is `false` by default.
