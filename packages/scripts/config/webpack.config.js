@@ -229,10 +229,10 @@ let config = {
     }),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
-      new MiniCssExtractPlugin({
-        filename: 'css/[name]/[contenthash:8].css',
-        chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
-      }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name]/[contenthash:8].css',
+      chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
+    }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),

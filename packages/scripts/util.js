@@ -32,6 +32,7 @@ const getConfig = () => {
   try {
     config = require(appDirectory + '/config/deploy')
   } catch (err) {
+    console.log(err)
     throw new Error('没有找到 /config/deploy.js 文件')
   }
 
