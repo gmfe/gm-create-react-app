@@ -143,6 +143,7 @@ module.exports = {
             '@typescript-eslint/no-useless-constructor': 'error',
             '@typescript-eslint/no-empty-interface': 'warn',
             '@typescript-eslint/camelcase': 'warn',
+            '@typescript-eslint/explicit-function-return-type': 'off',
           },
         },
       ],
