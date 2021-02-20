@@ -144,6 +144,7 @@ module.exports = {
             '@typescript-eslint/no-empty-interface': 'warn',
             '@typescript-eslint/camelcase': 'warn',
             '@typescript-eslint/explicit-function-return-type': 'off',
+            'react/jsx-handler-names': 'off',
           },
         },
       ],
