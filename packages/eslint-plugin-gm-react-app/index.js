@@ -146,6 +146,7 @@ module.exports = {
             '@typescript-eslint/explicit-function-return-type': 'off',
             'react/jsx-handler-names': 'off',
             '@typescript-eslint/ban-ts-ignore': 'off',
+            '@typescript-eslint/camelcase': 'off',
           },
         },
       ],
