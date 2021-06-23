@@ -19,7 +19,7 @@ const {
   PATH,
   getConfig,
 } = require('../util')
-const CheckPlugin = require('./check_plugin')
+// const CheckPlugin = require('./check_plugin')
 
 // 做个检测，需要提供 aliasName clientName
 if (!packageJson.aliasName || !packageJson.clientName) {
@@ -219,7 +219,7 @@ let config = {
       __CLIENT_NAME__: JSON.stringify(packageJson.clientName || 'none'),
       __BRANCH__: JSON.stringify(process.env.GIT_BRANCH || 'none'),
       __COMMIT__: JSON.stringify(process.env.GIT_COMMIT || 'none'),
-      __AUTO_ROUTER_REG__: appConfig.autoRouterReg || '/index\\.page\\./'
+      __AUTO_ROUTER_REG__: appConfig.autoRouterReg || '/index\\.page\\./',
     }),
     new HtmlWebpackPlugin({
       template: PATH.appIndexTemplate,
@@ -229,14 +229,14 @@ let config = {
     }),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
-    new MiniCssExtractPlugin({
-      filename: 'css/[name]/[contenthash:8].css',
-      chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
-    }),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name]/[contenthash:8].css',
+        chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
+      }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    !isEnvDevelopment && new CheckPlugin(),
+    // !isEnvDevelopment && new CheckPlugin(),
   ].filter(Boolean),
   resolve: {
     alias: _.pickBy(
@@ -259,14 +259,10 @@ let config = {
           path.resolve(PATH.appDirectory + '/node_modules/core-js-pure'),
         '@gm-common':
           isEnvDevelopment &&
-          path.resolve(
-            PATH.appDirectory + '/node_modules/@gm-common',
-          ),
+          path.resolve(PATH.appDirectory + '/node_modules/@gm-common'),
         '@gm-pc':
           isEnvDevelopment &&
-          path.resolve(
-            PATH.appDirectory + '/node_modules/@gm-pc',
-          ),
+          path.resolve(PATH.appDirectory + '/node_modules/@gm-pc'),
         // 'react-dom/server':
         //   isEnvDevelopment && require.resolve('@hot-loader/react-dom/server'),
         // 'react-dom':
