@@ -76,8 +76,7 @@ const commonInclude = [
   /strict-uri-encode/,
   /swiper/,
   /dom7/,
-  /@ant-design/,
-  /@antv/,
+  /@ant-design\/charts\/dist/,
 ]
 
 const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
