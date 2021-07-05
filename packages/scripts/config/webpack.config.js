@@ -236,7 +236,7 @@ let config = {
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    !isEnvDevelopment && new CheckPlugin(),
+    // !isEnvDevelopment && new CheckPlugin(),
   ].filter(Boolean),
   resolve: {
     alias: _.pickBy(
