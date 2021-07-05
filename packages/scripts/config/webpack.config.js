@@ -235,7 +235,7 @@ let config = {
     }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/, /@ant-design$/),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/, /@ant-design\/charts$/),
     !isEnvDevelopment && new CheckPlugin(),
   ].filter(Boolean),
   resolve: {
