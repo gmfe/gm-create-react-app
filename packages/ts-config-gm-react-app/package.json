@@ -1,6 +1,6 @@
 {
   "name": "ts-config-gm-react-app",
-  "version": "3.7.7-beta.12",
+  "version": "3.7.7-beta.13",
   "main": "tsconfig.json",
   "repository": {
     "type": "git",
@@ -13,5 +13,6 @@
   "license": "ISC",
   "peerDependencies": {
     "typescript": "^3.8.3"
-  }
+  },
+  "gitHead": "37df187bc59d83d207a46962090c9f73f4ac30ff"
 }
