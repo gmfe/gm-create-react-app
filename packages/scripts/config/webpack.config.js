@@ -19,7 +19,7 @@ const {
   PATH,
   getConfig,
 } = require('../util')
-const CheckPlugin = require('./check_plugin')
+// const CheckPlugin = require('./check_plugin')
 
 // 做个检测，需要提供 aliasName clientName
 if (!packageJson.aliasName || !packageJson.clientName) {
