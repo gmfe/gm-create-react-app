@@ -16,11 +16,11 @@
 
 版本号定义`x.y.z` x是新版本，y是新功能，z是修bug
 
-在发版的过程中如果报错说你要登录npm，那就先执行`yarn use npm`切换到npm源
+在发版的过程中如果报错说你要登录npm，那就先执行`yrm use npm`切换到npm源
 
 执行`npm login`登录npm（登录的账号密码可以咨询其他同事）
 
-登录了以后切换到淘宝源，执行`yarn use taobao`
+登录了以后切换到淘宝源，执行`yrm use taobao`
 
 再执行`yarn run publish-latest`进行发版
 
