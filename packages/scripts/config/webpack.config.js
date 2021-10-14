@@ -74,7 +74,7 @@ let config = {
   cache: {
     type: 'filesystem',
     // 每当修改了webpack配置，记得更新cache的version，否则可能会出现因为重用了缓存导致配置没生效的问题。
-    version: '3.8.1-beta.5',
+    version: '3.8.1-beta.6',
   },
   optimization: {
     minimize: !isEnvDevelopment,
@@ -292,11 +292,13 @@ let config = {
   devServer: {
     disableHostCheck: true,
     compress: true,
-    contentBase: PATH.appDirectory,
     hot: true,
+    devMiddleware: {
+      publicPath: appConfig.publicPath,
+    },
     static: [
       {
-        directory: appConfig.publicPath,
+        directory: PATH.appDirectory,
       },
     ],
     historyApiFallback: {
