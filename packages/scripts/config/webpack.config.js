@@ -6,6 +6,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const WebpackBar = require('webpackbar')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
 const fs = require('fs-extra')
 const path = require('path')
@@ -19,7 +20,7 @@ const {
   PATH,
   getConfig,
 } = require('../util')
-const CheckPlugin = require('./check_plugin')
+// const CheckPlugin = require('./check_plugin')
 
 // 做个检测，需要提供 aliasName clientName
 if (!packageJson.aliasName || !packageJson.clientName) {
@@ -55,27 +56,38 @@ function getCss(options = { modules: false }) {
 
 // 以下配置综合参考 CRA 和 相关文章
 let config = {
+  // target: 'node',
   mode: isEnvDevelopment ? 'development' : 'production',
   entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].filter(
     Boolean,
   ),
   // 暂时不启动 source-map
-  devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : false,
+  devtool: isEnvDevelopment ? 'eval-cheap-module-source-map' : false,
   output: {
     path: PATH.appBuild,
+    // filename: isEnvDevelopment
+    //   ? `js/bundle.js`
+    //   : `js/[name]/[contenthash:8].js`,
+    // chunkFilename: isEnvDevelopment
+    //   ? 'js/[name].chunk.js'
+    //   : 'js/[name]/[contenthash:8].chunk.js',
     filename: isEnvDevelopment
-      ? `js/bundle.js`
+      ? `js/[name].js`
       : `js/[name]/[contenthash:8].js`,
     chunkFilename: isEnvDevelopment
       ? 'js/[name].chunk.js'
       : 'js/[name]/[contenthash:8].chunk.js',
     publicPath: appConfig.publicPath,
   },
+  cache: {
+    type: 'filesystem',
+    // 每当修改了webpack配置，记得更新cache的version，否则可能会出现因为重用了缓存导致配置没生效的问题。
+    version: '3.9.0',
+  },
   optimization: {
     minimize: !isEnvDevelopment,
     minimizer: [
       new TerserPlugin({
-        cache: true,
         parallel: true,
         terserOptions: {
           mangle: false, // Note `mangle.properties` is `false` by default.
@@ -149,10 +161,14 @@ let config = {
           },
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-            loader: require.resolve('url-loader'),
-            options: {
-              limit: 10000,
-              name: 'media/image/[name].[hash:8].[ext]',
+            type: 'asset',
+            parser: {
+              dataUrlCondition: {
+                maxSize: 10000,
+              },
+            },
+            generator: {
+              filename: 'media/image/[name].[hash:8].[ext]',
             },
           },
           {
@@ -176,15 +192,15 @@ let config = {
           // iconfont 应该要废弃掉
           {
             test: /(fontawesome-webfont|glyphicons-halflings-regular|iconfont|gm-mobile-icons)\.(woff|woff2|ttf|eot|svg)($|\?)/,
-            use: [
-              {
-                loader: require.resolve('url-loader'),
-                options: {
-                  limit: 10000,
-                  name: 'media/font/[name].[hash:8].[ext]',
-                },
+            type: 'asset',
+            parser: {
+              dataUrlCondition: {
+                maxSize: 10000,
               },
-            ],
+            },
+            generator: {
+              filename: 'media/image/[name].[hash:8].[ext]',
+            },
           },
           // new loader ? add here before file-loader
 
@@ -201,13 +217,20 @@ let config = {
     ],
   },
   plugins: [
+    new NodePolyfillPlugin(),
     isEnvDevelopment && new WebpackBar(),
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
     new ForkTsCheckerWebpackPlugin({
-      memoryLimit: 4096,
-      tsconfig: PATH.appDirectory + '/tsconfig.json',
-      checkSyntacticErrors: true,
-      reportFiles: [`${PATH.appSrc}/**/*.{ts,tsx}`],
+      typescript: {
+        memoryLimit: 4096,
+        configFile: PATH.appDirectory + '/tsconfig.json',
+        diagnosticOptions: {
+          syntactic: false,
+          semantic: false,
+          declaration: false,
+          global: false,
+        },
+      },
     }),
     new webpack.DefinePlugin({
       __DEBUG__: isEnvDevelopment,
@@ -233,10 +256,11 @@ let config = {
         filename: 'css/[name]/[contenthash:8].css',
         chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
       }),
-    // scope hosting
-    !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    !isEnvDevelopment && new CheckPlugin(),
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/,
+    }),
+    // !isEnvDevelopment && new CheckPlugin(),
   ].filter(Boolean),
   resolve: {
     alias: _.pickBy(
@@ -286,11 +310,17 @@ let config = {
     ],
   },
   devServer: {
-    disableHostCheck: true,
+    allowedHosts: 'all',
     compress: true,
-    contentBase: PATH.appDirectory,
     hot: true,
-    publicPath: appConfig.publicPath,
+    devMiddleware: {
+      publicPath: appConfig.publicPath,
+    },
+    static: [
+      {
+        directory: PATH.appDirectory,
+      },
+    ],
     historyApiFallback: {
       index: appConfig.publicPath + 'index.html',
     },
