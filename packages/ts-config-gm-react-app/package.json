@@ -1,6 +1,6 @@
 {
   "name": "ts-config-gm-react-app",
-  "version": "3.8.1-beta.3",
+  "version": "3.8.1-beta.4",
   "main": "tsconfig.json",
   "repository": {
     "type": "git",
