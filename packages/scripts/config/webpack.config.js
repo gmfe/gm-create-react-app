@@ -74,7 +74,7 @@ let config = {
   cache: {
     type: 'filesystem',
     // 每当修改了webpack配置，记得更新cache的version，否则可能会出现因为重用了缓存导致配置没生效的问题。
-    version: '3.8.1',
+    version: '3.8.1-beta.3',
   },
   optimization: {
     minimize: !isEnvDevelopment,
@@ -223,7 +223,7 @@ let config = {
       __CLIENT_NAME__: JSON.stringify(packageJson.clientName || 'none'),
       __BRANCH__: JSON.stringify(process.env.GIT_BRANCH || 'none'),
       __COMMIT__: JSON.stringify(process.env.GIT_COMMIT || 'none'),
-      __AUTO_ROUTER_REG__: appConfig.autoRouterReg || '/index\\.page\\./'
+      __AUTO_ROUTER_REG__: appConfig.autoRouterReg || '/index\\.page\\./',
     }),
     new HtmlWebpackPlugin({
       template: PATH.appIndexTemplate,
@@ -233,13 +233,16 @@ let config = {
     }),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
-    new MiniCssExtractPlugin({
-      filename: 'css/[name]/[contenthash:8].css',
-      chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
-    }),
+      new MiniCssExtractPlugin({
+        filename: 'css/[name]/[contenthash:8].css',
+        chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
+      }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/,
+    }),
     !isEnvDevelopment && new CheckPlugin(),
   ].filter(Boolean),
   resolve: {
@@ -263,14 +266,10 @@ let config = {
           path.resolve(PATH.appDirectory + '/node_modules/core-js-pure'),
         '@gm-common':
           isEnvDevelopment &&
-          path.resolve(
-            PATH.appDirectory + '/node_modules/@gm-common',
-          ),
+          path.resolve(PATH.appDirectory + '/node_modules/@gm-common'),
         '@gm-pc':
           isEnvDevelopment &&
-          path.resolve(
-            PATH.appDirectory + '/node_modules/@gm-pc',
-          ),
+          path.resolve(PATH.appDirectory + '/node_modules/@gm-pc'),
         // 'react-dom/server':
         //   isEnvDevelopment && require.resolve('@hot-loader/react-dom/server'),
         // 'react-dom':
