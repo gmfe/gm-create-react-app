@@ -63,18 +63,20 @@ let config = {
   devtool: isEnvDevelopment ? 'eval-cheap-module-source-map' : false,
   output: {
     path: PATH.appBuild,
-    filename: isEnvDevelopment
-      ? `js/bundle.js`
-      : `js/[name]/[contenthash:8].js`,
-    chunkFilename: isEnvDevelopment
-      ? 'js/[name].chunk.js'
-      : 'js/[name]/[contenthash:8].chunk.js',
+    // filename: isEnvDevelopment
+    //   ? `js/bundle.js`
+    //   : `js/[name]/[contenthash:8].js`,
+    // chunkFilename: isEnvDevelopment
+    //   ? 'js/[name].chunk.js'
+    //   : 'js/[name]/[contenthash:8].chunk.js',
+    filename: 'js/[name]/[contenthash:8].js',
+    chunkFilename: 'js/[name]/[contenthash:8].chunk.js',
     publicPath: appConfig.publicPath,
   },
   cache: {
     type: 'filesystem',
     // 每当修改了webpack配置，记得更新cache的version，否则可能会出现因为重用了缓存导致配置没生效的问题。
-    version: '3.8.1-beta.7',
+    version: '3.8.1-beta.8',
   },
   optimization: {
     minimize: !isEnvDevelopment,
