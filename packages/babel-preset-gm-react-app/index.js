@@ -44,6 +44,13 @@ module.exports = (api, options = {}) => {
       require('babel-plugin-lodash'),
       require('react-hot-loader/babel'),
       require('babel-plugin-mobx-deep-action'),
+      [
+        require('@babel/plugin-transform-modules-commonjs'),
+        {
+          noInterop: false,
+          loose: false,
+        },
+      ],
     ],
     // 从后往前
     presets: [
