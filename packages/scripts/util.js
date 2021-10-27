@@ -60,13 +60,11 @@ const PATH = {
   appIndexTemplate: resolveApp('src/index.html'),
   appIndexJs: resolveApp('src/index'),
   appPackageJson: resolveApp('package.json'),
-  appGmApi: resolveApp('node_modules/gm_api'),
 }
 
 // query-string swiper dom7 比较坑爹，里面用了 const
 const commonInclude = [
   PATH.appSrc,
-  PATH.appGmApi,
   /gm_api/,
   /gm-/,
   /gmfe/,
