@@ -66,7 +66,7 @@ const PATH = {
 const commonInclude = [
   PATH.appSrc,
   /gm_api/,
-  // /gm-/,
+  /gm-/,
   /gmfe/,
   /gm_static_storage/,
   /react-mgm/,
@@ -76,11 +76,6 @@ const commonInclude = [
   /strict-uri-encode/,
   /swiper/,
   /dom7/,
-  /gm-pc/,
-  /gm-common/,
-  /gm-excel/,
-  /gm-service/,
-  /gm-util/,
 ]
 
 const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
