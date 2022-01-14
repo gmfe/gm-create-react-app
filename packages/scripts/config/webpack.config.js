@@ -257,9 +257,7 @@ let config = {
         'core-js-pure':
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/core-js-pure'),
-        'bn.js':
-          isEnvDevelopment &&
-          path.resolve(PATH.appDirectory + '/node_modules/bn.js'),
+        'bn.js': path.resolve(PATH.appDirectory + '/node_modules/bn.js'),
         '@gm-common':
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/@gm-common'),
