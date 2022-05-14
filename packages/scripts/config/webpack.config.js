@@ -217,12 +217,6 @@ let config = {
         memoryLimit: 4096,
         configFile: PATH.appDirectory + '/tsconfig.json',
         devServer: isEnvDevelopment,
-        diagnosticOptions: {
-          syntactic: true,
-          semantic: true,
-          declaration: false,
-          global: false,
-        },
       },
     }),
     new webpack.DefinePlugin({
