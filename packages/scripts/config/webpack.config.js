@@ -213,11 +213,10 @@ let config = {
     isEnvDevelopment && new WebpackBar(),
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
     new ForkTsCheckerWebpackPlugin({
-      typescript: {
-        memoryLimit: 4096,
-        configFile: PATH.appDirectory + '/tsconfig.json',
-        devServer: isEnvDevelopment,
-      },
+      memoryLimit: 4096,
+      tsconfig: PATH.appDirectory + '/tsconfig.json',
+      checkSyntacticErrors: true,
+      reportFiles: [`${PATH.appSrc}/**/*.{ts,tsx}`],
     }),
     new webpack.DefinePlugin({
       __DEBUG__: isEnvDevelopment,
