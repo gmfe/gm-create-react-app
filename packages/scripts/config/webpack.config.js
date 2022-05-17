@@ -216,6 +216,12 @@ let config = {
       typescript: {
         memoryLimit: 4096,
         configFile: PATH.appDirectory + '/tsconfig.json',
+        diagnosticOptions: {
+          syntactic: false,
+          semantic: false,
+          declaration: false,
+          global: false,
+        },
       },
     }),
     new webpack.DefinePlugin({
