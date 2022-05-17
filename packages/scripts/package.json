@@ -37,7 +37,7 @@
     "css-loader": "^6.7.1",
     "eslint-plugin-gm-react-app": "^3.8.1-beta-30.0.0",
     "file-loader": "^6.2.0",
-    "fork-ts-checker-webpack-plugin": "^4.1.3",
+    "fork-ts-checker-webpack-plugin": "^7.2.11",
     "fs": "0.0.2",
     "fs-extra": "^10.1.0",
     "html-webpack-plugin": "^5.5.0",
