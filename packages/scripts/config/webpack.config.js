@@ -78,7 +78,7 @@ let config = {
   cache: {
     type: 'filesystem',
     // 每当修改了webpack配置，记得更新cache的version，否则可能会出现因为重用了缓存导致配置没生效的问题。
-    version: '3.8.1-beta-28.0.0',
+    version: '3.8.1-beta-29.0.0',
   },
   optimization: {
     minimize: !isEnvDevelopment,
@@ -213,10 +213,10 @@ let config = {
     isEnvDevelopment && new WebpackBar(),
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
     new ForkTsCheckerWebpackPlugin({
-      memoryLimit: 4096,
-      tsconfig: PATH.appDirectory + '/tsconfig.json',
-      checkSyntacticErrors: true,
-      reportFiles: [`${PATH.appSrc}/**/*.{ts,tsx}`],
+      typescript: {
+        memoryLimit: 4096,
+        configFile: PATH.appDirectory + '/tsconfig.json',
+      },
     }),
     new webpack.DefinePlugin({
       __DEBUG__: isEnvDevelopment,
