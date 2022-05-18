@@ -80,41 +80,41 @@ let config = {
     // 每当修改了webpack配置，记得更新cache的version，否则可能会出现因为重用了缓存导致配置没生效的问题。
     version: '3.8.1-beta-33.0.0',
   },
-  optimization: {
-    minimize: !isEnvDevelopment,
-    minimizer: [
-      new TerserPlugin({
-        parallel: true,
-        terserOptions: {
-          mangle: false, // Note `mangle.properties` is `false` by default.
-        },
-      }),
-    ],
-    splitChunks: {
-      chunks: 'all',
-      automaticNameDelimiter: '.',
-      minSize: 50000,
-      maxAsyncRequests: 4,
-      maxInitialRequests: 3,
-      // 暂时先这样，后面逐步完善
-      cacheGroups: {
-        // 作为基础包
-        common_base: {
-          test: /\/node_modules\/(react|react-dom|prop-types|lodash|moment|mobx|mobx-react|mobx-react-lite)\//,
-          chunks: 'all',
-          priority: 10,
-        },
-        // 减少冗余
-        common_chunk: {
-          test: path.resolve(PATH.appDirectory + '/src'),
-          minChunks: 3,
-          priority: 10,
-          reuseExistingChunk: true,
-        },
-      },
-    },
-    runtimeChunk: 'single',
-  },
+  // optimization: {
+  //   minimize: !isEnvDevelopment,
+  //   minimizer: [
+  //     new TerserPlugin({
+  //       parallel: true,
+  //       terserOptions: {
+  //         mangle: false, // Note `mangle.properties` is `false` by default.
+  //       },
+  //     }),
+  //   ],
+  //   splitChunks: {
+  //     chunks: 'all',
+  //     automaticNameDelimiter: '.',
+  //     minSize: 50000,
+  //     maxAsyncRequests: 4,
+  //     maxInitialRequests: 3,
+  //     // 暂时先这样，后面逐步完善
+  //     cacheGroups: {
+  //       // 作为基础包
+  //       common_base: {
+  //         test: /\/node_modules\/(react|react-dom|prop-types|lodash|moment|mobx|mobx-react|mobx-react-lite)\//,
+  //         chunks: 'all',
+  //         priority: 10,
+  //       },
+  //       // 减少冗余
+  //       common_chunk: {
+  //         test: path.resolve(PATH.appDirectory + '/src'),
+  //         minChunks: 3,
+  //         priority: 10,
+  //         reuseExistingChunk: true,
+  //       },
+  //     },
+  //   },
+  //   runtimeChunk: 'single',
+  // },
   module: {
     rules: [
       {
