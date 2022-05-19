@@ -7,7 +7,6 @@ class CheckPlugin {
           if (file.endsWith('.js')) {
             if (asset.source._value) {
               if (asset.source._value.includes('const ')) {
-                console.log('错误：', asset.source._value)
                 throw new Error('has const ')
               }
             }

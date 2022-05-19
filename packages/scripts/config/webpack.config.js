@@ -157,11 +157,15 @@ let config = {
           },
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-            loader: require.resolve('url-loader'),
-            options: {
-              limit: 10000,
-              name: 'media/image/[name].[hash:8].[ext]',
+            type: 'asset',
+            parser: {
+                dataUrlCondition: {
+                    maxSize: 10000,
+                }
             },
+            generator: {
+                filename: 'media/image/[name].[hash:8].[ext]',
+            }
           },
           {
             test: /\/svg\/(\w|\W)+\.svg$/,
@@ -184,15 +188,15 @@ let config = {
           // iconfont 应该要废弃掉
           {
             test: /(fontawesome-webfont|glyphicons-halflings-regular|iconfont|gm-mobile-icons)\.(woff|woff2|ttf|eot|svg)($|\?)/,
-            use: [
-              {
-                loader: require.resolve('url-loader'),
-                options: {
-                  limit: 10000,
-                  name: 'media/font/[name].[hash:8].[ext]',
-                },
-              },
-            ],
+            type: 'asset',
+            parser: {
+                dataUrlCondition: {
+                    maxSize: 10000,
+                }
+            },
+            generator: {
+                filename: 'media/image/[name].[hash:8].[ext]',
+            }
           },
           // new loader ? add here before file-loader
 

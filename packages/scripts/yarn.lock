@@ -1583,17 +1583,17 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@gm-react-app/commitlint-gm-react-app@^3.8.1-beta-30.0.0":
-  version "3.8.1-beta-30.0.0"
-  resolved "https://registry.npmjs.org/@gm-react-app/commitlint-gm-react-app/-/commitlint-gm-react-app-3.8.1-beta-30.0.0.tgz#aaf2c10b68dc985afe9ccceb1f4001f0382c09a8"
-  integrity sha512-zqNFeIBsqnRwimgRotCWb9F44JXiZNatUc3NLTZN1fjF3cc25Qp+TjLU3ODofXDy1xO9Z/ne+lJECwifhMgjlQ==
+"@gm-react-app/commitlint-gm-react-app@^3.8.1-beta-35.0.0":
+  version "3.8.1-beta-35.0.0"
+  resolved "https://registry.npmjs.org/@gm-react-app/commitlint-gm-react-app/-/commitlint-gm-react-app-3.8.1-beta-35.0.0.tgz#83904fdfc794cd392d9db7e1d993273624807b3b"
+  integrity sha512-DSeArRtdIXuy+nQ71Dem/c343tZqqZ1QbTdi0kM3PJQ2ZtDrLBkGM6Hx7bIAlOrMWNIvB11dbJ1nixJln1J/mw==
   dependencies:
     "@commitlint/config-conventional" "^11.0.0"
 
-"@gm-react-app/template@^3.8.1-beta-30.0.0":
-  version "3.8.1-beta-30.0.0"
-  resolved "https://registry.npmjs.org/@gm-react-app/template/-/template-3.8.1-beta-30.0.0.tgz#064d3878f61c327e2aae2e3d33d0d6c8f05cca8d"
-  integrity sha512-h+r0kiIMverh5SSigKY+pLAw7voyX9jXeHzvY6bmOzseYwD2ceMTw6hU4Gm2+0/SzmY+bffu7zr90lAJy3WLhg==
+"@gm-react-app/template@^3.8.1-beta-35.0.0":
+  version "3.8.1-beta-35.0.0"
+  resolved "https://registry.npmjs.org/@gm-react-app/template/-/template-3.8.1-beta-35.0.0.tgz#f8898f08953cc679f04b8cd60bf74df099ba74fe"
+  integrity sha512-0f2yyJba/Lmm+eYf+ZiNpjVMfDx0IXOPMoEtESNJTuW9rxlnjF226r/j7Rj+YTuaN65nMMgsMcaVZ4taZXJM1g==
   dependencies:
     art-template "^4.13.2"
     fs-extra "^9.0.1"
@@ -2635,10 +2635,10 @@ babel-plugin-polyfill-regenerator@^0.3.0:
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.3.1"
 
-babel-preset-gm-react-app@^3.8.1-beta-30.0.0:
-  version "3.8.1-beta-30.0.0"
-  resolved "https://registry.npmjs.org/babel-preset-gm-react-app/-/babel-preset-gm-react-app-3.8.1-beta-30.0.0.tgz#8096539c0c8d559131c22ec543306fe3723b6f8f"
-  integrity sha512-lw1jrnoORr2Dj6B8Gdh6IkpIdOGWv8HAE+g4kfq6lzx/fapRlT4PThir2qpYeQMlXggJYuzbQGESQ1xisI97Mg==
+babel-preset-gm-react-app@^3.8.1-beta-35.0.0:
+  version "3.8.1-beta-35.0.0"
+  resolved "https://registry.npmjs.org/babel-preset-gm-react-app/-/babel-preset-gm-react-app-3.8.1-beta-35.0.0.tgz#b17fe16679fe428dd6b5f841934a4a213ac96260"
+  integrity sha512-CNe8l21J7kKOcI35OSnLpFlz+3zZm2WwOQOa5VSYkolHf+zwEvEII0uDDmwN1bC9M028lDs5HqD70hrZ1bfpJg==
   dependencies:
     "@babel/cli" "^7.17.10"
     "@babel/core" "^7.17.12"
@@ -4041,10 +4041,10 @@ eslint-plugin-es@^3.0.0:
     eslint-utils "^2.0.0"
     regexpp "^3.0.0"
 
-eslint-plugin-gm-react-app@^3.8.1-beta-30.0.0:
-  version "3.8.1-beta-30.0.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-3.8.1-beta-30.0.0.tgz#bac7a678355ac4e021d3f752d524eab9d1563afb"
-  integrity sha512-/sFJyzYX0shwjMhvLbQ9SKyY+Cg6qiVwoLadPvPaXfxm0wkH99KH34s7YJ7hoBTSXWNZaiHNBdQinCbSz3kxBQ==
+eslint-plugin-gm-react-app@^3.8.1-beta-35.0.0:
+  version "3.8.1-beta-35.0.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-gm-react-app/-/eslint-plugin-gm-react-app-3.8.1-beta-35.0.0.tgz#dab7f8d611a1ade01e37f6eb3637f8f5a1c2a02f"
+  integrity sha512-h+pKnY/MKChQis5YGMbUKlmd9ITe2AOkC628JJP+Jd0f3A3uix/3vMtM3D7FmryQ6u58Q6sxwhYad2zuvx2zEA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.24.0"
     "@typescript-eslint/parser" "^5.24.0"
@@ -4068,7 +4068,7 @@ eslint-plugin-gm-react-app@^3.8.1-beta-30.0.0:
     jsx-ast-utils "^3.3.0"
     lodash "^4.17.21"
     prettier "^2.6.2"
-    ts-config-gm-react-app "^3.8.1-beta-30.0.0"
+    ts-config-gm-react-app "^3.8.1-beta-35.0.0"
     typescript "^4.6.4"
 
 eslint-plugin-import@^2.26.0:
@@ -8416,10 +8416,10 @@ trim-newlines@^3.0.0:
   resolved "https://registry.npm.taobao.org/trim-newlines/download/trim-newlines-3.0.0.tgz#79726304a6a898aa8373427298d54c2ee8b1cb30"
   integrity sha1-eXJjBKaomKqDc0JymNVMLuixyzA=
 
-ts-config-gm-react-app@^3.8.1-beta-30.0.0:
-  version "3.8.1-beta-30.0.0"
-  resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.8.1-beta-30.0.0.tgz#57cf246aa3a602834f5ec44cab65941be6b196a7"
-  integrity sha512-5vKkUr0iX0R9TH0s3r+CTTlF7MLJC2f5ZD0S/l4TmWjDpdobA5lbwXFx2qwgmq56P+0PBAk3Pxr9mXbKy6TT7A==
+ts-config-gm-react-app@^3.8.1-beta-35.0.0:
+  version "3.8.1-beta-35.0.0"
+  resolved "https://registry.npmjs.org/ts-config-gm-react-app/-/ts-config-gm-react-app-3.8.1-beta-35.0.0.tgz#cf910d60c4b6e1fde474837d1ae3822561eac0e1"
+  integrity sha512-/WIu7wev+Ypu18GRZqrARPmCJ8shX0aftf1jn9kOni9y+HKdd2g6C4+2w9wYf8NpUncPXlnEjEuoQ61nJfeoKQ==
 
 ts-node@^10.7.0:
   version "10.7.0"
@@ -8653,15 +8653,6 @@ uri-js@^4.2.2:
   integrity sha1-qnFCYd55PoqCNHp7zJznTobyhgI=
   dependencies:
     punycode "^2.1.0"
-
-url-loader@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/url-loader/-/url-loader-4.1.1.tgz#28505e905cae158cf07c92ca622d7f237e70a4e2"
-  integrity sha512-3BTV812+AVHHOJQO8O5MkWgZ5aosP7GnROJwvzLS9hWDj00lZ6Z0wNak423Lp9PBZN05N+Jk/N5Si8jRAlGyWA==
-  dependencies:
-    loader-utils "^2.0.0"
-    mime-types "^2.1.27"
-    schema-utils "^3.0.0"
 
 url@^0.11.0:
   version "0.11.0"
