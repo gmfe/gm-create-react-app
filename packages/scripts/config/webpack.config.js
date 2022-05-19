@@ -56,7 +56,8 @@ function getCss(options = { modules: false }) {
 
 // 以下配置综合参考 CRA 和 相关文章
 let config = {
-  target: isEnvDevelopment ? 'web' : 'node',
+  // target: 'node',
+  target: 'web',
   mode: isEnvDevelopment ? 'development' : 'production',
   entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].filter(
     Boolean,
@@ -78,7 +79,7 @@ let config = {
   cache: {
     type: 'filesystem',
     // 每当修改了webpack配置，记得更新cache的version，否则可能会出现因为重用了缓存导致配置没生效的问题。
-    version: '3.8.1-beta-36.0.0',
+    version: '3.8.1-beta-37.0.0',
   },
   // optimization: {
   //   minimize: !isEnvDevelopment,
