@@ -11,6 +11,6 @@ const { shellExec, initGitEnv } = require('../util')
 initGitEnv()
 
 shellExec(
-  'webpack-dev-server --color --config ' +
+  'webpack server --color --config ' +
     require.resolve('../config/webpack.config'),
 )
