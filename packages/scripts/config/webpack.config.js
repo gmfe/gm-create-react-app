@@ -71,8 +71,12 @@ let config = {
     // chunkFilename: isEnvDevelopment
     //   ? 'js/[name].chunk.js'
     //   : 'js/[name]/[contenthash:8].chunk.js',
-    filename: 'js/[name]/[contenthash:8].js',
-    chunkFilename: 'js/[name]/[contenthash:8].chunk.js',
+    filename: isEnvDevelopment
+      ? `js/[name].js`
+      : `js/[name]/[contenthash:8].js`,
+    chunkFilename: isEnvDevelopment
+      ? 'js/[name].chunk.js'
+      : 'js/[name]/[contenthash:8].chunk.js',
     publicPath: appConfig.publicPath,
   },
   cache: {
