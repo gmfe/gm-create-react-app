@@ -85,8 +85,6 @@ let config = {
     version: '3.8.1-beta-44.0.0',
   },
   optimization: {
-    chunkIds: 'natural',
-    moduleIds: 'natural',
     minimize: !isEnvDevelopment,
     minimizer: [
       new TerserPlugin({
@@ -119,7 +117,7 @@ let config = {
         },
       },
     },
-    runtimeChunk: 'single',
+    // runtimeChunk: 'single',
   },
   module: {
     rules: [
