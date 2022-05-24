@@ -82,9 +82,10 @@ let config = {
   cache: {
     type: 'filesystem',
     // 每当修改了webpack配置，记得更新cache的version，否则可能会出现因为重用了缓存导致配置没生效的问题。
-    version: '3.8.1-beta-39.0.0',
+    version: '3.8.1-beta-40.0.0',
   },
   optimization: {
+    chunkIds: 'natural',
     minimize: !isEnvDevelopment,
     minimizer: [
       new TerserPlugin({
@@ -163,13 +164,13 @@ let config = {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             type: 'asset',
             parser: {
-                dataUrlCondition: {
-                    maxSize: 10000,
-                }
+              dataUrlCondition: {
+                maxSize: 10000,
+              },
             },
             generator: {
-                filename: 'media/image/[name].[hash:8].[ext]',
-            }
+              filename: 'media/image/[name].[hash:8].[ext]',
+            },
           },
           {
             test: /\/svg\/(\w|\W)+\.svg$/,
@@ -194,13 +195,13 @@ let config = {
             test: /(fontawesome-webfont|glyphicons-halflings-regular|iconfont|gm-mobile-icons)\.(woff|woff2|ttf|eot|svg)($|\?)/,
             type: 'asset',
             parser: {
-                dataUrlCondition: {
-                    maxSize: 10000,
-                }
+              dataUrlCondition: {
+                maxSize: 10000,
+              },
             },
             generator: {
-                filename: 'media/image/[name].[hash:8].[ext]',
-            }
+              filename: 'media/image/[name].[hash:8].[ext]',
+            },
           },
           // new loader ? add here before file-loader
 
