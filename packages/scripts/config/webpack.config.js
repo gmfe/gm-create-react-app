@@ -82,7 +82,7 @@ let config = {
   cache: {
     type: 'filesystem',
     // 每当修改了webpack配置，记得更新cache的version，否则可能会出现因为重用了缓存导致配置没生效的问题。
-    version: '3.8.1-beta-46.0.0',
+    version: '3.8.1-beta-47.0.0',
   },
   optimization: {
     minimize: !isEnvDevelopment,
@@ -257,7 +257,7 @@ let config = {
         chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
       }),
     // scope hosting
-    !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
+    // !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin({
       resourceRegExp: /^\.\/locale$/,
       contextRegExp: /moment$/,
