@@ -28,8 +28,8 @@ module.exports = {
         'plugin:import/errors',
         'plugin:promise/recommended',
         'prettier',
-        'prettier/react',
-        'prettier/standard',
+        // 'prettier/react',
+        // 'prettier/standard',
       ],
       plugins: ['gm-react-app', 'react-hooks', 'prettier', 'promise'],
       parserOptions: {
@@ -82,9 +82,9 @@ module.exports = {
             'plugin:import/typescript',
             'plugin:@typescript-eslint/recommended',
             'prettier',
-            'prettier/react',
-            'prettier/standard',
-            'prettier/@typescript-eslint',
+            // 'prettier/react',
+            // 'prettier/standard',
+            // 'prettier/@typescript-eslint',
           ],
           plugins: [
             'gm-react-app',
