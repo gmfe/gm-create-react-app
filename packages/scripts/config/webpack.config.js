@@ -81,8 +81,6 @@ let config = {
   },
   cache: {
     type: 'filesystem',
-    // 每当修改了webpack配置，记得更新cache的version，否则可能会出现因为重用了缓存导致配置没生效的问题。
-    version: '3.9.1',
   },
   optimization: {
     minimize: !isEnvDevelopment,
@@ -250,7 +248,7 @@ let config = {
       commit: process.env.GIT_COMMIT || 'none',
       env: process.env.NODE_ENV || 'none',
     }),
-    // isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
+    isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
       new MiniCssExtractPlugin({
         filename: 'css/[name]/[contenthash:8].css',
@@ -329,6 +327,10 @@ let config = {
     proxy: appConfig.proxy || {},
     https: appConfig.https || false,
     open: true,
+    client: {
+      logging: 'error', // 控制台只打印错误信息
+      overlay: false, // 报错信息不会覆盖浏览器界面
+    },
   },
 }
 
