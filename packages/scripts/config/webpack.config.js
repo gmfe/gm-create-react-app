@@ -335,6 +335,7 @@ let config = {
       logging: 'error', // 控制台只打印错误信息
       overlay: false, // 报错信息不会覆盖浏览器界面
     },
+    watchFiles: path.resolve(PATH.appDirectory + '/src'),
   },
 }
 
