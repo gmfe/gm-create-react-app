@@ -248,7 +248,7 @@ let config = {
       commit: process.env.GIT_COMMIT || 'none',
       env: process.env.NODE_ENV || 'none',
     }),
-    isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
+    // isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isEnvDevelopment &&
       new MiniCssExtractPlugin({
         filename: 'css/[name]/[contenthash:8].css',
@@ -307,6 +307,10 @@ let config = {
       }),
     ],
   },
+  watchOptions: {
+    aggregateTimeout: 200, // 不配做这个devServer会出现更新两次的问题
+  },
+  stats: 'errors-only', // 因为erp上有大量的错误代码，会报很多的警告提示，这里先声明只打印错误提示
   devServer: {
     allowedHosts: 'all',
     compress: true,
