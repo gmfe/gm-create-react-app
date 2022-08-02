@@ -307,9 +307,9 @@ let config = {
       }),
     ],
   },
-  watchOptions: {
-    aggregateTimeout: 200, // 不配做这个devServer会出现更新两次的问题
-  },
+  // watchOptions: {
+  //   aggregateTimeout: 200, // 不配做这个devServer会出现更新两次的问题
+  // },
   stats: 'errors-only', // 因为erp上有大量的错误代码，会报很多的警告提示，这里先声明只打印错误提示
   devServer: {
     allowedHosts: 'all',
