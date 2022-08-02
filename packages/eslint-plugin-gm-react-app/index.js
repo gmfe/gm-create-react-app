@@ -28,8 +28,8 @@ module.exports = {
         'plugin:import/errors',
         'plugin:promise/recommended',
         'prettier',
-        'prettier/react',
-        'prettier/standard',
+        // 'prettier/react',
+        // 'prettier/standard',
       ],
       plugins: ['gm-react-app', 'react-hooks', 'prettier', 'promise'],
       parserOptions: {
