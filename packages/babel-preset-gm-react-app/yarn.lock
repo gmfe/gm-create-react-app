@@ -1747,7 +1747,7 @@ prop-types@^15.6.1:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
-react-hot-loader@^4.13.0:
+react-hot-loader@^4.12.19:
   version "4.13.0"
   resolved "https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-4.13.0.tgz#c27e9408581c2a678f5316e69c061b226dc6a202"
   integrity sha512-JrLlvUPqh6wIkrK2hZDfOyq/Uh/WeVEr8nc7hkn2/3Ul0sx1Kr5y4kOGNacNRoj7RhwLNcQ3Udf1KJXrqc0ZtA==
