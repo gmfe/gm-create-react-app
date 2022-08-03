@@ -42,7 +42,7 @@ module.exports = (api, options = {}) => {
       ],
       require('styled-jsx/babel'),
       require('babel-plugin-lodash'),
-      // require('react-hot-loader/babel'),
+      require('react-hot-loader/babel'),
       require('babel-plugin-mobx-deep-action'),
     ],
     // 从后往前

@@ -58,10 +58,9 @@ function getCss(options = { modules: false }) {
 let config = {
   // target: 'node',
   mode: isEnvDevelopment ? 'development' : 'production',
-  // entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].filter(
-  //   Boolean,
-  // ),
-  entry: PATH.appIndexJs,
+  entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].filter(
+    Boolean,
+  ),
   // 暂时不启动 source-map
   devtool: isEnvDevelopment ? 'eval-cheap-module-source-map' : false,
   output: {
