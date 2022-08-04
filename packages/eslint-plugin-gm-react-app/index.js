@@ -111,13 +111,13 @@ module.exports = {
             ...recommendedRules,
             camelcase: 'off',
             'react/prop-types': 'off',
-            '@typescript-eslint/member-naming': [
-              'error',
-              {
-                private: '^_',
-                protected: '^__',
-              },
-            ],
+            // '@typescript-eslint/member-naming': [
+            //   'error',
+            //   {
+            //     private: '^_',
+            //     protected: '^__',
+            //   },
+            // ],
             'react/display-name': 0,
             'react/no-find-dom-node': 0,
             'react/jsx-pascal-case': 0,
