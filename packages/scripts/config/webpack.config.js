@@ -153,6 +153,7 @@ let config = {
             options: {
               limit: 10000,
               name: 'media/image/[name].[hash:8].[ext]',
+              publicPath: '../../',
             },
           },
           {
