@@ -6,6 +6,11 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const WebpackBar = require('webpackbar')
+const threadLoader = require('thread-loader')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
 
 const fs = require('fs-extra')
 const path = require('path')
@@ -21,6 +26,8 @@ const {
 } = require('../util')
 const CheckPlugin = require('./check_plugin')
 
+const { ESBuildMinifyPlugin } = require('esbuild-loader')
+
 // 做个检测，需要提供 aliasName clientName
 if (!packageJson.aliasName || !packageJson.clientName) {
   throw new Error('请提供 aliasName clientName')
@@ -28,16 +35,18 @@ if (!packageJson.aliasName || !packageJson.clientName) {
 const appConfig = getConfig()
 function getCss(options = { modules: false }) {
   return [
-    !isEnvDevelopment && MiniCssExtractPlugin.loader,
-    isEnvDevelopment && require.resolve('style-loader'),
+    // !isEnvDevelopment && MiniCssExtractPlugin.loader,
+    isEnvDevelopment && {
+      loader: 'style-loader',
+    },
     {
-      loader: require.resolve('css-loader'),
+      loader: 'css-loader',
       options: {
         modules: options.modules,
       },
     },
     {
-      loader: require.resolve('postcss-loader'),
+      loader: 'postcss-loader',
       options: {
         postcssOptions: {
           ident: 'postcss',
@@ -52,6 +61,7 @@ function getCss(options = { modules: false }) {
     },
   ]
 }
+
 
 // 以下配置综合参考 CRA 和 相关文章
 let config = {
@@ -74,13 +84,17 @@ let config = {
   optimization: {
     minimize: !isEnvDevelopment,
     minimizer: [
-      new TerserPlugin({
-        cache: true,
-        parallel: true,
-        terserOptions: {
-          mangle: false, // Note `mangle.properties` is `false` by default.
-        },
-      }),
+      // new TerserPlugin({
+      //   cache: true,
+      //   parallel: true,
+      //   terserOptions: {
+      //     mangle: false, // Note `mangle.properties` is `false` by default.
+      //   },
+      // }),
+      // new ESBuildMinifyPlugin({
+      //   target: 'es2015', // Syntax to compile to (see options below for possible values)
+      //   css: true, // Apply minification to CSS assets
+      // }),
     ],
     splitChunks: {
       chunks: 'all',
@@ -115,18 +129,17 @@ let config = {
           {
             test: /\.(js|tsx?)$/,
             use: [
-              { loader: require.resolve('thread-loader') },
+              // {
+              //   loader: require.resolve('thread-loader'),
+              //   options: {
+              //     workerParallelJobs: 50,
+              //   },
+              // },
               {
-                loader: require.resolve('babel-loader'),
-                options: {
-                  cacheDirectory: true,
-                  cacheCompression: false,
-                  compact: !isEnvDevelopment,
-                },
+                loader: require.resolve('swc-loader'),
               },
             ],
             include: commonInclude,
-            exclude: /@babel\/runtime/,
           },
           {
             test: /\.module\.css$/,
@@ -140,16 +153,33 @@ let config = {
             test: /\.module\.less$/,
             use: [
               ...getCss({ modules: true }),
-              require.resolve('less-loader'),
+              {
+                loader: 'less-loader',
+                options: {
+                  lessOptions: {
+                    javascriptEnabled: true,
+                  },
+                },
+              },
             ].filter(Boolean),
           },
           {
             test: /\.less$/,
-            use: [...getCss(), require.resolve('less-loader')].filter(Boolean),
+            use: [
+              ...getCss(),
+              {
+                loader: 'less-loader',
+                options: {
+                  lessOptions: {
+                    javascriptEnabled: true,
+                  },
+                },
+              },
+            ].filter(Boolean),
           },
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-            loader: require.resolve('url-loader'),
+            loader: 'url-loader',
             options: {
               limit: 10000,
               name: 'media/image/[name].[hash:8].[ext]',
@@ -178,7 +208,7 @@ let config = {
             test: /(fontawesome-webfont|glyphicons-halflings-regular|iconfont|gm-mobile-icons)\.(woff|woff2|ttf|eot|svg)($|\?)/,
             use: [
               {
-                loader: require.resolve('url-loader'),
+                loader: 'url-loader',
                 options: {
                   limit: 10000,
                   name: 'media/font/[name].[hash:8].[ext]',
@@ -203,12 +233,12 @@ let config = {
   plugins: [
     isEnvDevelopment && new WebpackBar(),
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
-    new ForkTsCheckerWebpackPlugin({
-      memoryLimit: 4096,
-      tsconfig: PATH.appDirectory + '/tsconfig.json',
-      checkSyntacticErrors: true,
-      reportFiles: [`${PATH.appSrc}/**/*.{ts,tsx}`],
-    }),
+    // new ForkTsCheckerWebpackPlugin({
+    //   memoryLimit: 4096,
+    //   tsconfig: PATH.appDirectory + '/tsconfig.json',
+    //   checkSyntacticErrors: true,
+    //   reportFiles: [`${PATH.appSrc}/**/*.{ts,tsx}`],
+    // }),
     new webpack.DefinePlugin({
       __DEBUG__: isEnvDevelopment,
       __DEVELOPMENT__: isEnvDevelopment,
@@ -228,15 +258,16 @@ let config = {
       env: process.env.NODE_ENV || 'none',
     }),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
-    !isEnvDevelopment &&
-      new MiniCssExtractPlugin({
-        filename: 'css/[name]/[contenthash:8].css',
-        chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
-      }),
+    // !isEnvDevelopment &&
+    // new MiniCssExtractPlugin({
+    //   filename: 'css/[name]/[contenthash:8].css',
+    //   chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
+    // }),
     // scope hosting
     !isEnvDevelopment && new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     !isEnvDevelopment && new CheckPlugin(),
+    new BundleAnalyzerPlugin(),
   ].filter(Boolean),
   resolve: {
     alias: _.pickBy(
@@ -287,7 +318,7 @@ let config = {
   },
   devServer: {
     disableHostCheck: true,
-    compress: true,
+    compress: false,
     contentBase: PATH.appDirectory,
     hot: true,
     publicPath: appConfig.publicPath,

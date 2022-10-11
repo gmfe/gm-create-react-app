@@ -67,6 +67,8 @@ const commonInclude = [
   PATH.appSrc,
   /gm_api/,
   /gm-/,
+  /@gm-/,
+  /gm_/,
   /gmfe/,
   /gm_static_storage/,
   /react-mgm/,

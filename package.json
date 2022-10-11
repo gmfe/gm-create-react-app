@@ -65,6 +65,8 @@
     "ts-config-gm-react-app": "^3.2.4"
   },
   "devDependencies": {
-    "lerna": "^3.19.0"
+    "lerna": "^3.19.0",
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "webpack-bundle-analyzer": "^4.6.1"
   }
 }

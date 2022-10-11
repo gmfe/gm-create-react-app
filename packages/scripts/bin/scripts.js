@@ -4,6 +4,9 @@ const spawn = require('cross-spawn')
 const scripts = ['start', 'build', 'test', 'migrate', 'create-project']
 const script = process.argv[2]
 
+process.env.NODE_OPTIONS =
+  (process.env.NODE_OPTIONS || '') + ` --max-old-space-size=8192`
+
 if (scripts.includes(script)) {
   const result = spawn.sync(
     'node',
