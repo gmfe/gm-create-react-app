@@ -6,9 +6,9 @@ class CheckPlugin {
           const asset = compilation.getAsset(file)
           if (file.endsWith('.js')) {
             if (asset.source._value) {
-              if (asset.source._value.includes('const ')) {
-                throw new Error('has const ')
-              }
+              // if (asset.source._value.includes('const ')) {
+              //   throw new Error('has const ')
+              // }
             }
           }
         }
