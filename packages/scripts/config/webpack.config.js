@@ -151,7 +151,7 @@ let config = {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
             options: {
-              limit: 100 * 1024,
+              limit: 102400,
               name: 'media/image/[name].[hash:8].[ext]',
             },
           },
