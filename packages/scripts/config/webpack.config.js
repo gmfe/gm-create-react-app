@@ -9,8 +9,8 @@ const WebpackBar = require('webpackbar')
 const threadLoader = require('thread-loader')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-const smp = new SpeedMeasurePlugin();
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const smp = new SpeedMeasurePlugin()
 
 const fs = require('fs-extra')
 const path = require('path')
@@ -25,6 +25,7 @@ const {
   getConfig,
 } = require('../util')
 const CheckPlugin = require('./check_plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 const { ESBuildMinifyPlugin } = require('esbuild-loader')
 
@@ -62,15 +63,12 @@ function getCss(options = { modules: false }) {
   ]
 }
 
-
 // 以下配置综合参考 CRA 和 相关文章
 let config = {
   mode: isEnvDevelopment ? 'development' : 'production',
-  entry: [isEnvDevelopment && 'react-hot-loader/patch', PATH.appIndexJs].filter(
-    Boolean,
-  ),
+  entry: [PATH.appIndexJs].filter(Boolean),
   // 暂时不启动 source-map
-  devtool: isEnvDevelopment ? 'cheap-module-eval-source-map' : false,
+  devtool: isEnvDevelopment ? 'eval-cheap-module-source-map' : false,
   output: {
     path: PATH.appBuild,
     filename: isEnvDevelopment
@@ -127,7 +125,7 @@ let config = {
         oneOf: [
           // 提高性能，只处理 /src，要处理 node_modules 自行添加
           {
-            test: /\.(js|tsx?)$/,
+            test: /\.(js|ts|tsx)$/,
             use: [
               // {
               //   loader: require.resolve('thread-loader'),
@@ -137,10 +135,32 @@ let config = {
               // },
               {
                 loader: require.resolve('swc-loader'),
+                // options: {
+                //   jsc: {
+                //     transform: {
+                //       react: {
+                //         development: isEnvDevelopment,
+                //         refresh: isEnvDevelopment,
+                //       },
+                //     },
+                //   },
+                // },
               },
             ],
             include: commonInclude,
           },
+          // {
+          //   test: /\.(js|ts|tsx)$/,
+          //   use: [
+          //     {
+          //       loader: require.resolve('ts-loader'),
+          //       options: {
+          //         transpileOnly: false,
+          //       },
+          //     },
+          //   ],
+          //   include: commonInclude,
+          // },
           {
             test: /\.module\.css$/,
             use: [...getCss({ modules: true })].filter(Boolean),
@@ -231,6 +251,10 @@ let config = {
     ],
   },
   plugins: [
+    isEnvDevelopment &&
+    new ReactRefreshWebpackPlugin({
+      overlay: false,
+    }),
     isEnvDevelopment && new WebpackBar(),
     isEnvDevelopment && new CaseSensitivePathsPlugin(),
     // new ForkTsCheckerWebpackPlugin({
@@ -257,7 +281,7 @@ let config = {
       commit: process.env.GIT_COMMIT || 'none',
       env: process.env.NODE_ENV || 'none',
     }),
-    isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
+    // isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     // !isEnvDevelopment &&
     // new MiniCssExtractPlugin({
     //   filename: 'css/[name]/[contenthash:8].css',
@@ -297,6 +321,8 @@ let config = {
         '@gm-pc':
           isEnvDevelopment &&
           path.resolve(PATH.appDirectory + '/node_modules/@gm-pc'),
+        'lodash-es':
+          path.resolve(PATH.appDirectory + '/node_modules/lodash'), // swc-loader处理es-module报错
         // 'react-dom/server':
         //   isEnvDevelopment && require.resolve('@hot-loader/react-dom/server'),
         // 'react-dom':
@@ -330,6 +356,10 @@ let config = {
     proxy: appConfig.proxy || {},
     https: appConfig.https || false,
     open: true,
+    // overlay: {
+    //   warnings: false,
+    //   errors: false,
+    // },
   },
 }
 
