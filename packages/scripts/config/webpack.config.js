@@ -104,7 +104,7 @@ let config = {
       cacheGroups: {
         // 作为基础包
         common_base: {
-          test: /\/node_modules\/(react|react-dom|prop-types|lodash|moment|mobx|mobx-react|mobx-react-lite)\//,
+          test: /\/node_modules\/(react|react-dom|prop-types|lodash|moment|mobx|mobx-react|mobx-react-lite|@ant-design|@antv)\//,
           chunks: 'all',
           priority: 10,
         },
@@ -256,7 +256,7 @@ let config = {
       overlay: false,
     }),
     isEnvDevelopment && new WebpackBar(),
-    isEnvDevelopment && new CaseSensitivePathsPlugin(),
+    // isEnvDevelopment && new CaseSensitivePathsPlugin(),
     // new ForkTsCheckerWebpackPlugin({
     //   memoryLimit: 4096,
     //   tsconfig: PATH.appDirectory + '/tsconfig.json',
