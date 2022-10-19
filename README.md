@@ -42,5 +42,3 @@
 - script：定义了webpack规则，集成了除tailwind-gm-react-app以外的所有包
 
 - ts-config-gm-react-app：定义了ts规则
-
-- template：创建新项目后的模板

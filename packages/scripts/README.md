@@ -6,13 +6,6 @@
 yarn add @gm-react-app/scripts
 ```
 
-## 迁移指引
-
-```shell script
-gras migrate
-```
-
-之后跟着指引做就对了
 
 ## 模板
 
@@ -65,7 +58,6 @@ module.exports = {
       changeOrigin: true,
     },
   ],
-  autoRouterReg: '/^\\.\\/customer.*?index\\.page\\./',
 }
 ```
 
@@ -89,21 +81,6 @@ style-jsx
 
 ## 其他
 
-react-hot-loader
-
-默认做了 alias
-
-```
-    alias: {
-      // yarn link 后保持 react 一致
-      react: path.resolve('react'),
-      common: PATH.appDirectory + 'src/js/common/',
-      stores: PATH.appDirectory + 'src/js/stores/',
-      svg: PATH.appDirectory + 'src/svg/',
-      img: PATH.appDirectory + 'src/img/'
-    }
-```
-
 环境
 
 ```
@@ -124,7 +101,6 @@ __NAME__ 来自 package.json aliasName
 __CLIENT_NAME__ 来自 package.json clientName
 __BRANCH__
 __COMMIT__
-__AUTO_ROUTER_REG__ 方便开发，设置此，使build的文件更少，开发更快。默认 /index\.page\./
 ```
 
 模板变量

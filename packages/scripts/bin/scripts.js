@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const spawn = require('cross-spawn')
 
-const scripts = ['start', 'build', 'test', 'migrate', 'create-project']
+const scripts = ['start', 'build', 'test', 'create-project']
 const script = process.argv[2]
 
 process.env.NODE_OPTIONS =

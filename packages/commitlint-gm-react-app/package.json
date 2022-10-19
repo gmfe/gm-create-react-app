@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/gmfe/gm-react-app/issues"
   },
-  "dependencies": {
+  "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0"
   }
 }

@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/gmfe/gm-react-app/issues"
   },
-  "dependencies": {
+  "devDependencies": {
     "lodash": "^4.17.20",
     "tailwindcss": "^2.0.2"
   }

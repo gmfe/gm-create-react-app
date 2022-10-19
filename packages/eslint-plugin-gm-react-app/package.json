@@ -19,7 +19,9 @@
   "bugs": {
     "url": "https://github.com/gmfe/gm-react-app/issues"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^8.2.0",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "babel-eslint": "^10.1.0",
@@ -44,9 +46,6 @@
     "prettier": "^2.0.4",
     "ts-config-gm-react-app": "^3.7.6",
     "typescript": "^3.8.3"
-  },
-  "devDependencies": {
-    "mocha": "^8.2.0"
   },
   "peerDependencies": {
     "eslint": "^6.7.0"

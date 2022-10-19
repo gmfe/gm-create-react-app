@@ -1,14 +1,11 @@
 const fs = require('fs-extra')
 const sh = require('shelljs')
-const path = require('path')
+const paths = require('./config/paths')
 
 const env = process.env.NODE_ENV
 const isEnvDevelopment = env === 'development'
 const isEnvTest = env === 'test'
 const isEnvProduction = env === 'production'
-
-const appDirectory = fs.realpathSync(process.cwd())
-const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath)
 
 function shellExec(com) {
   if (sh.exec(com).code !== 0) {
@@ -19,7 +16,7 @@ function shellExec(com) {
 const getLocalConfig = () => {
   let config = {}
   try {
-    config = require(appDirectory + '/config/local')
+    config = require(paths.appPath + '/config/local')
   } catch (err) {
     // nothing
   }
@@ -30,7 +27,7 @@ const getLocalConfig = () => {
 const getConfig = () => {
   let config
   try {
-    config = require(appDirectory + '/config/deploy')
+    config = require(paths.appPath + '/config/deploy')
   } catch (err) {
     console.log(err)
     throw new Error('没有找到 /config/deploy.js 文件')
@@ -52,19 +49,9 @@ const getConfig = () => {
   return config
 }
 
-const PATH = {
-  appDirectory,
-  appBuild: resolveApp('build'),
-  appConfig: resolveApp('config'),
-  appSrc: resolveApp('src'),
-  appIndexTemplate: resolveApp('src/index.html'),
-  appIndexJs: resolveApp('src/index'),
-  appPackageJson: resolveApp('package.json'),
-}
-
 // query-string swiper dom7 比较坑爹，里面用了 const
 const commonInclude = [
-  PATH.appSrc,
+  paths.appSrc,
   /gm_api/,
   /gm-/,
   /@gm-/,
@@ -78,10 +65,9 @@ const commonInclude = [
   /strict-uri-encode/,
   /swiper/,
   /dom7/,
-  /lodash-es/
 ]
 
-const packageJson = JSON.parse(fs.readFileSync(PATH.appPackageJson))
+const packageJson = JSON.parse(fs.readFileSync(paths.appPackageJson))
 
 function initGitEnv() {
   if (process.env.GIT_COMMIT || process.env.GIT_BRANCH) return
@@ -100,8 +86,6 @@ module.exports = {
   isEnvDevelopment,
   isEnvTest,
   isEnvProduction,
-  appDirectory,
-  PATH,
   packageJson,
   commonInclude,
   shellExec,
