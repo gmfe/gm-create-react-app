@@ -2,9 +2,6 @@
 
 const path = require('path');
 const fs = require('fs');
-const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
-const { getConfig } = require('../util')
-const appConfig = getConfig()
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
@@ -59,7 +56,9 @@ module.exports = {
   appWebpackCache: resolveApp('node_modules/.cache'),
   appTsBuildInfoFile: resolveApp('node_modules/.cache/tsconfig.tsbuildinfo'),
   swSrc: resolveModule(resolveApp, 'src/service-worker'),
-  publicUrlOrPath: appConfig.publicPath,
+  get publicUrlOrPath() {
+    return require('../util.js').getConfig().publicPath
+  },
 };
 
 
