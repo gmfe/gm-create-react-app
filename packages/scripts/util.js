@@ -33,9 +33,9 @@ const getConfig = () => {
     throw new Error('没有找到 /config/deploy.js 文件')
   }
 
-  // 开发默认 /build/
+  // 开发默认 /
   if (isEnvDevelopment) {
-    config.publicPath = '/build/'
+    config.publicPath = '/'
   }
 
   // local 覆盖 deploy
