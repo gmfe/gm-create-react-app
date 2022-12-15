@@ -297,7 +297,7 @@ module.exports = function (webpackEnv) {
               include: commonInclude,
               // exclude: /@babel\/runtime/,
               use: [
-                { loader: require.resolve('thread-loader') },
+                // { loader: require.resolve('thread-loader') }, // @sentry/webpack-plugin不支持
                 {
                   loader: require.resolve('babel-loader'),
                   options: {
@@ -330,7 +330,7 @@ module.exports = function (webpackEnv) {
               include: commonInclude,
               // exclude: /@babel(?:\/|\\{1,2})runtime/,
               use: [
-                { loader: require.resolve('thread-loader') },
+                // { loader: require.resolve('thread-loader') }, // @sentry/webpack-plugin不支持
                 {
                   loader: require.resolve('babel-loader'),
                   options: {
