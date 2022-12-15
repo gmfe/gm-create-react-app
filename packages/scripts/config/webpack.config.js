@@ -85,7 +85,7 @@ module.exports = function (webpackEnv) {
     ]
   }
 
-  const config = {
+  let config = {
     target: ['browserslist'],
     stats: 'errors-warnings',
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
