@@ -56,7 +56,7 @@ module.exports = function (webpackEnv) {
   const isEnvProductionProfile =
     isEnvProduction && process.argv.includes('--profile')
 
-    const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1))
+  const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1))
 
   function getCss(options = { modules: false }) {
     return [
@@ -85,7 +85,7 @@ module.exports = function (webpackEnv) {
     ]
   }
 
-  return {
+  const config = {
     target: ['browserslist'],
     stats: 'errors-warnings',
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
@@ -512,4 +512,11 @@ module.exports = function (webpackEnv) {
       /was not found in '(gm_api|@antv)/,
     ],
   }
+
+  if (fs.existsSync(paths.appConfig + '/webpack.config.js')) {
+    config = require(paths.appConfig + '/webpack.config.js')(config)
+  }
+
+  module.exports = config
+
 }
