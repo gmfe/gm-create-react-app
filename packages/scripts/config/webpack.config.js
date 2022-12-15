@@ -515,8 +515,8 @@ module.exports = function (webpackEnv) {
 
   if (fs.existsSync(paths.appConfig + '/webpack.config.js')) {
     config = require(paths.appConfig + '/webpack.config.js')(config)
+    console.log(config)
   }
 
-  module.exports = config
-
+  return config
 }
