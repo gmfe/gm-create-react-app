@@ -449,7 +449,7 @@ module.exports = function (webpackEnv) {
         __CLIENT_NAME__: JSON.stringify(packageJson.clientName || 'none'),
         __BRANCH__: JSON.stringify(process.env.GIT_BRANCH || 'none'),
         __COMMIT__: JSON.stringify(process.env.GIT_COMMIT || 'none'),
-        __AUTO_ROUTER_REG__: /index\.page\./,
+        __AUTO_ROUTER_REG__: appConfig.autoRouterReg || '/index\\.page\\./',
       }),
       isEnvDevelopment &&
       new ReactRefreshWebpackPlugin({
