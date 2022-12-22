@@ -398,6 +398,10 @@ module.exports = function (webpackEnv) {
             // Make sure to add the new loader(s) before the "file" loader.
           ],
         },
+        {
+          resourceQuery: /raw/,
+          type: 'asset/source',
+        }
       ].filter(Boolean),
     },
     plugins: [
