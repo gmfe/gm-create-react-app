@@ -390,6 +390,12 @@ module.exports = function (webpackEnv) {
                 Boolean,
               ),
             },
+            // 作为字符串引入
+            {
+              test: /\.(lesss|csss)$/,
+              type: "asset/source",
+              use: ['less-loader'],
+            },
             {
               exclude: [/^$/, /\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
               type: 'asset/resource',
