@@ -1,6 +1,6 @@
 {
   "name": "ts-config-gm-react-app",
-  "version": "5.0.0-beta.11",
+  "version": "5.0.0",
   "main": "tsconfig.json",
   "repository": {
     "type": "git",
