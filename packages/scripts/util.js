@@ -45,7 +45,13 @@ const getConfig = () => {
   if (!isEnvDevelopment && !config.publicPath) {
     throw new Error('production 没有提供 publicPath 字段')
   }
-
+  if (process.env.GM_API_ENV) {
+    try {
+      config.devServer.proxy[0].target = process.env.GM_API_ENV
+    } catch (e) {
+      console.log(e)
+    }
+  }
   return config
 }
 
