@@ -1,6 +1,10 @@
 const fs = require('fs-extra')
 const sh = require('shelljs')
 const paths = require('./config/paths')
+const execa = require('execa')
+const shelljs = require('shelljs')
+const { prompt } = require('inquirer')
+const chalk = require('chalk')
 
 const env = process.env.NODE_ENV
 const isEnvDevelopment = env === 'development'
@@ -45,7 +49,13 @@ const getConfig = () => {
   if (!isEnvDevelopment && !config.publicPath) {
     throw new Error('production 没有提供 publicPath 字段')
   }
-
+  if (process.env.GM_API_ENV) {
+    try {
+      config.proxy[0].target = process.env.GM_API_ENV
+    } catch (e) {
+      console.log(e)
+    }
+  }
   return config
 }
 
@@ -81,6 +91,78 @@ function initGitEnv() {
   process.env.GIT_COMMIT = commit
   process.env.GIT_BRANCH = branch
 }
+/*
+ * @Description:获取分支url，会将 '/', '_'转换为 '-'
+ */
+function getGitBranch() {
+  const res = execa.commandSync('git rev-parse --abbrev-ref HEAD')
+  return res.stdout
+}
+/*
+ * @Description:获取分支名
+ */
+function getBranchUrl() {
+  const gitBranch = getGitBranch()
+  return gitBranch.replace(/[_\\/]/g, '-')
+}
+/*
+ * @Description: 根据不同的环境启动
+ */
+function startWithEnv(defaultEnv) {
+  const PLACEHOLDER = 'GM_ENV'
+  const BASE_URL = `https://${PLACEHOLDER}.guanmai.cn/`
+
+  function generateEnvPath(env) {
+    let replaceURL = 'x'
+
+    switch (env) {
+      case 'lite':
+        replaceURL = 'q'
+        break
+      default:
+        replaceURL = 'env-'
+        if (env === 'dev') {
+          replaceURL += 'develop'
+        } else {
+          replaceURL += getBranchUrl()
+        }
+        replaceURL += '.x.k8s'
+        break
+    }
+    const target = BASE_URL.replace(PLACEHOLDER, replaceURL)
+    return target
+  }
+  const envs = ['lite', 'feature']
+
+  function saveEnvAndStart(env) {
+    process.env.GM_API_ENV = generateEnvPath(env)
+    shelljs.exec('yarn start')
+  }
+
+  if (defaultEnv && !envs.includes(defaultEnv))
+    return Promise.reject(chalk.redBright('输入环境不对，只允许' + envs))
+  if (envs.includes(defaultEnv)) {
+    saveEnvAndStart(defaultEnv)
+    return Promise.resolve(defaultEnv)
+  } else {
+    return prompt([
+      {
+        type: 'list',
+        name: 'env',
+        message: '请选择以下环境启动',
+        default: generateEnvPath('feature'),
+        choices: envs,
+        validate: (env) => {
+          if (!env) return chalk.redBright('请选择以下任一环境启动' + envs)
+          return true
+        },
+      },
+    ]).then(({ env }) => {
+      saveEnvAndStart(env)
+      return env
+    })
+  }
+}
 
 module.exports = {
   isEnvDevelopment,
@@ -91,4 +173,5 @@ module.exports = {
   shellExec,
   getConfig,
   initGitEnv,
+  startWithEnv,
 }

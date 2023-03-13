@@ -1,6 +1,6 @@
 {
   "name": "@gm-react-app/scripts",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "",
   "author": "liyatang <liyatang@qq.com>",
   "homepage": "https://github.com/gmfe/gm-react-app/tree/master/packages/scripts#readme",
@@ -72,6 +72,7 @@
     "html-webpack-plugin": "^5.5.0",
     "husky": "^4.3.8",
     "identity-obj-proxy": "^3.0.0",
+    "inquirer": "^7.0.0",
     "jest": "^27.4.3",
     "jest-resolve": "^27.4.2",
     "jest-watch-typeahead": "^1.0.0",
@@ -122,5 +123,8 @@
   "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1"
   }
 }

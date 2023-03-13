@@ -1,7 +1,6 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
-const resolve = require('resolve');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
@@ -37,8 +36,8 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
 const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || '10000',
 )
-
-
+/** 如果是用start_page启动的话，那么会赋值规则到这上面 */
+const CUSTOM_AUTO_ROUTER_REG_ = process.env.CUSTOM_AUTO_ROUTER_REG_
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {
     return false
@@ -112,12 +111,12 @@ module.exports = function (webpackEnv) {
       // Point sourcemap entries to original disk location (format as URL on Windows)
       devtoolModuleFilenameTemplate: isEnvProduction
         ? (info) =>
-          path
-            .relative(paths.appSrc, info.absoluteResourcePath)
-            .replace(/\\/g, '/')
+            path
+              .relative(paths.appSrc, info.absoluteResourcePath)
+              .replace(/\\/g, '/')
         : isEnvDevelopment &&
-        ((info) =>
-          path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
+          ((info) =>
+            path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
     },
     cache: {
       type: 'filesystem',
@@ -243,7 +242,7 @@ module.exports = function (webpackEnv) {
       plugins: [
         new TsconfigPathsPlugin({
           configFile: paths.appPath + '/tsconfig.json',
-        })
+        }),
       ],
       fallback: {
         'react/jsx-runtime': 'react/jsx-runtime.js',
@@ -314,7 +313,7 @@ module.exports = function (webpackEnv) {
                     ],
                     plugins: [
                       isEnvDevelopment &&
-                      require.resolve('react-refresh/babel'),
+                        require.resolve('react-refresh/babel'),
                     ].filter(Boolean),
                     cacheDirectory: true,
                     // See #6846 for context on why cacheCompression is disabled
@@ -393,7 +392,7 @@ module.exports = function (webpackEnv) {
             // 作为字符串引入
             {
               test: /\.(lesss|csss)$/,
-              type: "asset/source",
+              type: 'asset/source',
               use: ['less-loader'],
             },
             {
@@ -407,7 +406,7 @@ module.exports = function (webpackEnv) {
         {
           resourceQuery: /raw/,
           type: 'asset/source',
-        }
+        },
       ].filter(Boolean),
     },
     plugins: [
@@ -424,26 +423,26 @@ module.exports = function (webpackEnv) {
           },
           isEnvProduction
             ? {
-              minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeEmptyAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true,
-              },
-            }
+                minify: {
+                  removeComments: true,
+                  collapseWhitespace: true,
+                  removeRedundantAttributes: true,
+                  useShortDoctype: true,
+                  removeEmptyAttributes: true,
+                  removeStyleLinkTypeAttributes: true,
+                  keepClosingSlash: true,
+                  minifyJS: true,
+                  minifyCSS: true,
+                  minifyURLs: true,
+                },
+              }
             : undefined,
         ),
       ),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request. https://github.com/facebook/create-react-app/issues/5358
       isEnvProduction &&
-      new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
+        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
       new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
       // This gives some necessary context to module not found errors, such as
       // the requesting resource.
@@ -459,18 +458,21 @@ module.exports = function (webpackEnv) {
         __CLIENT_NAME__: JSON.stringify(packageJson.clientName || 'none'),
         __BRANCH__: JSON.stringify(process.env.GIT_BRANCH || 'none'),
         __COMMIT__: JSON.stringify(process.env.GIT_COMMIT || 'none'),
-        __AUTO_ROUTER_REG__: appConfig.autoRouterReg || '/index\\.page\\./',
+        __AUTO_ROUTER_REG__:
+          CUSTOM_AUTO_ROUTER_REG_ ||
+          appConfig.autoRouterReg ||
+          '/index\\.page\\./',
       }),
       isEnvDevelopment &&
-      new ReactRefreshWebpackPlugin({
-        overlay: false,
-      }),
+        new ReactRefreshWebpackPlugin({
+          overlay: false,
+        }),
       isEnvDevelopment && new CaseSensitivePathsPlugin(),
       isEnvProduction &&
-      new MiniCssExtractPlugin({
-        filename: 'css/[name]/[contenthash:8].css',
-        chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
-      }),
+        new MiniCssExtractPlugin({
+          filename: 'css/[name]/[contenthash:8].css',
+          chunkFilename: 'css/[name]/[contenthash:8].chunk.css',
+        }),
       // Generate an asset manifest file with the following content:
       // - "files" key: Mapping of all asset filenames to their corresponding
       //   output file so that tools can pick it up without having to parse
