@@ -3,7 +3,7 @@ const path = require('path')
 const { prompt } = require('inquirer')
 const chalk = require('chalk')
 const paths = require('../config/paths')
-
+const { startWithEnv } = require('../util')
 const pagesPath = path.resolve(paths.appSrc, 'pages')
 const saveCachePath = path.resolve(
   process.cwd(),
@@ -21,7 +21,7 @@ try {
 } catch (e) {
   // 有可能json为空，所以catch一下
 }
-console.log(process.argv.slice(2))
+
 prompt([
   {
     type: 'checkbox',
@@ -36,9 +36,9 @@ prompt([
   },
 ]).then(async ({ pages }) => {
   const defaultEnv = process.argv.slice(2)[0]
-  await require('./start_with_env')(defaultEnv)
-  fs.writeJSON(saveCachePath, pages)
   const regExpStr = `/^\\.\\/(${pages.join('|')}).*?index\\.page\\./`
   process.env.CUSTOM_AUTO_ROUTER_REG_ = regExpStr
+  await startWithEnv(defaultEnv)
+  fs.writeJSON(saveCachePath, pages)
   return null
 })
