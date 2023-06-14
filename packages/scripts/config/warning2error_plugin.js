@@ -15,7 +15,7 @@ class Warning2Error {
    * @param { Compiler } compiler 
    */
   apply(compiler) {
-    compiler.hooks.done.tap(pluginName, ({ compilation }) => {
+    compiler.hooks.done.tap(Warning2Error.name, ({ compilation }) => {
       compilation.warnings.forEach((warning) => {
         if (this.msgExps.some((exp) => exp.test(warning.message))) {
           // possible exports过于冗长，去掉
