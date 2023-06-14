@@ -3,7 +3,7 @@
   "aliasName": "gm-react-app",
   "clientName": "gm-react-app",
   "description": "参考资料",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "webpack.config.backup.js",
   "repository": {
     "type": "git",
