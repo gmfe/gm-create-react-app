@@ -14,6 +14,7 @@ const getClientEnvironment = require('./env')
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const { Warning2Error } = require('./warning2error_plugin')
 
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const { pickBy } = require('lodash')
@@ -502,6 +503,7 @@ module.exports = function (webpackEnv) {
         contextRegExp: /moment$/,
       }),
       new ProgressBarPlugin(),
+      new Warning2Error()
     ].filter(Boolean),
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
@@ -520,8 +522,8 @@ module.exports = function (webpackEnv) {
     ignoreWarnings: [
       /Failed to parse source map/,
       // trusted libs
-      /not exported from \'(gm_api|@antv)/,
-      /was not found in '(gm_api|@antv)/,
+      /not exported from \'(@antv)/,
+      /was not found in '(@antv)/,
     ],
   }
 
